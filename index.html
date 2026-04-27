@@ -12,16 +12,12 @@
     <title>VIP MARKET | للخدمات الرقمية والشحن الإلكتروني</title>
     
     <link rel="canonical" href="https://tariq770871-jpg.github.io/vip-market/">
-
     <meta name="google-site-verification" content="X3ytouKZnDUMScxuPb9C7RFQ83l0815dril_ytkKnUw" />
-
     <meta property="og:title" content="VIP MARKET | للخدمات الرقمية">
-   <meta property="og:url" content="https://tariq770871-jpg.github.io/vip-market/">
-
+    <meta property="og:url" content="https://tariq770871-jpg.github.io/vip-market/">
     <meta property="og:type" content="website">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -48,18 +44,19 @@
         .logo-diamond { width: 32px; height: 32px; background: linear-gradient(135deg, #6b5008, #b8960f); transform: rotate(45deg); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
         .logo-diamond span { transform: rotate(-45deg); font-weight: 900; color: #000; }
         .logo-text .site-name { font-size: 16px; font-weight: 900; color: var(--gold); }
-        .icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .icon-btn:hover { background: var(--gold); color: #000; }
         .main-container { padding: 90px 20px 40px; max-width: 1200px; margin: 0 auto; }
         .page { display: none; animation: fadeIn 0.4s ease; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hero { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; text-align: center; }
-        .btn-3d { padding: 12px 32px; background: linear-gradient(180deg, #b8960f, #8a6d0b); color: #fff; border-radius: 50px; border: none; cursor: pointer; font-weight: 800; box-shadow: 0 4px 0 #6b5008; }
-        .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 15px; margin-bottom: 15px; display: flex; gap: 15px; cursor: pointer; }
+        .hero { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .btn-3d { padding: 14px 35px; background: linear-gradient(180deg, #b8960f, #8a6d0b); color: #fff; border-radius: 50px; border: none; cursor: pointer; font-weight: 800; box-shadow: 0 4px 0 #6b5008; transition: 0.1s; }
+        .btn-3d:active { transform: translateY(2px); box-shadow: 0 2px 0 #6b5008; }
+        .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 15px; margin-bottom: 15px; display: flex; gap: 15px; cursor: pointer; transition: 0.3s; }
+        .article-card:hover { transform: scale(1.02); border-color: var(--gold); }
         .article-card img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
-        .dashboard-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .dashboard-table th, .dashboard-table td { padding: 10px; border: 1px solid var(--border); text-align: center; }
-        .ai-float-btn { position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px; border-radius: 50%; background: #00e5ff; border: none; cursor: pointer; font-size: 24px; box-shadow: 0 4px 15px rgba(0,229,255,0.4); }
+        .ai-float-btn { position: fixed; bottom: 25px; left: 25px; width: 55px; height: 55px; border-radius: 50%; background: #00e5ff; border: none; cursor: pointer; font-size: 26px; z-index: 999; box-shadow: 0 5px 15px rgba(0,229,255,0.4); display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
@@ -71,10 +68,9 @@
                 <div class="logo-text"><span class="site-name">VIP MARKET</span></div>
             </div>
             <div class="header-actions" style="display:flex; gap:10px;">
-                <button class="icon-btn" onclick="navigate('home')">🏠</button>
-                <button class="icon-btn" onclick="navigate('blog')">📝</button>
-                <button class="icon-btn" onclick="navigate('dashboard')">📊</button>
-                <button class="icon-btn" onclick="toggleTheme()">🌙</button>
+                <button class="icon-btn" onclick="navigate('home')" title="الرئيسية"><i class="fas fa-home"></i></button>
+                <button class="icon-btn" onclick="navigate('blog')" title="المقالات"><i class="fas fa-book"></i></button>
+                <button class="icon-btn" onclick="toggleTheme()" title="تغيير الوضع"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </header>
@@ -82,98 +78,72 @@
     <main class="main-container">
         <section class="page active" id="page-home">
             <div class="hero">
-                <h1>مرحباً بك في <span style="color:var(--gold);">VIP MARKET</span></h1>
-                <p>منصتك للخدمات الرقمية والشحن في اليمن</p><br>
-                <button class="btn-3d" onclick="navigate('blog')">اقرأ المقالات</button>
+                <h1 style="font-size:2rem;margin-bottom:10px">👑 مرحباً بك في <span style="color:var(--gold);">VIP MARKET</span></h1>
+                <p style="color:var(--muted)">منصتك للخدمات الرقمية والشحن في اليمن</p><br>
+                <button class="btn-3d" onclick="navigate('blog')">📝 تصفح المقالات التعليمية</button>
             </div>
         </section>
 
         <section class="page" id="page-blog">
-            <h2 style="text-align:center; margin-bottom:20px;">📝 مقالات تعليمية</h2>
-            <div class="article-card" onclick="alert('سيتم إضافة تفاصيل المقال قريباً')">
-                <img src="https://via.placeholder.com/100" alt="article">
-                <div><h3>أفضل طرق الربح في اليمن 2026</h3><p>دليل شامل للعمل الحر...</p></div>
-            </div>
-        </section>
-
-        <section class="page" id="page-dashboard">
-            <div class="hero">
-                <h2>📊 لوحة التحكم</h2>
-                <div id="login-form">
-                    <input type="password" id="pass" placeholder="كلمة المرور" style="padding:10px; border-radius:8px; border:1px solid var(--border);"><br><br>
-                    <button class="btn-3d" onclick="login()">دخول</button>
-                </div>
-                <div id="dash-content" style="display:none;">
-                    <table class="dashboard-table">
-                        <thead><tr><th>الطلب</th><th>الحالة</th></tr></thead>
-                        <tbody><tr><td>شحن USDT</td><td>✅ مكتمل</td></tr></tbody>
-                    </table>
-                    <br><button onclick="logout()">خروج</button>
-                </div>
-            </div>
+            <h2 style="text-align:center;color:var(--gold);margin-bottom:20px;">📝 مقالات تعليمية</h2>
+            <div id="blogContainer"></div>
         </section>
     </main>
 
-    <button class="ai-float-btn">🤖</button>
+    <button class="ai-float-btn" onclick="window.open('https://wa.me/967782138587','_blank')" title="تحدث معنا">🤖</button>
 
     <script>
-                // نظام حماية بسيط (MTIzNA== هي تشفير للرقم 1234)
-        const SECURE_KEY = "MTIzNA=="; 
+        const articlesData = [
+            {title:"أفضل طرق الربح في اليمن 2026",desc:"دليل شامل للعمل الحر والربح عبر الإنترنت من اليمن.",img:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=150&h=150&fit=crop"},
+            {title:"بدء التداول من الصفر",desc:"تعلم أساسيات التداول في بينانس وكيفية حماية حسابك.",img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150&h=150&fit=crop"},
+            {title:"شحن المحافظ الرقمية",desc:"شرح كيفية الشحن عبر محفظة جيب والكريمي وجوال.",img:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=150&h=150&fit=crop"},
+            {title:"عالم تطبيقات الـ Pro",desc:"مميزات النسخ المدفوعة وكيفية الحصول عليها بأمان.",img:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=150&h=150&fit=crop"},
+            {title:"الذكاء الاصطناعي في 2026",desc:"مقارنة شاملة بين ChatGPT و Gemini وخدماتنا.",img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=150&h=150&fit=crop"}
+        ];
+
+        function renderArticles(){
+            const c=document.getElementById('blogContainer');
+            c.innerHTML = ''; 
+            const f=document.createDocumentFragment();
+            articlesData.forEach(a=>{
+                const d=document.createElement('div');
+                d.className='article-card';
+                d.onclick=()=>alert('قريباً: ' + a.title + '\n\n' + a.desc);
+                d.innerHTML=`<img src="${a.img}" alt="${a.title}" loading="lazy">
+                             <div><h3 style="color:var(--gold);margin-bottom:5px">${a.title}</h3>
+                             <p style="color:var(--muted);font-size:0.9rem">${a.desc}</p></div>`;
+                f.appendChild(d);
+            });
+            c.appendChild(f);
+        }
+
+        document.addEventListener('DOMContentLoaded',renderArticles);
 
         function navigate(p){
             document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
-            document.getElementById('page-'+p).classList.add('active');
-            if(p==='dashboard' && localStorage.getItem('vip-auth')==='true') showDash();
+            const target = document.getElementById('page-'+p);
+            if(target){
+                target.classList.add('active');
+                window.scrollTo({top:0,behavior:'smooth'});
+            }
         }
 
         function toggleTheme(){
             const h=document.documentElement;
-            const t=h.getAttribute('data-theme')==='dark'?'light':'dark';
-            h.setAttribute('data-theme',t);
+            const current = h.getAttribute('data-theme');
+            h.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
         }
 
-        function login(){
-            const passInput = document.getElementById('pass').value;
-            // حماية أساسية: تشفير المدخلات ومقارنتها بالمفتاح
-            if (btoa(passInput) === SECURE_KEY) {
-                localStorage.setItem('vip-auth', 'true');
-                showDash();
-            } else {
-                alert('خطأ في كلمة المرور!');
+        setInterval(()=>{
+            if(document.visibilityState === 'visible'){
+                const p=document.createElement('div');
+                p.className='particle';
+                p.style.cssText=`width:3px;height:3px;left:${Math.random()*100}%;animation-duration:${Math.random()*5+5}s`;
+                const container = document.getElementById('particles');
+                if(container) container.appendChild(p);
+                setTimeout(()=>p.remove(),10000);
             }
-        }
-
-        function showDash(){
-            document.getElementById('login-form').style.display='none';
-            document.getElementById('dash-content').style.display='block';
-        }
-
-        function logout(){
-            localStorage.removeItem('vip-auth');
-            location.reload();
-        }
-
-        // ربط زر المساعد الذكي بالواتساب
-        document.querySelector('.ai-float-btn').onclick = function() {
-            window.open('https://wa.me/967770000000', '_blank'); // استبدل الأصفار برقمك
-        };
-
-        function createParticle(){
-            const p=document.createElement('div');
-            p.classList.add('particle');
-            p.style.width='3px'; p.style.height='3px';
-            p.style.left=Math.random()*100+'%';
-            p.style.animationDuration=Math.random()*5+5+'s';
-            const container = document.getElementById('particles');
-            if(container) container.appendChild(p);
-            setTimeout(()=>p.remove(),10000);
-        }
-        setInterval(createParticle,500);
-
-        window.onload = () => {
-            if(localStorage.getItem('vip-auth')==='true' && document.getElementById('page-dashboard').classList.contains('active')) showDash();
-        };
-
+        },800);
     </script>
 </body>
 </html>
