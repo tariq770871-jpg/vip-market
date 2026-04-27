@@ -116,37 +116,55 @@
     <button class="ai-float-btn">🤖</button>
 
     <script>
+                // نظام حماية بسيط (MTIzNA== هي تشفير للرقم 1234)
+        const SECURE_KEY = "MTIzNA=="; 
+
         function navigate(p){
             document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
             document.getElementById('page-'+p).classList.add('active');
             if(p==='dashboard' && localStorage.getItem('vip-auth')==='true') showDash();
         }
+
         function toggleTheme(){
             const h=document.documentElement;
             const t=h.getAttribute('data-theme')==='dark'?'light':'dark';
             h.setAttribute('data-theme',t);
         }
+
         function login(){
-            if(document.getElementById('pass').value==='1234'){
-                localStorage.setItem('vip-auth','true');
+            const passInput = document.getElementById('pass').value;
+            // حماية أساسية: تشفير المدخلات ومقارنتها بالمفتاح
+            if (btoa(passInput) === SECURE_KEY) {
+                localStorage.setItem('vip-auth', 'true');
                 showDash();
-            }else{alert('خطأ!')}
+            } else {
+                alert('خطأ في كلمة المرور!');
+            }
         }
+
         function showDash(){
             document.getElementById('login-form').style.display='none';
             document.getElementById('dash-content').style.display='block';
         }
+
         function logout(){
             localStorage.removeItem('vip-auth');
             location.reload();
         }
+
+        // ربط زر المساعد الذكي بالواتساب
+        document.querySelector('.ai-float-btn').onclick = function() {
+            window.open('https://wa.me/967770000000', '_blank'); // استبدل الأصفار برقمك
+        };
+
         function createParticle(){
             const p=document.createElement('div');
             p.classList.add('particle');
             p.style.width='3px'; p.style.height='3px';
             p.style.left=Math.random()*100+'%';
             p.style.animationDuration=Math.random()*5+5+'s';
-            document.getElementById('particles').appendChild(p);
+            const container = document.getElementById('particles');
+            if(container) container.appendChild(p);
             setTimeout(()=>p.remove(),10000);
         }
         setInterval(createParticle,500);
@@ -154,6 +172,7 @@
         window.onload = () => {
             if(localStorage.getItem('vip-auth')==='true' && document.getElementById('page-dashboard').classList.contains('active')) showDash();
         };
+
     </script>
 </body>
 </html>
