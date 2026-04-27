@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tariq770871-jpg.github.io/vip-market/sitemap.xml
