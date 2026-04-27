@@ -3,94 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIP MARKET للخدمات الرقمية والشحن الإلكتروني - تداول، ربح من الإنترنت، شحن، تطبيقات برو، وأدوات ذكاء اصطناعي">
-    <meta name="keywords" content="شحن عملات رقمية، تداول في اليمن، VIP MARKET، ربح من الإنترنت، باينانس اليمن">
-    <meta name="author" content="Tariq Al-Jadli">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#ffffff">
-    
-    <title>VIP MARKET | للخدمات الرقمية والشحن الإلكتروني</title>
+    <meta name="description" content="VIP MARKET للخدمات الرقمية والشحن الإلكتروني">
     <link rel="canonical" href="https://vipmarket.vercel.app/">
-
-    <meta name="google-site-verification" content="X3ytouKZnDUMScxuPb9C7RFQ83l0815dril_ytkKnUw" />
-    <meta property="og:title" content="VIP MARKET | للخدمات الرقمية">
-    <meta property="og:url" content="https://vipmarket.vercel.app/">
-">
-    <meta property="og:type" content="website">
-
+    <title>VIP MARKET | الخدمات الرقمية</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #f5f5f5; --bg2: #ffffff; --card: #ffffff; --card2: #f0f0f0;
-            --text: #111111; --text2: #222222; --muted: #555555;
-            --gold: #8a6d0b; --gold2: #b8960f; --gold3: #d4af37;
-            --border: rgba(0,0,0,0.08); --glass: rgba(255,255,255,0.95); --ai: #00b8d4;
-        }
-        [data-theme="dark"] {
-            --bg: #050505; --bg2: #0a0a0a; --card: #111111; --card2: #181818;
-            --text: #ffffff; --text2: #cccccc; --muted: #999999;
-            --gold: #d4af37; --gold2: #ffd700; --gold3: #b8960f;
-            --border: rgba(212,175,55,0.2); --glass: rgba(10,10,10,0.9); --ai: #00e5ff;
-        }
+        :root { --bg: #f5f5f5; --card: #ffffff; --text: #111; --gold: #8a6d0b; --border: rgba(0,0,0,0.08); --glass: rgba(255,255,255,0.95); }
+        [data-theme="dark"] { --bg: #050505; --card: #111; --text: #fff; --gold: #d4af37; --border: rgba(212,175,55,0.2); --glass: rgba(10,10,10,0.9); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; transition: 0.3s; overflow-x: hidden; }
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .particle { position: absolute; border-radius: 50%; background: var(--gold); animation: rise linear infinite; opacity: 0; }
-        @keyframes rise { 0% { transform: translateY(105vh) scale(0); opacity: 0; } 5% { opacity: 0.4; } 100% { transform: translateY(-10vh) scale(2); opacity: 0; } }
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .header-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; }
-        .logo-area { display: flex; align-items: center; gap: 8px; }
-        .logo-diamond { width: 32px; height: 32px; background: linear-gradient(135deg, #6b5008, #b8960f); transform: rotate(45deg); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
-        .logo-diamond span { transform: rotate(-45deg); font-weight: 900; color: #000; }
-        .logo-text .site-name { font-size: 16px; font-weight: 900; color: var(--gold); }
-        .icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-        .icon-btn:hover { background: var(--gold); color: #000; }
-        .main-container { padding: 90px 20px 40px; max-width: 1200px; margin: 0 auto; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); transition: 0.3s; }
+        .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--glass); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); padding: 10px 16px; }
+        .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .site-name { font-weight: 900; color: var(--gold); font-size: 1.1rem; }
+        .icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .main-container { max-width: 800px; margin: 90px auto 40px; padding: 0 20px; }
         .page { display: none; animation: fadeIn 0.4s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hero { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .btn-3d { padding: 14px 35px; background: linear-gradient(180deg, #b8960f, #8a6d0b); color: #fff; border-radius: 50px; border: none; cursor: pointer; font-weight: 800; box-shadow: 0 4px 0 #6b5008; transition: 0.1s; }
-        .btn-3d:active { transform: translateY(2px); box-shadow: 0 2px 0 #6b5008; }
-        .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 15px; margin-bottom: 15px; display: flex; gap: 15px; cursor: pointer; transition: 0.3s; }
-        .article-card:hover { transform: scale(1.02); border-color: var(--gold); }
-        .article-card img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
-        .ai-float-btn { position: fixed; bottom: 25px; left: 25px; width: 55px; height: 55px; border-radius: 50%; background: #00e5ff; border: none; cursor: pointer; font-size: 26px; z-index: 999; box-shadow: 0 5px 15px rgba(0,229,255,0.4); display: flex; align-items: center; justify-content: center; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hero { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 15px; margin: 15px 0; display: flex; gap: 15px; cursor: pointer; }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: var(--card); width: 100%; max-width: 600px; max-height: 80vh; border-radius: 24px; padding: 30px; overflow-y: auto; }
+        .ai-btn { position: fixed; bottom: 25px; left: 25px; width: 55px; height: 55px; border-radius: 50%; background: #00e5ff; border: none; cursor: pointer; font-size: 26px; z-index: 999; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
-    <div id="particles"></div>
     <header class="header">
         <div class="header-inner">
-            <div class="logo-area">
-                <div class="logo-diamond"><span>V</span></div>
-                <div class="logo-text"><span class="site-name">VIP MARKET</span></div>
+            <span class="site-name">◆ VIP MARKET</span>
+            <div style="display:flex; gap:10px;">
+                <button class="icon-btn" onclick="navigate('home')"><i class="fas fa-home"></i></button>
+                <button class="icon-btn" onclick="navigate('blog')"><i class="fas fa-book"></i></button>
+                <button class="icon-btn" onclick="navigate('privacy')"><i class="fas fa-shield-alt"></i></button>
+                <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
-                       <div class="header-actions" style="display:flex; gap:10px;">
-                <button class="icon-btn" onclick="navigate('home')" title="الرئيسية"><i class="fas fa-home"></i></button>
-                <button class="icon-btn" onclick="navigate('blog')" title="المقالات"><i class="fas fa-book"></i></button>
-                <button class="icon-btn" onclick="navigate('privacy')" title="الخصوصية"><i class="fas fa-shield-alt"></i></button>
-                <button class="icon-btn" onclick="toggleTheme()" title="تغيير الوضع"><i class="fas fa-moon"></i></button>
-            </div>
-
         </div>
     </header>
 
-    <main class="main-container">        <section class="page" id="page-privacy">
-            <div class="hero" style="text-align:right; line-height:2;">
+    <main class="main-container">
+        <section class="page active" id="page-home">
+            <div class="hero">
+                <h1>👑 VIP MARKET</h1>
+                <p>خدمات الشحن والوساطة المالية في اليمن</p><br>
+                <button onclick="navigate('blog')" style="padding:10px 20px; background:var(--gold); color:#fff; border:none; border-radius:20px; cursor:pointer;">تصفح المقالات</button>
+            </div>
+        </section>
+
+        <section class="page" id="page-blog">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:20px;">📝 المقالات التعليمية</h2>
+            <div id="blogContainer"></div>
+        </section>
+
+        <section class="page" id="page-privacy">
+            <div class="hero" style="text-align:right;">
                 <h2 style="color:var(--gold); text-align:center;">🛡️ سياسة الخصوصية</h2><br>
-                <p>مرحباً بك في <b>VIP MARKET</b>. تهمنا خصوصية بياناتك بقدر ما تهمنا جودة خدماتنا.</p>
-                <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
-                <h4 style="color:var(--gold)">1. جمع المعلومات</h4>
-                <p>نحن لا نجمع أي بيانات شخصية حساسة دون علمك. البيانات التي يتم جمعها هي لتحسين أداء الموقع فقط.</p>
-                
-                <h4 style="color:var(--gold)">2. ملفات تعريف الارتباط (Cookies)</h4>
-                <p>يستخدم موقعنا ملفات تعريف الارتباط لتحسين تجربة المستخدم وعرض الإعلانات المخصصة عبر نظام Google AdSense.</p>
-                
-                <h4 style="color:var(--gold)">3. الأمان</h4>
-                <p>نحن نلتزم بحماية بياناتك عبر بروتوكولات تشفير متقدمة (SSL) لضمان تجربة تصفح آمنة داخل اليمن وخارجها.</p>
+                <p>نحن نحترم خصوصيتك. موقعنا يستخدم ملفات تعريف الارتباط لتحسين تجربة الإعلانات عبر AdSense.</p>
+                <p>بياناتك آمنة ولا يتم مشاركتها مع أي طرف ثالث.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="articleModal"><div class="modal-content" id="modalBody"></div></div>
+    <button class="ai-btn" onclick="window.open('https://wa.me/967782138587')">🤖</button>
+
+    <script>
+        const articlesData = [
+            {title:"الربح في اليمن 2026", desc:"دليل شامل للعمل الحر.", content:"محتوى المقال الأول...", img:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200"},
+            {title:"دليل التداول", desc:"ابدأ رحلتك في العملات الرقمية.", content:"محتوى المقال الثاني...", img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200"}
+        ];
+        function renderArticles(){
+            document.getElementById('blogContainer').innerHTML = articlesData.map((a, i) => `
+                <div class="article-card" onclick="openArticle(${i})">
+                    <img src="${a.img}" style="width:60px;height:60px;border-radius:10px;">
+                    <div><h3>${a.title}</h3><p style="font-size:0.8rem">${a.desc}</p></div>
+                </div>`).join('');
+        }
+        function openArticle(i){
+            const a = articlesData[i];
+            document.getElementById('modalBody').innerHTML = `<h2>${a.title}</h2><br><p>${a.content}</p><br><button onclick="closeModal()">إغلاق</button>`;
+            document.getElementById('articleModal').style.display = 'flex';
+        }
+        function closeModal(){ document.getElementById('articleModal').style.display = 'none'; }
+        function navigate(p){
+            document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
+            document.getElementById('page-'+p).classList.add('active');
+        }
+        function toggleTheme(){
+            const h=document.documentElement;
+            h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark');
+        }
+        document.addEventListener('DOMContentLoaded', renderArticles);
+    </script>
+</body>
+</html>
                 
                 <h4 style="color:var(--gold)">4. تواصل معنا</h4>
                 <p>لأي استفسار بخصوص خصوصيتك، يمكنك التواصل مباشرة مع الإدارة عبر زر الواتساب العائم.</p>
