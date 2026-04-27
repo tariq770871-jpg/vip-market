@@ -3,392 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIP MARKET للخدمات الرقمية والشحن الإلكتروني - تداول، ربح من الإنترنت، شحن، تطبيقات برو، أدوات الذكاء الاصطناعي">
-    <meta name="keywords" content="VIP MARKET، خدمات رقمية، شحن إلكتروني، تداول، ربح من الإنترنت، ذكاء اصطناعي، أدوات AI">
-    <meta name="author" content="VIP MARKET">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="VIP MARKET للخدمات الرقمية والشحن الإلكتروني">
     <meta name="theme-color" content="#0a0a0a">
-    <meta property="og:title" content="VIP MARKET للخدمات الرقمية والشحن الإلكتروني">
-    <meta property="og:description" content="منصتك الرقمية المتكاملة للخدمات والشحن الإلكتروني وأدوات الذكاء الاصطناعي">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_YE">
     <title>VIP MARKET | للخدمات الرقمية والشحن الإلكتروني</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --bg: #050505; --bg2: #0a0a0a; --card: #111111; --card2: #181818;
             --text: #ffffff; --text2: #cccccc; --muted: #999999;
             --gold: #d4af37; --gold2: #ffd700; --gold3: #b8960f;
-            --border: rgba(212, 175, 55, 0.25); --glow: rgba(212, 175, 55, 0.15);
-            --glass: rgba(10, 10, 10, 0.85);
-            --ai: #00e5ff;
+            --border: rgba(212, 175, 55, 0.2); --glow: rgba(212, 175, 55, 0.12);
+            --glass: rgba(10, 10, 10, 0.9); --ai: #00e5ff;
         }
         [data-theme="light"] {
-            --bg: #f9f9f9; --bg2: #ffffff; --card: #ffffff; --card2: #f5f5f5;
-            --text: #111111; --text2: #333333; --muted: #777777;
-            --border: rgba(180, 140, 40, 0.4); --glass: rgba(255, 255, 255, 0.85);
+            --bg: #f5f5f5; --bg2: #ffffff; --card: #ffffff; --card2: #f0f0f0;
+            --text: #111111; --text2: #222222; --muted: #555555;
+            --border: rgba(0,0,0,0.1); --glass: rgba(255,255,255,0.9);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Tajawal', 'Cairo', 'Segoe UI', Tahoma, sans-serif;
-            background: var(--bg); color: var(--text); line-height: 1.8;
-            transition: background-color 0.4s, color 0.4s;
-            overflow-x: hidden; -webkit-font-smoothing: antialiased;
-        }
-
+        body { font-family: 'Tajawal', 'Cairo', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: 0.3s; overflow-x: hidden; }
         #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .particle { position: absolute; border-radius: 50%; background: var(--gold); animation: rise linear infinite; opacity: 0; }
-        @keyframes rise {
-            0% { transform: translateY(105vh) scale(0); opacity: 0; }
-            5% { opacity: 0.7; } 60% { opacity: 0.3; }
-            100% { transform: translateY(-10vh) scale(1.8); opacity: 0; }
+        @keyframes rise { 0% { transform: translateY(105vh) scale(0); opacity: 0; } 5% { opacity: 0.6; } 60% { opacity: 0.2; } 100% { transform: translateY(-10vh) scale(2); opacity: 0; } }
+
+        /* ===== المساعد العائم ===== */
+        .ai-float-btn {
+            position: fixed; bottom: 25px; left: 25px; z-index: 9998;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #00e5ff, #00b8d4);
+            border: none; cursor: pointer; font-size: 28px; color: #000;
+            box-shadow: 0 8px 25px rgba(0,229,255,0.4);
+            display: flex; align-items: center; justify-content: center;
+            animation: floatBounce 2s infinite; transition: all 0.3s;
+        }
+        .ai-float-btn:hover { transform: scale(1.1); box-shadow: 0 12px 35px rgba(0,229,255,0.6); }
+        @keyframes floatBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* نافذة المحادثة */
+        .chat-window {
+            position: fixed; bottom: 100px; left: 25px;
+            width: 380px; max-width: 90vw; height: 500px; max-height: 70vh;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 20px; z-index: 9999;
+            display: none; flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        .chat-window.open { display: flex; }
+        .chat-window.fullscreen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            max-width: 100%; max-height: 100%; bottom: 0; border-radius: 0;
+            z-index: 10000;
         }
 
-        .bg-glow { position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; opacity: 0.04; background: var(--gold2); }
-        .glow-1 { width: 500px; height: 500px; top: -150px; right: -100px; animation: glow1 15s infinite alternate; }
-        .glow-2 { width: 400px; height: 400px; bottom: -100px; left: -80px; animation: glow2 18s infinite alternate; }
-        @keyframes glow1 { to { transform: translate(80px, 60px) scale(1.2); } }
-        @keyframes glow2 { to { transform: translate(-60px, -40px) scale(1.3); } }
-
-        .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .header-inner { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 5px 20px; flex-wrap: wrap; gap: 4px; }
-        .logo-area { display: flex; align-items: center; gap: 8px; }
-        .logo-diamond { width: 34px; height: 34px; background: linear-gradient(135deg, #b8960f, #d4af37, #ffd700); transform: rotate(45deg); border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px var(--glow); animation: pulseD 3s infinite; }
-        @keyframes pulseD { 0%, 100% { box-shadow: 0 0 20px var(--glow); } 50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.5); } }
-        .logo-diamond span { transform: rotate(-45deg); font-weight: 900; font-size: 16px; color: #000; }
-        .logo-text .site-name { font-size: 17px; font-weight: 900; background: linear-gradient(135deg, #d4af37, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .logo-text .site-tagline { font-size: 8px; color: var(--muted); letter-spacing: 2px; display: block; }
-        .nav-links { display: flex; gap: 2px; list-style: none; flex-wrap: wrap; }
-        .nav-links a { color: var(--text); text-decoration: none; padding: 6px 10px; border-radius: 20px; font-weight: 600; font-size: 11px; transition: all 0.3s; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
-        .nav-links a:hover, .nav-links a.active { background: linear-gradient(135deg, #b8960f, #d4af37); color: #000; box-shadow: 0 4px 15px var(--glow); }
-        .nav-links a.ai-link { border-color: var(--ai); color: var(--ai); }
-        .nav-links a.ai-link:hover, .nav-links a.ai-link.active { background: linear-gradient(135deg, #00b8d4, #00e5ff); color: #000; box-shadow: 0 4px 20px rgba(0, 229, 255, 0.4); }
-        .theme-toggle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--gold); background: transparent; color: var(--gold); font-size: 16px; cursor: pointer; transition: all 0.4s; display: flex; align-items: center; justify-content: center; }
-        .theme-toggle:hover { background: var(--gold); color: #000; transform: rotate(25deg); }
-
-        .main-container { position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; padding: 90px 20px 40px; }
-        .page { display: none; animation: fadeIn 0.5s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .hero { text-align: center; padding: 60px 30px 50px; border-radius: 30px; background: var(--card); border: 1px solid var(--border); position: relative; overflow: hidden; margin-bottom: 30px; }
-        .hero::before { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%); top: -120px; right: -100px; border-radius: 50%; animation: hg 8s infinite alternate; }
-        @keyframes hg { to { transform: scale(1.4); } }
-        .hero>* { position: relative; z-index: 1; }
-        .hero-icon { font-size: 55px; display: block; margin-top: 10px; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5)); animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .hero-badge { display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--border); padding: 6px 18px; border-radius: 30px; font-size: 13px; color: var(--gold2); margin: 8px 0 18px; }
-        .hero h1 { font-size: clamp(26px, 5vw, 44px); font-weight: 900; margin-bottom: 12px; line-height: 1.3; }
-        .hero h1 .gold-text { background: linear-gradient(135deg, #b8960f, #d4af37, #ffd700, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s infinite; }
-        @keyframes shimmer { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.4); } }
-        .hero p { font-size: 16px; color: var(--text2); max-width: 680px; margin: 0 auto 20px; }
-        .hero-highlights { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .hero-highlights span { background: var(--card2); border: 1px solid var(--border); padding: 8px 15px; border-radius: 30px; font-size: 12px; font-weight: 600; color: var(--gold); }
-
-        .btn-3d { display: inline-block; padding: 14px 38px; font-size: 15px; font-weight: 800; color: #000; text-decoration: none; background: linear-gradient(180deg, #ffe566 0%, #d4af37 30%, #b8960f 70%, #7a5f0a 100%); border-radius: 50px; letter-spacing: 1px; cursor: pointer; border: none; box-shadow: 0 7px 0 #6b5008, 0 12px 25px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4), 0 0 35px rgba(212,175,55,0.35); transition: all 0.2s; transform: perspective(400px) rotateX(4deg); }
-        .btn-3d:hover { transform: perspective(400px) rotateX(0deg) translateY(-4px); box-shadow: 0 4px 0 #6b5008, 0 18px 35px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.5), 0 0 50px rgba(212,175,55,0.55); }
-
-        .section-header { text-align: center; margin-bottom: 35px; }
-        .section-header h2 { font-size: 30px; font-weight: 900; color: var(--gold); margin-bottom: 6px; }
-        .section-header p { color: var(--muted); font-size: 15px; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.4s; cursor: pointer; position: relative; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 45px rgba(212, 175, 55, 0.2); }
-        .service-img { width: 100%; height: 170px; background: var(--card2); display: flex; align-items: center; justify-content: center; font-size: 65px; border-bottom: 1px solid var(--border); }
-        .service-body { padding: 22px 18px; text-align: center; }
-        .service-body h3 { font-size: 19px; color: var(--gold2); margin-bottom: 8px; }
-        .service-body p { color: var(--muted); font-size: 13px; margin-bottom: 15px; line-height: 1.6; }
-        .btn-card { display: inline-block; padding: 10px 25px; font-size: 14px; font-weight: 700; color: #000; background: linear-gradient(180deg, #d4af37, #b8960f); border-radius: 30px; text-decoration: none; cursor: pointer; border: none; box-shadow: 0 4px 0 #7a5f0a, 0 7px 18px rgba(0,0,0,0.4); transition: all 0.3s; }
-        .btn-card:hover { transform: translateY(-2px); box-shadow: 0 2px 0 #7a5f0a, 0 10px 25px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.4); }
-        .badge { position: absolute; top: 10px; left: 10px; background: #ff4444; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; z-index: 2; }
-        .badge-ai { background: #00e5ff; color: #000; }
-
-        /* AI Tools Grid */
-        .ai-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .ai-tool-card { background: var(--card); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 20px; padding: 25px 20px; text-align: center; transition: all 0.4s; }
-        .ai-tool-card:hover { transform: translateY(-8px); border-color: #00e5ff; box-shadow: 0 15px 40px rgba(0, 229, 255, 0.2); }
-        .ai-tool-icon { font-size: 50px; margin-bottom: 12px; }
-        .ai-tool-card h3 { font-size: 20px; color: #00e5ff; margin-bottom: 8px; }
-        .ai-tool-card .task { color: var(--gold); font-weight: 700; margin-bottom: 6px; font-size: 13px; }
-        .ai-tool-card .desc { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 15px; }
-        .btn-ai { display: inline-block; padding: 9px 22px; font-size: 13px; font-weight: 700; color: #000; background: linear-gradient(180deg, #00e5ff, #00b8d4); border-radius: 25px; text-decoration: none; cursor: pointer; border: none; box-shadow: 0 3px 0 #008899; transition: all 0.3s; }
-        .btn-ai:hover { transform: translateY(-2px); box-shadow: 0 2px 0 #008899, 0 8px 20px rgba(0, 229, 255, 0.4); }
-
-        .content-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 35px 25px; margin-bottom: 25px; }
-        .content-card h2 { font-size: 26px; color: var(--gold); margin-bottom: 18px; text-align: center; }
-        .content-card h3 { font-size: 19px; color: var(--gold2); margin: 18px 0 8px; }
-        .content-card p { color: var(--text2); margin-bottom: 12px; line-height: 2; }
-        .content-card ul { list-style: disc; padding-right: 25px; color: var(--text2); margin-bottom: 12px; }
-        .content-card ul li { margin-bottom: 6px; }
-
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
-        .contact-item { background: var(--card2); border: 1px solid var(--border); border-radius: 16px; padding: 25px 18px; text-align: center; transition: all 0.4s; text-decoration: none; color: var(--text); display: block; }
-        .contact-item:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 12px 35px var(--glow); }
-        .contact-icon { font-size: 40px; display: block; margin-bottom: 10px; }
-        .contact-label { font-weight: 700; color: var(--gold); margin-bottom: 4px; font-size: 15px; }
-        .contact-value { font-size: 13px; color: var(--muted); word-break: break-all; direction: ltr; }
-
-        .footer { text-align: center; padding: 18px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); margin-top: 35px; position: relative; z-index: 1; }
-        .footer .gold { color: var(--gold); font-weight: 700; }
-        .footer a { color: var(--gold); text-decoration: none; margin: 0 6px; }
-        .footer a:hover { text-decoration: underline; }
-
-        #privacyModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; overflow-y: auto; }
-        #privacyModal .modal-content { max-width: 700px; margin: 60px auto; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px 22px; color: var(--text); }
-
-        @media (max-width: 768px) {
-            .header-inner { flex-direction: column; gap: 4px; padding: 8px 10px; }
-            .nav-links a { padding: 5px 8px; font-size: 10px; }
-            .hero { padding: 35px 15px 30px; }
-            .hero h1 { font-size: 22px; }
-            .hero p { font-size: 13px; }
-            .btn-3d { padding: 12px 28px; font-size: 14px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .ai-tools-grid { grid-template-columns: 1fr; }
-            .content-card { padding: 22px 15px; }
+        .chat-header {
+            background: linear-gradient(135deg, #00b8d4, #00e5ff);
+            padding: 14px 18px; display: flex; align-items: center;
+            justify-content: space-between; color: #000; font-weight: 700;
+            cursor: pointer;
         }
+        .chat-header .title { font-size: 16px; }
+        .chat-header .actions { display: flex; gap: 10px; }
+        .chat-header .actions button {
+            background: transparent; border: none; color: #000;
+            font-size: 18px; cursor: pointer; transition: 0.2s;
+        }
+        .chat-header .actions button:hover { transform: scale(1.2); }
+
+        .chat-body {
+            flex: 1; padding: 15px; overflow-y: auto; display: flex;
+            flex-direction: column; gap: 10px; background: var(--bg2);
+        }
+        .msg { max-width: 85%; padding: 10px 14px; border-radius: 15px; font-size: 13px; line-height: 1.6; animation: msgIn 0.3s ease; }
+        .msg.bot { background: var(--card2); color: var(--text); align-self: flex-start; border-bottom-right-radius: 5px; border: 1px solid var(--border); }
+        .msg.user { background: linear-gradient(135deg, #00b8d4, #00e5ff); color: #000; align-self: flex-end; border-bottom-left-radius: 5px; }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .quick-btns { display: flex; flex-wrap: wrap; gap: 6px; margin: 5px 0; }
+        .quick-btn {
+            background: var(--card); border: 1px solid var(--border);
+            color: var(--gold); padding: 7px 14px; border-radius: 20px;
+            font-size: 11px; cursor: pointer; transition: 0.2s; white-space: nowrap;
+        }
+        .quick-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        .chat-input-area {
+            display: flex; gap: 8px; padding: 12px; background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+        .chat-input-area input {
+            flex: 1; padding: 10px 14px; border-radius: 25px;
+            border: 1px solid var(--border); background: var(--bg2);
+            color: var(--text); font-family: inherit; font-size: 13px;
+            outline: none;
+        }
+        .chat-input-area button {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #00e5ff, #00b8d4);
+            border: none; color: #000; font-size: 16px; cursor: pointer;
+            transition: 0.2s;
+        }
+        .chat-input-area button:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
     <div id="particles"></div>
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
 
-    <header class="header">
-        <div class="header-inner">
-            <div class="logo-area">
-                <div class="logo-diamond"><span>V</span></div>
-                <div class="logo-text">
-                    <span class="site-name">VIP MARKET</span>
-                    <span class="site-tagline">للخدمات الرقمية والشحن الإلكتروني</span>
-                </div>
+    <!-- ===== المساعد العائم ===== -->
+    <button class="ai-float-btn" onclick="toggleChat()" title="مافي نفسك؟">🤖</button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span class="title">🤖 مافي نفسك؟</span>
+            <div class="actions">
+                <button onclick="toggleFullscreen()" title="تكبير">⛶</button>
+                <button onclick="toggleChat()" title="إغلاق">✕</button>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a onclick="navigate('home')" class="active">الرئيسية</a></li>
-                <li><a onclick="navigate('sections')">الأقسام</a></li>
-                <li><a onclick="navigate('ai')" class="ai-link">🤖 أدوات الذكاء الاصطناعي</a></li>
-                <li><a onclick="navigate('about')">من نحن</a></li>
-                <li><a onclick="navigate('contact')">اتصل بنا</a></li>
-            </ul>
-            <button class="theme-toggle" onclick="toggleTheme()" title="تغيير المظهر">☀️</button>
         </div>
-    </header>
-
-    <main class="main-container">
-
-        <!-- HOME -->
-        <section class="page active" id="page-home">
-            <div class="hero">
-                <span class="hero-icon">👑</span>
-                <span class="hero-badge">⚡ المنصة الرقمية الأولى في اليمن والعالم</span>
-                <h1>مرحباً بك في <span class="gold-text">VIP MARKET</span></h1>
-                <p>وجهتك المتكاملة للخدمات الرقمية والشحن الإلكتروني وأدوات الذكاء الاصطناعي. نقدم خدمات احترافية ومضمونة بأعلى جودة.</p>
-                <div class="hero-highlights">
-                    <span>📈 تداول</span>
-                    <span>💰 ربح</span>
-                    <span>⚡ شحن</span>
-                    <span>📱 تطبيقات</span>
-                    <span>🤖 ذكاء اصطناعي</span>
-                </div>
-                <button class="btn-3d" onclick="navigate('sections')">📂 استعرض الأقسام</button>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">
+                مرحباً! أنا <strong>"مافي نفسك؟"</strong> مساعدك الذكي في VIP MARKET. كيف أقدر أخدمك؟
             </div>
-        </section>
-
-        <!-- SECTIONS -->
-        <section class="page" id="page-sections">
-            <div class="section-header">
-                <h2>📊 أقسام VIP MARKET</h2>
-                <p>اختر القسم الذي تريده واستفد من خدماتنا الاحترافية</p>
+            <div class="quick-btns">
+                <button class="quick-btn" onclick="sendQuick('التداول')">📈 التداول</button>
+                <button class="quick-btn" onclick="sendQuick('الربح')">💰 الربح</button>
+                <button class="quick-btn" onclick="sendQuick('الشحن')">⚡ الشحن</button>
+                <button class="quick-btn" onclick="sendQuick('التطبيقات')">📱 التطبيقات</button>
+                <button class="quick-btn" onclick="sendQuick('أدوات AI')">🤖 أدوات AI</button>
+                <button class="quick-btn" onclick="sendQuick('واتساب')">📞 واتساب</button>
             </div>
-            <div class="services-grid">
-                <div class="service-card"><span class="badge">🔥 الأكثر طلباً</span><div class="service-img">📈</div><div class="service-body"><h3>قسم التداول</h3><p>تعليم التداول من الصفر للاحتراف، تحليل الشموع اليابانية، استراتيجيات المنصات العالمية.</p><button class="btn-card" onclick="navigate('contact')">تواصل معنا</button></div></div>
-                <div class="service-card"><div class="service-img">💰</div><div class="service-body"><h3>قسم الربح من الإنترنت</h3><p>طرق ربح مضمونة ومجربة 100%، عمل من المنزل، مشاريع رقمية مربحة.</p><button class="btn-card" onclick="navigate('contact')">تواصل معنا</button></div></div>
-                <div class="service-card"><span class="badge">⚡ فوري</span><div class="service-img">⚡</div><div class="service-body"><h3>قسم الشحن الإلكتروني</h3><p>شحن المحافظ اليمنية، منصات عالمية، رصيد اتصالات، بطاقات ألعاب.</p><button class="btn-card" onclick="navigate('contact')">تواصل معنا</button></div></div>
-                <div class="service-card"><div class="service-img">📱</div><div class="service-body"><h3>قسم التطبيقات</h3><p>متجر تطبيقات برو، تطبيقات مدفوعة مجاناً، أدوات احترافية.</p><button class="btn-card" onclick="navigate('contact')">تواصل معنا</button></div></div>
-            </div>
-            <div style="text-align:center; margin-top:30px;"><button class="btn-3d" onclick="navigate('home')">العودة للرئيسية</button></div>
-        </section>
-
-        <!-- AI TOOLS PAGE -->
-        <section class="page" id="page-ai">
-            <div class="section-header">
-                <h2>🤖 أدوات الذكاء الاصطناعي</h2>
-                <p>أفضل أدوات الذكاء الاصطناعي لزيادة الإنتاجية والإبداع</p>
-            </div>
-            <div class="ai-tools-grid">
-
-                <!-- ChatGPT -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">💬</div>
-                    <h3>ChatGPT</h3>
-                    <p class="task">المهمة: مساعد ذكي للمحادثة</p>
-                    <p class="desc">أقوى روبوت محادثة بالذكاء الاصطناعي. يساعد في الكتابة، البرمجة، الترجمة، الإجابة على الأسئلة، وإنشاء المحتوى.</p>
-                    <a href="https://chat.openai.com" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Gemini -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">🧠</div>
-                    <h3>Google Gemini</h3>
-                    <p class="task">المهمة: ذكاء متعدد الوسائط</p>
-                    <p class="desc">نموذج Google الذكي. يفهم النصوص والصور والفيديو والصوت. مناسب للبحث والتحليل العميق.</p>
-                    <a href="https://gemini.google.com" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Midjourney -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">🎨</div>
-                    <h3>Midjourney</h3>
-                    <p class="task">المهمة: توليد الصور بالذكاء الاصطناعي</p>
-                    <p class="desc">أداة احترافية لإنشاء صور فنية مذهلة من وصف نصي. مناسبة للمصممين والمسوقين.</p>
-                    <a href="https://midjourney.com" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- DALL-E -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">🖼️</div>
-                    <h3>DALL-E</h3>
-                    <p class="task">المهمة: رسم وتحويل النص إلى صورة</p>
-                    <p class="desc">من OpenAI. يحول أي وصف نصي إلى صورة واقعية أو خيالية بدقة عالية.</p>
-                    <a href="https://openai.com/dall-e-3" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Copilot -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">💻</div>
-                    <h3>GitHub Copilot</h3>
-                    <p class="task">المهمة: مساعد برمجة ذكي</p>
-                    <p class="desc">يساعد المبرمجين في كتابة الأكواد بسرعة. يقترح أكواد كاملة ويصلح الأخطاء تلقائياً.</p>
-                    <a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Claude -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">📝</div>
-                    <h3>Claude AI</h3>
-                    <p class="task">المهمة: كتابة وتحليل النصوص الطويلة</p>
-                    <p class="desc">منافس قوي لـ ChatGPT. يتميز بمعالجة النصوص الطويلة والتحليل العميق والتلخيص.</p>
-                    <a href="https://claude.ai" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Canva AI -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">🎬</div>
-                    <h3>Canva AI</h3>
-                    <p class="task">المهمة: تصميم جرافيك وفيديو بالذكاء الاصطناعي</p>
-                    <p class="desc">أدوات ذكاء اصطناعي مدمجة في Canva لتصميم الشعارات والمنشورات والفيديوهات بسهولة.</p>
-                    <a href="https://canva.com" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-                <!-- Notion AI -->
-                <div class="ai-tool-card">
-                    <div class="ai-tool-icon">📋</div>
-                    <h3>Notion AI</h3>
-                    <p class="task">المهمة: إدارة المهام والملاحظات بذكاء</p>
-                    <p class="desc">مساعد ذكي داخل تطبيق Notion. يكتب ويلخص وينظم الملاحظات والمشاريع تلقائياً.</p>
-                    <a href="https://notion.so" target="_blank" rel="noopener" class="btn-ai">🔗 فتح الأداة</a>
-                </div>
-
-            </div>
-            <div style="text-align:center; margin-top:35px;">
-                <button class="btn-3d" onclick="navigate('home')">العودة للرئيسية</button>
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section class="page" id="page-about">
-            <div class="content-card">
-                <h2>من نحن</h2>
-                <p><strong>VIP MARKET</strong> هي منصة رقمية يمنية متخصصة في تقديم الخدمات الرقمية وحلول الشحن الإلكتروني وأدوات الذكاء الاصطناعي. تأسسنا بهدف توفير خدمات موثوقة وسريعة.</p>
-                <h3>رؤيتنا</h3>
-                <p>أن نكون المنصة الرقمية الأولى في اليمن والوطن العربي.</p>
-                <h3>رسالتنا</h3>
-                <p>تقديم خدمات رقمية عالية الجودة بأسعار مناسبة مع دعم فني مستمر.</p>
-                <h3>لماذا تختارنا؟</h3>
-                <ul><li>خبرة واسعة في الخدمات الرقمية</li><li>مصداقية وأمان</li><li>دعم فني 24 ساعة</li><li>أسعار تنافسية</li></ul>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="page" id="page-contact">
-            <div class="content-card">
-                <h2>اتصل بنا</h2>
-                <p style="text-align:center;">تواصل معنا عبر أي وسيلة</p>
-                <div class="contact-grid">
-                    <a href="https://wa.me/967782138587" target="_blank" rel="noopener" class="contact-item"><span class="contact-icon">💬</span><span class="contact-label">واتساب</span><span class="contact-value">+967 782 138 587</span></a>
-                    <a href="https://t.me/tariq77087" target="_blank" rel="noopener" class="contact-item"><span class="contact-icon">✈️</span><span class="contact-label">تيليجرام</span><span class="contact-value">@tariq77087</span></a>
-                    <a href="https://www.facebook.com/share/1EnALeuZGJ/" target="_blank" rel="noopener" class="contact-item"><span class="contact-icon">📘</span><span class="contact-label">فيسبوك</span><span class="contact-value">صفحة VIP MARKET</span></a>
-                    <a href="mailto:tariq770871@gmail.com" class="contact-item"><span class="contact-icon">📧</span><span class="contact-label">البريد</span><span class="contact-value">tariq770871@gmail.com</span></a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        جميع الحقوق محفوظة &copy; <span id="year"></span> - <span class="gold">VIP MARKET</span>
-        <br>
-        <a href="#" onclick="navigate('about')">من نحن</a> |
-        <a href="#" onclick="navigate('contact')">اتصل بنا</a> |
-        <a href="#" onclick="navigate('privacy')">سياسة الخصوصية</a>
-    </footer>
-
-    <div id="privacyModal">
-        <div class="modal-content">
-            <h2 style="color:var(--gold); text-align:center;">سياسة الخصوصية</h2>
-            <p>نحن في VIP MARKET نحترم خصوصيتك...</p>
-            <button class="btn-3d" style="display:block; margin:20px auto;" onclick="document.getElementById('privacyModal').style.display='none'">موافق</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter')sendMsg()">
+            <button onclick="sendMsg()">📤</button>
         </div>
     </div>
 
     <script>
-        function createParticle() {
-            const p = document.createElement('div'); p.classList.add('particle');
-            const s = Math.random() * 4 + 2;
-            p.style.width = s + 'px'; p.style.height = s + 'px';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDuration = Math.random() * 10 + 8 + 's';
-            p.style.animationDelay = Math.random() * 7 + 's';
-            document.getElementById('particles').appendChild(p);
-            setTimeout(() => p.remove(), 17000);
+        function toggleChat() {
+            document.getElementById('chatWindow').classList.toggle('open');
         }
-        setInterval(createParticle, 300);
-        for (let i = 0; i < 35; i++) setTimeout(createParticle, i * 90);
+        function toggleFullscreen() {
+            document.getElementById('chatWindow').classList.toggle('fullscreen');
+        }
 
-        function toggleTheme() {
-            const html = document.documentElement, btn = document.querySelector('.theme-toggle');
-            if (html.getAttribute('data-theme') === 'light') {
-                html.removeAttribute('data-theme'); btn.textContent = '☀️';
-                localStorage.setItem('vip-theme', 'dark');
+        function sendMsg() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+            addMsg(msg, 'user');
+            input.value = '';
+            setTimeout(() => botReply(msg), 500);
+        }
+
+        function sendQuick(topic) {
+            addMsg(topic, 'user');
+            setTimeout(() => botReply(topic), 500);
+        }
+
+        function addMsg(text, type) {
+            const body = document.getElementById('chatBody');
+            const div = document.createElement('div');
+            div.className = 'msg ' + type;
+            div.textContent = text;
+            body.appendChild(div);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        function botReply(msg) {
+            const m = msg.toLowerCase();
+            let reply = '';
+            if (m.includes('تداول') || m.includes('تحليل') || m.includes('شموع')) {
+                reply = '📈 قسم التداول: نعلمك من الصفر للاحتراف - تحليل الشموع اليابانية - استراتيجيات المنصات العالمية - إشارات يومية. تواصل معنا للاشتراك!';
+            } else if (m.includes('ربح') || m.includes('انترنت')) {
+                reply = '💰 قسم الربح من الإنترنت: طرق مضمونة 100% - عمل من المنزل - مشاريع رقمية - دورات تعليمية. اسأل عن الباقات!';
+            } else if (m.includes('شحن') || m.includes('محفظة') || m.includes('رصيد')) {
+                reply = '⚡ قسم الشحن: محافظ يمنية - منصات عالمية - بطاقات ألعاب - رصيد اتصالات - خدمة 24 ساعة. تواصل واتساب: +967782138587';
+            } else if (m.includes('تطبيق') || m.includes('برو')) {
+                reply = '📱 قسم التطبيقات: تطبيقات برو مدفوعة مجاناً - أدوات احترافية - تحديثات مستمرة. اطلب تطبيقك!';
+            } else if (m.includes('ai') || m.includes('ذكاء') || m.includes('ادوات')) {
+                reply = '🤖 أدوات AI: ChatGPT - Gemini - Midjourney - DALL-E - Copilot - Claude - Canva AI - Notion AI. كلها في قسم الأدوات!';
+            } else if (m.includes('واتس') || m.includes('تواصل') || m.includes('رقم')) {
+                reply = '📞 تواصل معنا: واتساب: +967782138587 | تيليجرام: @tariq77087 | فيسبوك: VIP MARKET | بريد: tariq770871@gmail.com';
+            } else if (m.includes('سلام') || m.includes('هلا') || m.includes('مرحبا')) {
+                reply = 'وعليكم السلام! مرحباً بك في VIP MARKET. كيف أقدر أخدمك؟ 😊';
+            } else if (m.includes('شكر')) {
+                reply = 'العفو! أي service ثانية تحتاجها؟ 😊';
             } else {
-                html.setAttribute('data-theme', 'light'); btn.textContent = '🌙';
-                localStorage.setItem('vip-theme', 'light');
+                reply = 'شكراً على سؤالك! تقدر تتواصل مع فريقنا على واتساب: +967782138587 للمساعدة الفورية. 📞';
             }
+            addMsg(reply, 'bot');
         }
-        if (localStorage.getItem('vip-theme') === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            document.querySelector('.theme-toggle').textContent = '🌙';
-        }
-
-        function navigate(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById('page-' + page);
-            if (target) target.classList.add('active');
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            const navMap = { home: 0, sections: 1, ai: 2, about: 3, contact: 4 };
-            const links = document.querySelectorAll('.nav-links a');
-            if (navMap[page] !== undefined) links[navMap[page]].classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (page === 'privacy') document.getElementById('privacyModal').style.display = 'block';
-        }
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-        document.getElementById('privacyModal').addEventListener('click', function(e) {
-            if (e.target === this) this.style.display = 'none';
-        });
     </script>
 </body>
 </html>
