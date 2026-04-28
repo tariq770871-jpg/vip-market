@@ -1,355 +1,152 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIP MARKET - منصة رقمية للشحن، التداول، والتعليم في اليمن.">
-    <meta name="keywords" content="شحن USDT, تداول, تعليم تداول, محفظة جيب, الكريمي, VIP MARKET">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://vipmarket.vercel.app/">
-    <meta name="theme-color" content="#0f0f0f">
-    <meta property="og:title" content="VIP MARKET | منصة رقمية تعليمية وشحن">
-    <meta property="og:description" content="وسيط رقمي موثوق لخدمات الشحن والتداول في اليمن.">
-    <title>VIP MARKET | شحن، تداول، ومحتوى تعليمي</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<title>VIP MARKET | Global System</title>
 
-    <style>
-        :root { --bg: #0f0f0f; --card: #1c1c1c; --text: #fff; --gold: #d4af37; --border: #333; --ai: #00e5ff; --muted: #aaa; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 
-        header { position: sticky; top: 0; z-index: 1000; background: rgba(17,17,17,0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 12px; text-align: center; border-bottom: 1px solid var(--border); color: var(--gold); font-weight: 900; font-size: 1.1rem; }
+<style>
+:root{
+    --bg:#0b0b0b;
+    --card:#1a1a1a;
+    --gold:#d4af37;
+    --text:#fff;
+    --muted:#aaa;
+}
 
-        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 8px; background: #0b0b0b; position: sticky; top: 52px; z-index: 999; }
-        nav button { background: var(--card); color: var(--text); border: 1px solid var(--border); padding: 7px 10px; border-radius: 20px; cursor: pointer; font-family: 'Tajawal'; font-weight: 700; font-size: 0.75rem; transition: 0.3s; white-space: nowrap; }
-        nav button.active { background: var(--gold); color: #000; border-color: var(--gold); }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Tajawal';
+}
 
-        .page { display: none; padding: 20px; max-width: 1000px; margin: auto; animation: fadeIn 0.4s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+body{
+    background:var(--bg);
+    color:var(--text);
+}
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-        .card { background: var(--card); padding: 18px; border-radius: 16px; border: 1px solid var(--border); text-align: center; cursor: pointer; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .card i { font-size: 2rem; color: var(--gold); margin-bottom: 10px; display: block; }
-        .card h3 { color: var(--gold); margin-bottom: 5px; }
-        .card p { color: var(--muted); font-size: 0.85rem; }
+/* الهيدر العالمي */
+header{
+    padding:18px;
+    text-align:center;
+    background:#111;
+    color:var(--gold);
+    font-weight:900;
+    position:sticky;
+    top:0;
+}
 
-        .hero { text-align: center; padding: 30px 10px; }
-        .hero h1, .hero h2 { color: var(--gold); }
-        .hero p { color: var(--muted); }
+/* لوحة التحكم */
+.nav{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:15px;
+    max-width:900px;
+    margin:auto;
+}
 
-        .ai-btn { position: fixed; bottom: 25px; left: 25px; width: 55px; height: 55px; border-radius: 50%; background: var(--ai); border: none; cursor: pointer; font-size: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,229,255,0.3); z-index: 1001; }
-        .wallet-btn { position: fixed; bottom: 90px; left: 25px; width: 55px; height: 55px; border-radius: 50%; background: var(--gold); border: none; cursor: pointer; font-size: 24px; z-index: 1001; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(212,175,55,0.4); }
+/* أزرار النظام */
+.btn{
+    background:var(--card);
+    border:1px solid #333;
+    color:var(--text);
+    padding:20px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
 
-        .wallet-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .wallet-modal.open { display: flex; }
-        .wallet-content { background: var(--card); width: 100%; max-width: 500px; border-radius: 20px; padding: 25px; border: 1px solid var(--border); position: relative; }
-        .close-wallet { position: absolute; top: 10px; left: 10px; font-size: 26px; cursor: pointer; color: var(--gold); background: none; border: none; }
-        .wallet-item { background: #0a0a0a; padding: 12px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .wallet-item span { color: var(--text); font-size: 0.85rem; min-width: 120px; }
-        .wallet-item code { background: #000; padding: 8px; border-radius: 6px; color: var(--gold); font-size: 0.75rem; flex: 1; word-break: break-all; text-align: left; direction: ltr; }
-        .copy-btn { background: var(--gold); color: #000; border: none; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-weight: 700; font-size: 0.75rem; }
+.btn:hover{
+    background:var(--gold);
+    color:#000;
+    transform:scale(1.02);
+}
 
-        .copy-toast { position: fixed; bottom: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--gold); color: #000; padding: 12px 25px; border-radius: 30px; z-index: 4000; opacity: 0; transition: 0.3s; pointer-events: none; font-weight: 700; }
-        .copy-toast.show { opacity: 1; }
+/* الصفحات */
+.page{
+    display:none;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
 
-        .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 15px; margin: 10px 0; display: flex; gap: 15px; align-items: center; cursor: pointer; }
-        .article-card:hover { border-color: var(--gold); }
+.active{
+    display:block;
+}
 
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: var(--card); width: 100%; max-width: 600px; max-height: 80vh; border-radius: 20px; padding: 25px; overflow-y: auto; position: relative; border: 1px solid var(--border); }
-        .close-modal { position: sticky; top: 0; float: left; font-size: 26px; cursor: pointer; color: var(--gold); background: none; border: none; }
+/* كارد داخلي */
+.card{
+    background:var(--card);
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #333;
+}
 
-        footer { text-align: center; padding: 20px; color: #555; border-top: 1px solid var(--border); margin-top: 20px; font-size: 12px; }
-        footer a { color: var(--gold); text-decoration: none; }
-        .footer-social { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
-        .footer-social a { color: var(--muted); font-size: 1.2rem; transition: 0.3s; }
-        .footer-social a:hover { color: var(--gold); }
-        .visitor-counter { background: var(--card); border: 1px solid var(--gold); display: inline-block; padding: 5px 15px; border-radius: 20px; color: var(--gold); font-weight: 700; font-size: 0.85rem; margin-top: 5px; }
-
-        .about-content p, .privacy-content p { margin-bottom: 15px; color: var(--muted); }
-        .about-content h3, .privacy-content h3 { color: var(--gold); margin-top: 20px; margin-bottom: 10px; }
-        .privacy-content ul { list-style: disc; padding-right: 20px; color: var(--muted); }
-        .privacy-content ul li { margin-bottom: 8px; }
-    </style>
+h2{
+    color:var(--gold);
+}
+</style>
 </head>
+
 <body>
 
-<header>🌍 VIP MARKET – GLOBAL</header>
+<header>🌍 VIP MARKET - GLOBAL CORE SYSTEM</header>
 
-<nav id="mainNav">
-    <button onclick="show('home')" class="active">🏠 الرئيسية</button>
-    <button onclick="show('earn')">💰 الربح</button>
-    <button onclick="show('trading')">📊 التداول</button>
-    <button onclick="show('sharh')">⚡ الشحن</button>
-    <button onclick="show('apps')">📱 تطبيقات</button>
-    <button onclick="show('ai')">🤖 AI</button>
-    <button onclick="show('blog')">📝 المدونة</button>
-    <button onclick="show('about')">ℹ️ من نحن</button>
-    <button onclick="show('contact')">📞 اتصل</button>
-    <button onclick="show('privacy')">🛡️ الخصوصية</button>
-</nav>
+<!-- لوحة التحكم -->
+<div class="nav">
 
-<div id="home" class="page active">
-    <div class="hero"><h1>👑 VIP MARKET</h1><p>وسيطك الرقمي الموثوق في اليمن</p></div>
-    <div class="grid">
-        <div class="card" onclick="show('sharh')"><i class="fas fa-bolt"></i><h3>شحن فوري</h3><p>محافظ يمنية وعالمية</p></div>
-        <div class="card" onclick="show('trading')"><i class="fas fa-chart-bar"></i><h3>تداول آمن</h3><p>استشارات وتحليل</p></div>
-        <div class="card" onclick="show('earn')"><i class="fas fa-coins"></i><h3>الربح</h3><p>استكشف آفاق الدخل</p></div>
-        <div class="card" onclick="show('ai')"><i class="fas fa-robot"></i><h3>أدوات AI</h3><p>ذكاء اصطناعي</p></div>
-    </div>
+    <button class="btn" onclick="openPage('shop')">🛒 المتجر العالمي</button>
+    <button class="btn" onclick="openPage('apps')">📱 التطبيقات</button>
+    <button class="btn" onclick="openPage('learn')">📚 تعليم الربح</button>
+    <button class="btn" onclick="openPage('ai')">🤖 أدوات AI</button>
+
 </div>
 
-<div id="earn" class="page">
-    <div class="hero"><h2>💰 استكشف فرص الدخل عبر الإنترنت</h2><p>مقدمة في عالم العمل الحر والمشاريع الرقمية</p></div>
-    <div class="grid">
-        <div class="card"><i class="fas fa-laptop"></i><h3>العمل الحر</h3><p>منصات مثل مستقل وخمسات</p></div>
-        <div class="card"><i class="fas fa-link"></i><h3>التسويق بالعمولة</h3><p>بناء جمهور وترويج منتجات</p></div>
-        <div class="card"><i class="fas fa-tasks"></i><h3>المهام المصغرة</h3><p>طرق بسيطة لبدء الدخل</p></div>
-        <div class="card"><i class="fas fa-brain"></i><h3>التداول التعليمي</h3><p>فهم الأسواق واتخاذ قرارات</p></div>
-    </div>
-</div>
+<!-- الأقسام -->
 
-<div id="trading" class="page">
-    <div class="hero"><h2>📊 التداول وتحليل الشموع</h2><p>تعلم الأساسيات والمفاهيم المهمة</p></div>
-    <div class="grid">
-        <div class="card"><i class="fas fa-candle-holder"></i><h3>الشموع اليابانية</h3><p>قراءة الرسوم البيانية</p></div>
-        <div class="card"><i class="fas fa-arrow-trend-up"></i><h3>الدعم والمقاومة</h3><p>تحديد مناطق السعر</p></div>
-        <div class="card"><i class="fas fa-compass"></i><h3>الاتجاه العام</h3><p>تحليل السوق</p></div>
-        <div class="card"><i class="fas fa-shield-alt"></i><h3>إدارة المخاطر</h3><p>حماية رأس المال</p></div>
-    </div>
-</div>
-
-<div id="sharh" class="page">
-    <div class="hero"><h2>⚡ شحن المحافظ</h2><p>خدمة فورية على مدار 24 ساعة</p></div>
-    <div class="grid">
-        <div class="card" onclick="window.open('https://wa.me/967782138587')"><i class="fas fa-dollar-sign"></i><h3>USDT</h3><p>شحن فوري</p></div>
-        <div class="card" onclick="window.open('https://wa.me/967782138587')"><i class="fas fa-exchange-alt"></i><h3>Binance</h3><p>تحويل سريع</p></div>
-        <div class="card" onclick="window.open('https://wa.me/967782138587')"><i class="fas fa-mobile"></i><h3>المحافظ اليمنية</h3><p>الكريمي / جيب</p></div>
-        <div class="card" onclick="window.open('https://wa.me/967782138587')"><i class="fas fa-bolt"></i><h3>تحويل فوري</h3><p>خلال دقائق</p></div>
+<div id="shop" class="page active">
+    <div class="card">
+        <h2>🛒 المتجر العالمي</h2>
+        <p>هنا سيتم ربط المنتجات + الدفع + Supabase لاحقاً</p>
     </div>
 </div>
 
 <div id="apps" class="page">
-    <div class="hero"><h2>📱 تطبيقات Pro</h2><p>تطبيقات مدفوعة مجاناً لك</p></div>
-    <div class="grid">
-        <div class="card"><i class="fas fa-crown"></i><h3>تطبيقات مدفوعة</h3><p>مجاناً لك</p></div>
-        <div class="card"><i class="fas fa-tools"></i><h3>أدوات تعديل</h3><p>نسخ محسنة</p></div>
-        <div class="card"><i class="fas fa-briefcase"></i><h3>برامج إنتاجية</h3><p>لأصحاب العمل</p></div>
+    <div class="card">
+        <h2>📱 متجر التطبيقات</h2>
+        <p>نظام تحميل + أدوات + روابط خارجية</p>
+    </div>
+</div>
+
+<div id="learn" class="page">
+    <div class="card">
+        <h2>📚 تعليم الربح</h2>
+        <p>كورسات + مقالات + نظام اشتراك لاحقاً</p>
     </div>
 </div>
 
 <div id="ai" class="page">
-    <div class="hero"><h2>🤖 أدوات الذكاء الاصطناعي</h2><p>أقوى أدوات AI في مكان واحد</p></div>
-    <div class="grid">
-        <div class="card" onclick="window.open('https://chat.openai.com')"><i class="fas fa-comment"></i><h3>ChatGPT</h3><p>كتابة وإبداع</p></div>
-        <div class="card" onclick="window.open('https://gemini.google.com')"><i class="fas fa-brain"></i><h3>Gemini</h3><p>تحليل متقدم</p></div>
-        <div class="card"><i class="fas fa-lightbulb"></i><h3>توليد أفكار</h3><p>للربح والمشاريع</p></div>
-        <div class="card"><i class="fas fa-bullhorn"></i><h3>تسويق ذكي</h3><p>أدوات تسويقية</p></div>
+    <div class="card">
+        <h2>🤖 أدوات الذكاء الاصطناعي</h2>
+        <p>تكامل APIs + أدوات تسويق + توليد محتوى</p>
     </div>
 </div>
-
-<div id="blog" class="page">
-    <div class="hero"><h2>📝 المدونة التعليمية</h2><p>مقالات حصرية من قاعدة بياناتنا</p></div>
-    <div id="blogContainer">
-        <p style="text-align:center; color:var(--muted)">جاري سحب المقالات...</p>
-    </div>
-</div>
-
-<div id="about" class="page">
-    <div class="hero"><h2>ℹ️ من نحن</h2></div>
-    <div class="card about-content" style="text-align:right;">
-        <p><strong>VIP MARKET</strong> هي منصة رقمية يمنية تأسست عام 2024، متخصصة في تقديم خدمات الشحن الإلكتروني والتداول الآمن، بالإضافة إلى المحتوى التعليمي في مجالات الربح من الإنترنت والذكاء الاصطناعي.</p>
-        <h3>🎯 رؤيتنا</h3>
-        <p>نطمح أن نكون الجسر الرقمي الأول في اليمن الذي يربط المستخدمين بالخدمات المالية الإلكترونية بكل سهولة وأمان.</p>
-        <h3>💎 رسالتنا</h3>
-        <p>تقديم خدمات مالية رقمية سريعة وموثوقة، مع نشر الوعي والمعرفة في استخدام التكنولوجيا لتحسين الدخل والحياة.</p>
-        <h3>🤝 لماذا تختارنا؟</h3>
-        <p>• سرعة في تنفيذ المعاملات</p>
-        <p>• دعم فني متواصل على مدار الساعة</p>
-        <p>• محتوى تعليمي محدث باستمرار</p>
-        <p>• مصداقية وأمان في كل خطوة</p>
-    </div>
-</div>
-
-<div id="contact" class="page">
-    <div class="hero"><h2>📞 اتصل بنا</h2><p>نحن هنا لخدمتك</p></div>
-    <div class="grid">
-        <div class="card" onclick="window.open('https://wa.me/967782138587')">
-            <i class="fab fa-whatsapp" style="color:#25D366;"></i><h3>واتساب</h3><p>782138587</p>
-        </div>
-        <div class="card" onclick="window.open('https://t.me/tariq77087')">
-            <i class="fab fa-telegram" style="color:#0088cc;"></i><h3>تيليجرام</h3><p>@tariq77087</p>
-        </div>
-        <div class="card" onclick="window.open('https://www.facebook.com/share/1EnALeuZGJ/')">
-            <i class="fab fa-facebook" style="color:#1877F2;"></i><h3>فيسبوك</h3><p>صفحة VIP MARKET</p>
-        </div>
-        <div class="card" onclick="window.open('mailto:tariq770871@gmail.com')">
-            <i class="fas fa-envelope" style="color:#EA4335;"></i><h3>البريد</h3><p>tariq770871@gmail.com</p>
-        </div>
-    </div>
-</div>
-
-<div id="privacy" class="page">
-    <div class="hero"><h2>🛡️ سياسة الخصوصية</h2></div>
-    <div class="card privacy-content" style="text-align:right;">
-        <p>خصوصيتك تهمنا. تشرح هذه السياسة كيفية جمعنا واستخدامنا لمعلوماتك عند استخدامك لموقع VIP MARKET.</p>
-        <h3>📋 المعلومات التي نجمعها</h3>
-        <p>لا نقوم بجمع أي معلومات شخصية يمكن التعرف بها مباشرة إلا إذا قمت بتزويدنا بها طواعية (مثل التواصل عبر واتساب أو البريد). قد نقوم بجمع بيانات غير شخصية تلقائياً مثل نوع المتصفح وعدد الزيارات لأغراض إحصائية.</p>
-        <h3>🔧 كيف نستخدم المعلومات</h3>
-        <ul>
-            <li>لتحسين خدماتنا وتجربة المستخدم.</li>
-            <li>للرد على استفساراتكم وطلبات الدعم.</li>
-            <li>لتحليل الاتجاهات والإحصائيات لتطوير المحتوى.</li>
-        </ul>
-        <h3>🔒 حماية المعلومات</h3>
-        <p>نحن نستخدم إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل. مع ذلك، لا يمكن ضمان أمان 100% لأي بيانات تُنقل عبر الإنترنت.</p>
-        <h3>🍪 ملفات تعريف الارتباط (Cookies)</h3>
-        <p>نستخدم ملفات تعريف الارتباط لتحسين الإعلانات التي تظهر لك عبر Google AdSense. يمكنك تعطيلها من إعدادات المتصفح.</p>
-        <h3>🔗 روابط خارجية</h3>
-        <p>قد يحتوي موقعنا على روابط لمواقع أخرى. لا نتحمل مسؤولية محتوى أو سياسات خصوصية تلك المواقع.</p>
-        <h3>📅 تحديثات السياسة</h3>
-        <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. يُرجى مراجعتها بشكل دوري.</p>
-        <p>إذا كان لديك أي استفسار، تواصل معنا على <b>tariq770871@gmail.com</b>.</p>
-        <p><b>معلومات Ads.txt:</b></p>
-        <code>google.com, pub-8776743718706581, DIRECT, f08c47fec0942fa0</code>
-    </div>
-</div>
-
-<div class="modal" id="articleModal">
-    <div class="modal-content">
-        <button class="close-modal" onclick="closeModal()">&times;</button>
-        <div id="modalBody"></div>
-    </div>
-</div>
-
-<div class="wallet-modal" id="walletModal">
-    <div class="wallet-content">
-        <button class="close-wallet" onclick="toggleWallets()">&times;</button>
-        <h3 style="color:var(--gold);text-align:center;margin-bottom:15px;">💳 أرقام المحافظ</h3>
-        <div class="wallet-item">
-            <span><b>USDT (TRC20):</b></span>
-            <code id="wallet1">TXyV7k9sL3mN8pR2qW5jF4hD6aB1cE0g</code>
-            <button onclick="copyWallet('wallet1')" class="copy-btn">📋 نسخ</button>
-        </div>
-        <div class="wallet-item">
-            <span><b>محفظة جيب:</b></span>
-            <code id="wallet2">+967 782 138 587</code>
-            <button onclick="copyWallet('wallet2')" class="copy-btn">📋 نسخ</button>
-        </div>
-        <div class="wallet-item">
-            <span><b>محفظة الكريمي:</b></span>
-            <code id="wallet3">+967 782 138 587</code>
-            <button onclick="copyWallet('wallet3')" class="copy-btn">📋 نسخ</button>
-        </div>
-    </div>
-</div>
-
-<div class="copy-toast" id="copyToast">✅ تم النسخ!</div>
-
-<button class="wallet-btn" onclick="toggleWallets()" title="نسخ المحافظ">💳</button>
-<button class="ai-btn" onclick="window.open('https://wa.me/967782138587')" title="تحدث معنا">🤖</button>
-
-<footer>
-    <div class="footer-social">
-        <a href="https://www.facebook.com/share/1EnALeuZGJ/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://t.me/tariq77087" target="_blank"><i class="fab fa-telegram"></i></a>
-        <a href="https://wa.me/967782138587" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:tariq770871@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div>
-    <div class="visitor-counter">👁️ عدد الزوار: <span id="visitorCount">0</span></div>
-    <br>
-    © 2026 VIP MARKET – صنعاء، اليمن |
-    <a href="#" onclick="show('privacy')">سياسة الخصوصية</a>
-</footer>
 
 <script>
-    const supabaseUrl = 'https://hrbhuvirarvwwbbjbwzl.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhyYmh1dmlyYXJ2d3diYmpid3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzM1MjUsImV4cCI6MjA5MjkwOTUyNX0._6lEUIOMjNgz0SqsQScDUhocSTGvcY9nAB136HKTdL0';
-    const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+function openPage(id){
 
-    let articlesData = [];
-
-    function show(id) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(id);
-        if (target) target.classList.add('active');
-        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-        const btns = document.querySelectorAll('nav button');
-        const ids = ['home','earn','trading','sharh','apps','ai','blog','about','contact','privacy'];
-        const idx = ids.indexOf(id);
-        if (idx >= 0 && btns[idx]) btns[idx].classList.add('active');
-        window.scrollTo({top:0,behavior:'smooth'});
-        if (id === 'blog') fetchArticlesFromSupabase();
-    }
-
-    async function fetchArticlesFromSupabase() {
-        const container = document.getElementById('blogContainer');
-        try {
-            const { data, error } = await _supabase
-                .from('posts')
-                .select('*')
-                .order('created_at', { ascending: false });
-
-            if (error) throw error;
-            articlesData = data;
-            
-            if (data.length === 0) {
-                container.innerHTML = '<p style="text-align:center">لا توجد مقالات حالياً.</p>';
-            } else {
-                container.innerHTML = data.map((a, i) => `
-                    <div class="article-card" onclick="openArticle(${i})">
-                        <div>
-                            <h3 style="color:var(--gold)">${a.title}</h3>
-                            <p style="color:var(--muted);font-size:0.85rem">${a.description || ''}</p>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        } catch (err) {
-            console.error("Supabase Error:", err);
-            container.innerHTML = '<p style="text-align:center; color:red">خطأ في جلب البيانات. تأكد من إعدادات سوبابيز.</p>';
-        }
-    }
-
-    function openArticle(i) {
-        const a = articlesData[i];
-        document.getElementById('modalBody').innerHTML = `
-            <h2 style="color:var(--gold);margin-bottom:15px">${a.title}</h2>
-            <div style="line-height:1.8">${a.text || 'لا يوجد محتوى.'}</div>
-        `;
-        document.getElementById('articleModal').style.display = 'flex';
-    }
-
-    function closeModal() { document.getElementById('articleModal').style.display = 'none'; }
-    function toggleWallets() { document.getElementById('walletModal').classList.toggle('open'); }
-    function copyWallet(id) {
-        const code = document.getElementById(id).textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            const toast = document.getElementById('copyToast');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 1500);
-        });
-    }
-
-    window.onclick = (e) => {
-        if (e.target.classList.contains('modal')) closeModal();
-        if (e.target.classList.contains('wallet-modal')) toggleWallets();
-    }
-
-    let count = localStorage.getItem('vip-visitor-count');
-    count = count ? parseInt(count) + 1 : Math.floor(Math.random() * 500) + 100;
-    localStorage.setItem('vip-visitor-count', count);
-    document.getElementById('visitorCount').textContent = count.toLocaleString('ar-EG');
-
-    document.addEventListener('DOMContentLoaded', () => {
-        show('home');
+    document.querySelectorAll('.page').forEach(p=>{
+        p.classList.remove('active');
     });
+
+    document.getElementById(id).classList.add('active');
+}
 </script>
 
 </body>
