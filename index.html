@@ -13,9 +13,7 @@
     <title>VIP MARKET | شحن، تداول، ومحتوى تعليمي</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -62,7 +60,6 @@
 
         .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 15px; margin: 10px 0; display: flex; gap: 15px; align-items: center; cursor: pointer; }
         .article-card:hover { border-color: var(--gold); }
-        .article-card img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
 
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: var(--card); width: 100%; max-width: 600px; max-height: 80vh; border-radius: 20px; padding: 25px; overflow-y: auto; position: relative; border: 1px solid var(--border); }
@@ -272,12 +269,11 @@
 </footer>
 
 <script>
-    // إعدادات الربط مع Supabase (تلقائية من Vercel)
     const supabaseUrl = 'https://hrbhuvirarvwwbbjbwzl.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhyYmh1dmlyYXJ2d3diYmpid3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzM1MjUsImV4cCI6MjA5MjkwOTUyNX0._6lEUIOMjNgz0SqsQScDUhocSTGvcY9nAB136HKTdL0';
     const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    let articlesData = []; // مصفوفة فارغة سيتم تعبئتها من سوبابيز
+    let articlesData = [];
 
     function show(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -292,10 +288,8 @@
         if (id === 'blog') fetchArticlesFromSupabase();
     }
 
-    // دالة جلب المقالات من سوبابيز
     async function fetchArticlesFromSupabase() {
         const container = document.getElementById('blogContainer');
-        
         try {
             const { data, error } = await _supabase
                 .from('posts')
@@ -303,15 +297,13 @@
                 .order('created_at', { ascending: false });
 
             if (error) throw error;
-
-            articlesData = data; // تخزين البيانات محلياً للمودال
+            articlesData = data;
             
             if (data.length === 0) {
                 container.innerHTML = '<p style="text-align:center">لا توجد مقالات حالياً.</p>';
             } else {
                 container.innerHTML = data.map((a, i) => `
                     <div class="article-card" onclick="openArticle(${i})">
-                        <img src="${a.image_url || 'https://via.placeholder.com/150'}" alt="${a.title}" loading="lazy">
                         <div>
                             <h3 style="color:var(--gold)">${a.title}</h3>
                             <p style="color:var(--muted);font-size:0.85rem">${a.description || ''}</p>
@@ -329,8 +321,7 @@
         const a = articlesData[i];
         document.getElementById('modalBody').innerHTML = `
             <h2 style="color:var(--gold);margin-bottom:15px">${a.title}</h2>
-            <img src="${a.image_url || 'https://via.placeholder.com/600'}" loading="lazy" style="width:100%;border-radius:15px;margin-bottom:15px" alt="${a.title}">
-            <div style="line-height:1.8">${a.content}</div>
+            <div style="line-height:1.8">${a.text || 'لا يوجد محتوى.'}</div>
         `;
         document.getElementById('articleModal').style.display = 'flex';
     }
@@ -351,7 +342,6 @@
         if (e.target.classList.contains('wallet-modal')) toggleWallets();
     }
 
-    // عداد الزوار
     let count = localStorage.getItem('vip-visitor-count');
     count = count ? parseInt(count) + 1 : Math.floor(Math.random() * 500) + 100;
     localStorage.setItem('vip-visitor-count', count);
@@ -363,4 +353,4 @@
 </script>
 
 </body>
-</html>
+    </html>
