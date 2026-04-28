@@ -12,6 +12,8 @@
     <meta property="og:description" content="وسيط رقمي موثوق لخدمات الشحن والتداول في اليمن.">
     <title>VIP MARKET | شحن، تداول، ومحتوى تعليمي</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -96,7 +98,6 @@
     <button onclick="show('privacy')">🛡️ الخصوصية</button>
 </nav>
 
-<!-- الرئيسية -->
 <div id="home" class="page active">
     <div class="hero"><h1>👑 VIP MARKET</h1><p>وسيطك الرقمي الموثوق في اليمن</p></div>
     <div class="grid">
@@ -107,7 +108,6 @@
     </div>
 </div>
 
-<!-- الربح -->
 <div id="earn" class="page">
     <div class="hero"><h2>💰 استكشف فرص الدخل عبر الإنترنت</h2><p>مقدمة في عالم العمل الحر والمشاريع الرقمية</p></div>
     <div class="grid">
@@ -118,7 +118,6 @@
     </div>
 </div>
 
-<!-- التداول -->
 <div id="trading" class="page">
     <div class="hero"><h2>📊 التداول وتحليل الشموع</h2><p>تعلم الأساسيات والمفاهيم المهمة</p></div>
     <div class="grid">
@@ -129,7 +128,6 @@
     </div>
 </div>
 
-<!-- الشحن -->
 <div id="sharh" class="page">
     <div class="hero"><h2>⚡ شحن المحافظ</h2><p>خدمة فورية على مدار 24 ساعة</p></div>
     <div class="grid">
@@ -140,7 +138,6 @@
     </div>
 </div>
 
-<!-- التطبيقات -->
 <div id="apps" class="page">
     <div class="hero"><h2>📱 تطبيقات Pro</h2><p>تطبيقات مدفوعة مجاناً لك</p></div>
     <div class="grid">
@@ -150,7 +147,6 @@
     </div>
 </div>
 
-<!-- AI -->
 <div id="ai" class="page">
     <div class="hero"><h2>🤖 أدوات الذكاء الاصطناعي</h2><p>أقوى أدوات AI في مكان واحد</p></div>
     <div class="grid">
@@ -161,13 +157,13 @@
     </div>
 </div>
 
-<!-- المدونة -->
 <div id="blog" class="page">
-    <div class="hero"><h2>📝 المدونة التعليمية</h2><p>مقالات حصرية لتطوير مهاراتك</p></div>
-    <div id="blogContainer"></div>
+    <div class="hero"><h2>📝 المدونة التعليمية</h2><p>مقالات حصرية من قاعدة بياناتنا</p></div>
+    <div id="blogContainer">
+        <p style="text-align:center; color:var(--muted)">جاري سحب المقالات...</p>
+    </div>
 </div>
 
-<!-- من نحن -->
 <div id="about" class="page">
     <div class="hero"><h2>ℹ️ من نحن</h2></div>
     <div class="card about-content" style="text-align:right;">
@@ -184,7 +180,6 @@
     </div>
 </div>
 
-<!-- اتصل بنا -->
 <div id="contact" class="page">
     <div class="hero"><h2>📞 اتصل بنا</h2><p>نحن هنا لخدمتك</p></div>
     <div class="grid">
@@ -203,7 +198,6 @@
     </div>
 </div>
 
-<!-- الخصوصية -->
 <div id="privacy" class="page">
     <div class="hero"><h2>🛡️ سياسة الخصوصية</h2></div>
     <div class="card privacy-content" style="text-align:right;">
@@ -230,7 +224,6 @@
     </div>
 </div>
 
-<!-- المودال -->
 <div class="modal" id="articleModal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeModal()">&times;</button>
@@ -238,7 +231,6 @@
     </div>
 </div>
 
-<!-- نافذة المحافظ -->
 <div class="wallet-modal" id="walletModal">
     <div class="wallet-content">
         <button class="close-wallet" onclick="toggleWallets()">&times;</button>
@@ -261,10 +253,8 @@
     </div>
 </div>
 
-<!-- إشعار النسخ -->
 <div class="copy-toast" id="copyToast">✅ تم النسخ!</div>
 
-<!-- أزرار عائمة -->
 <button class="wallet-btn" onclick="toggleWallets()" title="نسخ المحافظ">💳</button>
 <button class="ai-btn" onclick="window.open('https://wa.me/967782138587')" title="تحدث معنا">🤖</button>
 
@@ -282,11 +272,12 @@
 </footer>
 
 <script>
-    const articlesData = [
-        {title:"كيف تبدأ من الصفر",desc:"خطة عملية لبدء رحلتك في العمل الحر.",content:"<p>ابدأ بتحديد مهاراتك، ثم أنشئ حساباً على منصات العمل الحر مثل مستقل وخمسات. قم ببناء معرض أعمال بسيط يعرض قدراتك.</p>",img:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=150"},
-        {title:"فهم أساسيات التداول",desc:"دليل تعليمي للمبتدئين في الأسواق المالية.",content:"<p>تعلم قراءة الشموع اليابانية وفهم الدعم والمقاومة. لا تتسرع في الدخول بصفقات حقيقية قبل التدرب على حساب تجريبي.</p>",img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=150"},
-        {title:"إدارة المخاطر في التداول",desc:"كيف تحمي رأس مالك وتتجنب الخسائر الكبيرة.",content:"<p>القاعدة الذهبية: لا تخاطر بأكثر من 2% من رصيدك في أي صفقة. استخدم أوامر وقف الخسارة دائماً.</p>",img:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=150"}
-    ];
+    // إعدادات الربط مع Supabase (تلقائية من Vercel)
+    const supabaseUrl = 'https://hrbhuvirarvwwbbjbwzl.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhyYmh1dmlyYXJ2d3diYmpid3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzM1MjUsImV4cCI6MjA5MjkwOTUyNX0._6lEUIOMjNgz0SqsQScDUhocSTGvcY9nAB136HKTdL0';
+    const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    let articlesData = []; // مصفوفة فارغة سيتم تعبئتها من سوبابيز
 
     function show(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -298,28 +289,47 @@
         const idx = ids.indexOf(id);
         if (idx >= 0 && btns[idx]) btns[idx].classList.add('active');
         window.scrollTo({top:0,behavior:'smooth'});
-        if (id === 'blog') renderArticles();
+        if (id === 'blog') fetchArticlesFromSupabase();
     }
 
-    function renderArticles() {
-        const c = document.getElementById('blogContainer');
-        if (!c) return;
-        c.innerHTML = articlesData.map((a, i) => `
-            <div class="article-card" onclick="openArticle(${i})">
-                <img src="${a.img}" alt="${a.title}" loading="lazy">
-                <div>
-                    <h3 style="color:var(--gold)">${a.title}</h3>
-                    <p style="color:var(--muted);font-size:0.85rem">${a.desc}</p>
-                </div>
-            </div>
-        `).join('');
+    // دالة جلب المقالات من سوبابيز
+    async function fetchArticlesFromSupabase() {
+        const container = document.getElementById('blogContainer');
+        
+        try {
+            const { data, error } = await _supabase
+                .from('posts')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+
+            articlesData = data; // تخزين البيانات محلياً للمودال
+            
+            if (data.length === 0) {
+                container.innerHTML = '<p style="text-align:center">لا توجد مقالات حالياً.</p>';
+            } else {
+                container.innerHTML = data.map((a, i) => `
+                    <div class="article-card" onclick="openArticle(${i})">
+                        <img src="${a.image_url || 'https://via.placeholder.com/150'}" alt="${a.title}" loading="lazy">
+                        <div>
+                            <h3 style="color:var(--gold)">${a.title}</h3>
+                            <p style="color:var(--muted);font-size:0.85rem">${a.description || ''}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        } catch (err) {
+            console.error("Supabase Error:", err);
+            container.innerHTML = '<p style="text-align:center; color:red">خطأ في جلب البيانات. تأكد من إعدادات سوبابيز.</p>';
+        }
     }
 
     function openArticle(i) {
         const a = articlesData[i];
         document.getElementById('modalBody').innerHTML = `
             <h2 style="color:var(--gold);margin-bottom:15px">${a.title}</h2>
-            <img src="${a.img}" loading="lazy" style="width:100%;border-radius:15px;margin-bottom:15px" alt="${a.title}">
+            <img src="${a.image_url || 'https://via.placeholder.com/600'}" loading="lazy" style="width:100%;border-radius:15px;margin-bottom:15px" alt="${a.title}">
             <div style="line-height:1.8">${a.content}</div>
         `;
         document.getElementById('articleModal').style.display = 'flex';
@@ -348,8 +358,6 @@
     document.getElementById('visitorCount').textContent = count.toLocaleString('ar-EG');
 
     document.addEventListener('DOMContentLoaded', () => {
-        renderArticles();
-        // تعيين الصفحة النشطة الأولى
         show('home');
     });
 </script>
