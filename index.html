@@ -2,10 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIP MARKET</title>
-<meta name="theme-color" content="#d4af37">
-<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -13,178 +11,102 @@
 body{background:#0f0f0f;color:#fff;font-family:Tajawal;}
 .app-header{background:linear-gradient(135deg,#111,#1c1c1c);padding:20px;text-align:center;border-bottom:1px solid #d4af37;}
 .logo{font-size:22px;color:#d4af37;font-weight:bold;}
-.subtitle{font-size:12px;color:#aaa;margin-top:5px;}
-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:10px;padding:15px;background:#111;position:sticky;top:0;z-index:100;}
-nav button{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid #333;padding:12px;border-radius:10px;color:#fff;cursor:pointer;transition:0.3s;}
-nav button:hover{transform:scale(1.05);background:#d4af37;color:#000;}
-.page{display:none;padding:20px;animation:fadeIn 0.3s ease;}
+.subtitle{font-size:12px;color:#aaa;}
+nav{display:flex;gap:8px;padding:15px;background:#111;overflow-x:auto;}
+nav button{background:#1c1c1c;border:1px solid #333;padding:10px;border-radius:10px;color:#fff;cursor:pointer;white-space:nowrap;}
+nav button:hover{background:#d4af37;color:#000;}
+.page{display:none;padding:20px;}
 .active{display:block;}
-h2{color:#d4af37;font-size:20px;margin-bottom:15px;padding:10px 15px;border-right:4px solid #d4af37;background:rgba(255,255,255,0.03);border-radius:8px;}
+h2{color:#d4af37;margin-bottom:15px;padding:10px;border-right:4px solid #d4af37;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px;}
-.product-card{background:linear-gradient(145deg,#1a1a1a,#111);border:1px solid #2a2a2a;border-radius:16px;padding:15px;transition:0.3s;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
-.product-card:hover{transform:translateY(-8px);border-color:#d4af37;}
+.product-card{background:#1a1a1a;border:1px solid #333;border-radius:16px;padding:15px;}
 .product-card img{width:100%;height:120px;object-fit:cover;border-radius:12px;}
 .product-card h3{color:#d4af37;margin:10px 0;}
-.product-card p{color:#aaa;font-size:13px;}
-button{background:linear-gradient(135deg,#d4af37,#b38f2a);color:#000;font-weight:bold;border:none;border-radius:10px;padding:8px 15px;cursor:pointer;transition:0.3s;}
-button:hover{transform:scale(1.05);}
-button.danger{background:linear-gradient(135deg,#f44336,#d32f2f);color:#fff;}
-.search-box{margin-bottom:15px;}
-.search-box input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1c1c1c;color:#fff;}
-.category-bar{display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap;}
-.category-bar button{background:#1c1c1c;border:1px solid #333;padding:8px 12px;border-radius:8px;}
-.category-bar button.active{background:#d4af37;color:#000;}
-.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;}
-.admin-grid .product-card{min-height:200px;overflow-y:auto;}
+.price{color:#d4af37;font-size:18px;font-weight:bold;}
+button{background:#d4af37;color:#000;border:none;border-radius:10px;padding:8px 15px;cursor:pointer;}
+button.danger{background:#f44336;color:#fff;}
+.search-box input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1c1c1c;color:#fff;}
+.category-bar{display:flex;gap:10px;margin:15px 0;flex-wrap:wrap;}
+.category-bar button{background:#1c1c1c;}
 .order-card{background:#1c1c1c;border:1px solid #333;border-radius:12px;padding:15px;margin-bottom:10px;}
 .order-status{display:inline-block;padding:5px 10px;border-radius:8px;font-size:12px;}
-.status-pending{background:#ff9800;color:#000;}
-.status-paid{background:#4caf50;color:#fff;}
-.cart-summary{margin-top:20px;padding:15px;background:#1c1c1c;border:1px solid #333;border-radius:12px;text-align:center;}
-.cart-summary h3{color:#d4af37;}
-#ai-chat{background:#111;padding:10px;border-radius:10px;border:1px solid #333;height:200px;overflow:auto;margin-bottom:10px;}
-.ai-msg{margin:5px 0;padding:8px;border-radius:8px;}
-.ai-msg.user{background:#d4af37;color:#000;text-align:right;}
-.ai-msg.bot{background:#1c1c1c;color:#fff;}
-#app-view,#lesson-view{margin-top:20px;padding:15px;background:#1c1c1c;border:1px solid #333;border-radius:12px;}
-@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);}.page{padding:12px;}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.status-pending{background:#ff9800;}
+.status-paid{background:#4caf50;}
+.cart-summary{margin-top:20px;padding:15px;background:#1c1c1c;border-radius:12px;text-align:center;}
+#ai-chat{background:#111;padding:10px;border-radius:10px;height:200px;overflow:auto;margin-bottom:10px;}
+.ai-msg.user{background:#d4af37;color:#000;text-align:right;padding:8px;margin:5px 0;border-radius:8px;}
+.ai-msg.bot{background:#1c1c1c;padding:8px;margin:5px 0;border-radius:8px;}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
 
-<header class="app-header"><div class="logo">⭐ VIP MARKET</div><div class="subtitle">متجر ذكي للتعلم والربح</div></header>
+<header class="app-header"><div class="logo">VIP MARKET</div><div class="subtitle">متجر ذكي للتعلم والربح</div></header>
 
 <nav>
-<button onclick="navigate('shop')">🛒 متجر</button>
-<button onclick="navigate('cart')">🛍️ سلة</button>
-<button onclick="navigate('orders')">📦 طلباتي</button>
-<button onclick="navigate('profit')">💰 أرباحي</button>
-<button onclick="navigate('admin')">👑 Admin</button>
-<button onclick="navigate('apps')">📱 تطبيقات</button>
-<button onclick="navigate('learn')">📚 تعلم</button>
-<button onclick="navigate('ai')">🤖 AI</button>
+<button onclick="navigate('shop')">متجر</button>
+<button onclick="navigate('cart')">سلة</button>
+<button onclick="navigate('orders')">طلباتي</button>
+<button onclick="navigate('profit')">أرباحي</button>
+<button onclick="navigate('admin')">Admin</button>
+<button onclick="navigate('apps')">تطبيقات</button>
+<button onclick="navigate('learn')">تعلم</button>
+<button onclick="navigate('ai')">AI</button>
+<button onclick="showLogin()">دخول</button>
 </nav>
 
-<div id="shop" class="page active">
-  <h2>🛒 المنتجات</h2>
-  <div class="search-box"><input id="shopSearch" placeholder="🔎 بحث..." oninput="filterShop(this.value)"></div>
-  <div class="category-bar"><button onclick="filterCategory('all')">📦 الكل</button><button onclick="filterCategory('ai')">🤖 AI</button><button onclick="filterCategory('courses')">📚 دورات</button><button onclick="filterCategory('tools')">🧰 أدوات</button></div>
-  <div id="products" class="grid"></div>
-</div>
-
-<div id="cart" class="page">
-  <h2>🛍️ السلة</h2>
-  <div id="cart-items"></div>
-  <div class="cart-summary"><h3>💰 الإجمالي: <span id="cart-total">0</span> $</h3><button onclick="checkout()">💳 إتمام الشراء</button></div>
-</div>
-
-<div id="orders" class="page">
-  <h2>📦 طلباتي</h2>
-  <div id="user-orders"></div>
-</div>
-
-<div id="profit" class="page">
-  <h2>💰 الأرباح</h2>
-  <div class="product-card"><p>📦 عدد الطلبات: <span id="total-orders">0</span></p><p>💰 إجمالي الأرباح: <span id="total-profit">0</span> $</p><p>📊 متوسط الطلب: <span id="avg-order">0</span> $</p></div>
-</div>
-
-<div id="admin" class="page">
-  <h2>👑 لوحة التحكم</h2>
-  <div class="admin-grid"><div class="product-card"><h3>📦 المنتجات</h3><div id="admin-products"></div></div><div class="product-card"><h3>📦 الطلبات</h3><div id="admin-orders"></div></div><div class="product-card"><h3>👤 المستخدمين</h3><div id="admin-users"></div></div></div>
-</div>
-
-<div id="apps" class="page">
-  <h2>📱 التطبيقات</h2>
-  <div class="grid"><div class="product-card" onclick="openApp('converter')"><h3>🔄 محول العملات</h3></div><div class="product-card" onclick="openApp('calc')"><h3>🧮 حاسبة ربح</h3></div><div class="product-card" onclick="openApp('notes')"><h3>📝 ملاحظات</h3></div></div>
-  <div id="app-view"></div>
-</div>
-
-<div id="learn" class="page">
-  <h2>📚 التعلم</h2>
-  <div class="grid"><div class="product-card" onclick="openLesson('marketing')"><h3>📊 التسويق</h3></div><div class="product-card" onclick="openLesson('sales')"><h3>💰 المبيعات</h3></div><div class="product-card" onclick="openLesson('mindset')"><h3>🧠 عقلية النجاح</h3></div></div>
-  <div id="lesson-view"></div>
-</div>
-
-<div id="ai" class="page">
-  <h2>🤖 مساعد الذكاء الاصطناعي</h2>
-  <div class="product-card"><div id="ai-chat"></div><input id="ai-input" placeholder="اسأل عن الربح أو المنتجات..."><button onclick="sendAI()">🚀 إرسال</button></div>
-</div>
+<div id="shop" class="page active"><h2>المنتجات</h2><div class="search-box"><input id="shopSearch" placeholder="بحث..." oninput="filterShop(this.value)"></div><div class="category-bar"><button onclick="filterCategory('all')">الكل</button><button onclick="filterCategory('ai')">AI</button><button onclick="filterCategory('courses')">دورات</button><button onclick="filterCategory('tools')">أدوات</button></div><div id="products" class="grid"></div></div>
+<div id="cart" class="page"><h2>السلة</h2><div id="cart-items"></div><div class="cart-summary"><h3>الإجمالي: <span id="cart-total">0</span> $</h3><button onclick="checkout()">شراء</button></div></div>
+<div id="orders" class="page"><h2>طلباتي</h2><div id="user-orders"></div></div>
+<div id="profit" class="page"><h2>الأرباح</h2><div class="product-card"><p>الطلبات: <span id="total-orders">0</span></p><p>الأرباح: <span id="total-profit">0</span> $</p><p>المتوسط: <span id="avg-order">0</span> $</p></div></div>
+<div id="admin" class="page"><h2>لوحة التحكم</h2><div class="admin-grid"><div class="product-card"><h3>المنتجات</h3><div id="admin-products"></div></div><div class="product-card"><h3>الطلبات</h3><div id="admin-orders"></div></div><div class="product-card"><h3>المستخدمين</h3><div id="admin-users"></div></div></div></div>
+<div id="apps" class="page"><h2>التطبيقات</h2><div class="grid"><div class="product-card" onclick="openApp('converter')"><h3>محول العملات</h3></div><div class="product-card" onclick="openApp('calc')"><h3>حاسبة ربح</h3></div><div class="product-card" onclick="openApp('notes')"><h3>ملاحظات</h3></div></div><div id="app-view"></div></div>
+<div id="learn" class="page"><h2>التعلم</h2><div class="grid"><div class="product-card" onclick="openLesson('marketing')"><h3>التسويق</h3></div><div class="product-card" onclick="openLesson('sales')"><h3>المبيعات</h3></div><div class="product-card" onclick="openLesson('mindset')"><h3>عقلية النجاح</h3></div></div><div id="lesson-view"></div></div>
+<div id="ai" class="page"><h2>مساعد AI</h2><div class="product-card"><div id="ai-chat"></div><input id="ai-input" placeholder="اسأل..."><button onclick="sendAI()">إرسال</button></div></div>
 
 <script>
-// ==================== الإعدادات ====================
 const supabaseUrl = "https://hrbhuvirarvwwbbjbwzl.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhyYmh1dmlyYXJ2d3diYmpid3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzM1MjUsImV4cCI6MjA5MjkwOTUyNX0._6lEUIOMjNgz0SqsQScDUhocSTGvcY9nAB136HKTdL0";
 const client = supabase.createClient(supabaseUrl, supabaseKey);
-const ADMIN_EMAIL = "admin@vipmarket.com";
-let CURRENT_USER = null;
+const ADMIN_EMAIL = "tariq770871@gmail.com";
 let CART = JSON.parse(localStorage.getItem("cart")) || [];
 let currentCategory = "all";
 let currentSearch = "";
 
-function notify(msg){const b=document.createElement("div");b.style=`position:fixed;bottom:20px;right:20px;background:#1c1c1c;color:#fff;padding:12px 20px;border-left:4px solid #d4af37;border-radius:10px;z-index:9999;`;b.innerText=msg;document.body.appendChild(b);setTimeout(()=>b.remove(),3000);}
-function handleError(e){console.error(e);notify("⚠️ خطأ");}
+function notify(m){let b=document.createElement("div");b.style=`position:fixed;bottom:20px;right:20px;background:#1c1c1c;color:#fff;padding:12px;border-left:4px solid #d4af37;border-radius:10px;z-index:9999;`;b.innerText=m;document.body.appendChild(b);setTimeout(()=>b.remove(),3000);}
+async function getUser(){let{data}=await client.auth.getUser();return data.user;}
+async function isAdmin(){let u=await getUser();return u && u.email===ADMIN_EMAIL;}
+async function showLogin(){let e=prompt("البريد:");if(!e)return;let p=prompt("كلمة السر:");if(!p)return;let{error}=await client.auth.signInWithPassword({email:e,password:p});if(error)return notify("فشل");notify("تم الدخول");location.reload();}
+async function logout(){await client.auth.signOut();notify("خرجت");location.reload();}
 
-// ==================== المصادقة ====================
-async function getUser(){const{data}=await client.auth.getUser();return data.user;}
-async function isAdmin(){const u=await getUser();return u && u.email===ADMIN_EMAIL;}
-async function syncUser(){CURRENT_USER=await getUser();}
-
-// ==================== المنتجات ====================
-function renderProducts(data){const b=document.getElementById("products");if(!b)return;b.innerHTML="";data.forEach(p=>{b.innerHTML+=`<div class='product-card' data-category='${p.category||"tools"}'><img src='${p.image||"https://via.placeholder.com/150"}'><h3>${p.title||""}</h3><p>${p.description||""}</p><p>💰 ${p.price||0} $</p><button onclick='addToCart("${p.id}","${p.title}","${p.price||0}")'>🛒 إضافة</button></div>`;});applyFilters();}
-async function loadProducts(){const{data,error}=await client.from("products").select("*");if(error)return handleError(error);renderProducts(data||[]);}
-async function deleteProduct(id){if(!await isAdmin())return notify("❌ غير مصرح");await client.from("products").delete().eq("id",id);notify("✅ تم الحذف");loadProducts();loadAdminPanel();}
-
-function addToCart(id,title,price){const exist=CART.find(i=>i.id===id);if(exist){exist.qty=(exist.qty||1)+1;}else{CART.push({id,title,price:Number(price),qty:1});}localStorage.setItem("cart",JSON.stringify(CART));notify("🛒 تمت الإضافة");renderCart();}
-function renderCart(){const b=document.getElementById("cart-items");if(!b)return;if(!CART.length){b.innerHTML="<div class='product-card'>🛒 السلة فارغة</div>";document.getElementById("cart-total").innerText="0";return;}b.innerHTML="";let total=0;CART.forEach((it,i)=>{const qty=it.qty||1;const itemTotal=it.price*qty;total+=itemTotal;b.innerHTML+=`<div class='product-card'><h3>${it.title}</h3><p>💰 ${it.price} $ × ${qty}</p><p>📦 الإجمالي: ${itemTotal} $</p><button onclick='changeQty(${i},-1)'>➖</button><span> ${qty} </span><button onclick='changeQty(${i},1)'>➕</button><button class='danger' onclick='removeItem(${i})'>🗑️</button></div>`;});document.getElementById("cart-total").innerText=total;}
-function changeQty(i,val){CART[i].qty=(CART[i].qty||1)+val;if(CART[i].qty<=0)CART.splice(i,1);localStorage.setItem("cart",JSON.stringify(CART));renderCart();}
-function removeItem(i){CART.splice(i,1);localStorage.setItem("cart",JSON.stringify(CART));renderCart();notify("🗑️ تم الحذف");}
-
-async function checkout(){const u=await getUser();if(!u)return notify("سجّل دخول أولاً");if(!CART.length)return notify("السلة فارغة");for(let it of CART){await client.from("orders").insert([{user_id:u.id,product_id:it.id,amount:it.price*it.qty,quantity:it.qty,status:"pending"}]);}CART=[];localStorage.removeItem("cart");renderCart();notify("✅ تم الشراء");safeLoadOrders();loadProfit();}
-
-// ==================== الطلبات ====================
-async function safeLoadOrders(){const u=await getUser();if(!u)return;const{data}=await client.from("orders").select("*").eq("user_id",u.id).order("created_at",{ascending:false});renderUserOrders(data||[]);}
-function renderUserOrders(data){const b=document.getElementById("user-orders");if(!b)return;b.innerHTML="";if(!data.length){b.innerHTML="<div class='product-card'>📭 لا توجد طلبات</div>";return;}data.forEach(o=>{b.innerHTML+=`<div class='order-card'><h3>📦 طلب #${o.id}</h3><p>💰 ${o.amount||0} $</p><span class="order-status status-${o.status}">${o.status}</span><p>📅 ${new Date(o.created_at).toLocaleDateString()}</p></div>`;});}
-
-// ==================== الأرباح ====================
-async function loadProfit(){const{data:orders}=await client.from("orders").select("*");let total=0;orders?.forEach(o=>total+=Number(o.amount||0));const cnt=orders?.length||0;const avg=cnt?(total/cnt).toFixed(2):0;document.getElementById("total-orders").innerText=cnt;document.getElementById("total-profit").innerText=total;document.getElementById("avg-order").innerText=avg;}
-
-// ==================== البحث والتصفية ====================
+function renderProducts(d){let c=document.getElementById("products");if(!c)return;c.innerHTML="";d.forEach(p=>{c.innerHTML+=`<div class='product-card'><img src='${p.image||"https://via.placeholder.com/150"}'><h3>${p.title||""}</h3><p>${(p.description||"").substring(0,50)}</p><div class='price'>${p.price||0} $</div><button onclick='addToCart("${p.id}","${p.title||""}",${p.price||0})'>شراء</button></div>`;});applyFilters();}
+async function loadProducts(){let{data,error}=await client.from("products").select("*");if(error)return;renderProducts(data||[]);}
+async function deleteProduct(id){if(!await isAdmin())return notify("غير مصرح");await client.from("products").delete().eq("id",id);notify("تم الحذف");loadProducts();loadAdminPanel();}
+function addToCart(id,t,p){let e=CART.find(i=>i.id===id);if(e)e.qty=(e.qty||1)+1;else CART.push({id,title:t,price:p,qty:1});localStorage.setItem("cart",JSON.stringify(CART));notify("تمت الإضافة");renderCart();}
+function renderCart(){let b=document.getElementById("cart-items");if(!b)return;if(!CART.length){b.innerHTML="<div class='product-card'>السلة فارغة</div>";document.getElementById("cart-total").innerText="0";return;}b.innerHTML="";let t=0;CART.forEach((it,i)=>{let q=it.qty||1;let tot=it.price*q;t+=tot;b.innerHTML+=`<div class='product-card'><h3>${it.title}</h3><p>${it.price} $ × ${q} = ${tot} $</p><button onclick='changeQty(${i},-1)'>-</button><span>${q}</span><button onclick='changeQty(${i},1)'>+</button><button class='danger' onclick='removeItem(${i})'>حذف</button></div>`;});document.getElementById("cart-total").innerText=t;}
+function changeQty(i,v){CART[i].qty=(CART[i].qty||1)+v;if(CART[i].qty<=0)CART.splice(i,1);localStorage.setItem("cart",JSON.stringify(CART));renderCart();}
+function removeItem(i){CART.splice(i,1);localStorage.setItem("cart",JSON.stringify(CART));renderCart();notify("تم الحذف");}
+async function checkout(){let u=await getUser();if(!u)return notify("سجل دخول");if(!CART.length)return notify("السلة فارغة");for(let i of CART){await client.from("orders").insert([{user_id:u.id,product_id:i.id,amount:i.price*i.qty,quantity:i.qty,status:"pending"}]);}CART=[];localStorage.removeItem("cart");renderCart();notify("تم الشراء");safeLoadOrders();loadProfit();}
+async function safeLoadOrders(){let u=await getUser();if(!u)return;let{data}=await client.from("orders").select("*").eq("user_id",u.id).order("created_at",{ascending:false});let b=document.getElementById("user-orders");if(!b)return;b.innerHTML="";if(!data.length){b.innerHTML="<div class='product-card'>لا توجد طلبات</div>";return;}data.forEach(o=>{b.innerHTML+=`<div class='order-card'><h3>طلب #${o.id}</h3><p>${o.amount||0} $</p><span class="order-status status-${o.status}">${o.status}</span></div>`;});}
+async function loadProfit(){let{data:o}=await client.from("orders").select("*");let t=0;o?.forEach(i=>t+=Number(i.amount||0));let c=o?.length||0;let a=c?(t/c).toFixed(2):0;document.getElementById("total-orders").innerText=c;document.getElementById("total-profit").innerText=t;document.getElementById("avg-order").innerText=a;}
 function filterShop(k){currentSearch=k.toLowerCase();applyFilters();}
-function filterCategory(c){currentCategory=c;applyFilters();notify(`📁 ${c}`);}
-function applyFilters(){const cards=document.querySelectorAll("#products .product-card");cards.forEach(c=>{const txt=c.innerText.toLowerCase();const cat=c.dataset.category||"all";const matchSearch=txt.includes(currentSearch);const matchCat=currentCategory==="all"||cat===currentCategory;c.style.display=matchSearch&&matchCat?"block":"none";});}
-
-// ==================== الأدمن ====================
-async function loadAdminPanel(){if(!await isAdmin())return;const{p}=await client.from("products").select("*");const{o}=await client.from("orders").select("*");const{u}=await client.from("profiles").select("*");renderAdminProducts(p||[]);renderAdminOrders(o||[]);renderUsers(u||[]);}
-function renderAdminProducts(d){const b=document.getElementById("admin-products");if(!b)return;b.innerHTML="";d.forEach(p=>{b.innerHTML+=`<div class='order-card'><h3>${p.title}</h3><p>💰 ${p.price} $</p><button class='danger' onclick='deleteProduct("${p.id}")'>🗑️ حذف</button></div>`;});}
-function renderAdminOrders(d){const b=document.getElementById("admin-orders");if(!b)return;b.innerHTML="";d.forEach(o=>{b.innerHTML+=`<div class='order-card'><h3>طلب #${o.id}</h3><p>💰 ${o.amount} $</p><span class="order-status status-${o.status}">${o.status}</span><button onclick='confirmPayment("${o.id}")'>💳 تأكيد</button></div>`;});}
-function renderUsers(d){const b=document.getElementById("admin-users");if(!b)return;b.innerHTML="";d.forEach(u=>{b.innerHTML+=`<div class='order-card'><h3>👤 ${u.email||u.id}</h3><p>⭐ ${u.role||"user"}</p></div>`;});}
-async function confirmPayment(id){if(!await isAdmin())return;await client.from("orders").update({status:"paid"}).eq("id",id);notify("✅ تم");safeLoadOrders();loadProfit();loadAdminPanel();}
-
-// ==================== التطبيقات ====================
-function openApp(n){const b=document.getElementById("app-view");if(n==="converter")b.innerHTML=`<h3>🔄 محول العملات</h3><input id='usd' placeholder='USD'><button onclick='convert()'>تحويل</button><p id='result'></p><button onclick='closeApp()'>❌ إغلاق</button>`;if(n==="calc")b.innerHTML=`<h3>🧮 حاسبة ربح</h3><input id='cost' placeholder='التكلفة'><input id='sell' placeholder='السعر'><button onclick='calcProfit()'>احسب</button><p id='result'></p><button onclick='closeApp()'>❌ إغلاق</button>`;if(n==="notes")b.innerHTML=`<h3>📝 ملاحظات</h3><textarea id='note' placeholder='اكتب ملاحظتك...'></textarea><button onclick='saveNote()'>💾 حفظ</button><button onclick='closeApp()'>❌ إغلاق</button>`;}
+function filterCategory(c){currentCategory=c;applyFilters();}
+function applyFilters(){let cards=document.querySelectorAll("#products .product-card");cards.forEach(c=>{let txt=c.innerText.toLowerCase();let cat=c.dataset?.category||"all";let mS=txt.includes(currentSearch);let mC=currentCategory==="all"||cat===currentCategory;c.style.display=mS&&mC?"block":"none";});}
+async function loadAdminPanel(){if(!await isAdmin())return;let{p}=await client.from("products").select("*");let{o}=await client.from("orders").select("*");let{u}=await client.from("profiles").select("*");let b1=document.getElementById("admin-products");if(b1){b1.innerHTML="";p?.forEach(pr=>{b1.innerHTML+=`<div class='order-card'><h3>${pr.title}</h3><p>${pr.price} $</p><button class='danger' onclick='deleteProduct("${pr.id}")'>حذف</button></div>`;});}let b2=document.getElementById("admin-orders");if(b2){b2.innerHTML="";o?.forEach(or=>{b2.innerHTML+=`<div class='order-card'><h3>طلب #${or.id}</h3><p>${or.amount} $</p><span class="order-status status-${or.status}">${or.status}</span><button onclick='confirmPayment("${or.id}")'>تأكيد</button></div>`;});}let b3=document.getElementById("admin-users");if(b3){b3.innerHTML="";u?.forEach(us=>{b3.innerHTML+=`<div class='order-card'><h3>${us.email||us.id}</h3><p>${us.role||"user"}</p></div>`;});}}
+async function confirmPayment(id){if(!await isAdmin())return;await client.from("orders").update({status:"paid"}).eq("id",id);notify("تم");safeLoadOrders();loadProfit();loadAdminPanel();}
+function openApp(n){let b=document.getElementById("app-view");if(n==="converter")b.innerHTML=`<h3>محول العملات</h3><input id='usd' placeholder='USD'><button onclick='convert()'>تحويل</button><p id='result'></p><button onclick='closeApp()'>إغلاق</button>`;if(n==="calc")b.innerHTML=`<h3>حاسبة ربح</h3><input id='cost' placeholder='التكلفة'><input id='sell' placeholder='السعر'><button onclick='calcProfit()'>احسب</button><p id='result'></p><button onclick='closeApp()'>إغلاق</button>`;if(n==="notes")b.innerHTML=`<h3>ملاحظات</h3><textarea id='note'></textarea><button onclick='saveNote()'>حفظ</button><button onclick='closeApp()'>إغلاق</button>`;}
 function closeApp(){document.getElementById("app-view").innerHTML="";}
-function convert(){const u=document.getElementById("usd").value;document.getElementById("result").innerText=(u*3.75).toFixed(2)+" ريال";}
-function calcProfit(){const c=Number(document.getElementById("cost").value)||0;const s=Number(document.getElementById("sell").value)||0;document.getElementById("result").innerText="💰 الربح: "+(s-c)+" $";}
-function saveNote(){const n=document.getElementById("note").value;if(n.trim())localStorage.setItem("note",n);notify("✅ تم الحفظ");}
-
-// ==================== التعلم ====================
-function openLesson(t){const b=document.getElementById("lesson-view");if(t==="marketing")b.innerHTML=`<h3>📊 التسويق</h3><p>فهم حاجة العميل + تقديم الحل المناسب هو أساس البيع الناجح.</p><button onclick='closeLesson()'>❌ إغلاق</button>`;if(t==="sales")b.innerHTML=`<h3>💰 المبيعات</h3><p>إقفال الصفقة يعتمد على الثقة + العرض المناسب في الوقت المناسب.</p><button onclick='closeLesson()'>❌ إغلاق</button>`;if(t==="mindset")b.innerHTML=`<h3>🧠 عقلية النجاح</h3><p>النجاح يبدأ من التفكير الإيجابي والإيمان بالقدرات الذاتية.</p><button onclick='closeLesson()'>❌ إغلاق</button>`;}
+function convert(){let u=document.getElementById("usd").value;document.getElementById("result").innerText=(u*3.75).toFixed(2)+" ريال";}
+function calcProfit(){let c=Number(document.getElementById("cost").value)||0;let s=Number(document.getElementById("sell").value)||0;document.getElementById("result").innerText="الربح: "+(s-c)+" $";}
+function saveNote(){let n=document.getElementById("note").value;if(n.trim())localStorage.setItem("note",n);notify("تم الحفظ");}
+function openLesson(t){let b=document.getElementById("lesson-view");if(t==="marketing")b.innerHTML=`<h3>التسويق</h3><p>فهم حاجة العميل + الحل المناسب</p><button onclick='closeLesson()'>إغلاق</button>`;if(t==="sales")b.innerHTML=`<h3>المبيعات</h3><p>الثقة + العرض المناسب</p><button onclick='closeLesson()'>إغلاق</button>`;if(t==="mindset")b.innerHTML=`<h3>عقلية النجاح</h3><p>النجاح يبدأ من التفكير</p><button onclick='closeLesson()'>إغلاق</button>`;}
 function closeLesson(){document.getElementById("lesson-view").innerHTML="";}
-
-// ==================== مساعد AI ====================
-function sendAI(){const i=document.getElementById("ai-input");const c=document.getElementById("ai-chat");const t=i.value.trim();if(!t)return;c.innerHTML+=`<div class='ai-msg user'>${t}</div>`;let r="🤖 لا أفهم السؤال حالياً";if(t.includes("ربح"))r="💰 أفضل طريقة للربح: ركز على المنتجات عالية الطلب + التسويق الميداني";else if(t.includes("منتج"))r="🛒 أقترح منتجات قسم AI أو الأدوات الرقمية لأنها الأسرع بيعاً";else if(t.includes("سلة"))r="🛍️ أضف المنتجات للسلة ثم اضغط إتمام الشراء لإكمال الطلب";else if(t.includes("طلب"))r="📦 الطلبات تجدها في قسم 'طلباتي' بعد إتمام عملية الشراء";else if(t.includes("سعر"))r="💰 الأسعار محدثة ومذكورة على كل منتج في المتجر";c.innerHTML+=`<div class='ai-msg bot'>${r}</div>`;i.value="";c.scrollTop=c.scrollHeight;}
-
-// ==================== التنقل ====================
+function sendAI(){let i=document.getElementById("ai-input");let c=document.getElementById("ai-chat");let t=i.value.trim();if(!t)return;c.innerHTML+=`<div class='ai-msg user'>${t}</div>`;let r="لا أفهم";if(t.includes("ربح"))r="ركز على المنتجات عالية الطلب + التسويق الميداني";else if(t.includes("منتج"))r="أقترح منتجات AI أو الأدوات الرقمية";else if(t.includes("سلة"))r="أضف للسلة ثم اضغط شراء";c.innerHTML+=`<div class='ai-msg bot'>${r}</div>`;i.value="";c.scrollTop=c.scrollHeight;}
 const ROUTES={shop:"shop",cart:"cart",orders:"orders",profit:"profit",admin:"admin",apps:"apps",learn:"learn",ai:"ai"};
-function navigate(k){if(!ROUTES[k])return;localStorage.setItem("lastPage",k);document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(ROUTES[k]).classList.add("active");if(k==="profit")loadProfit();if(k==="admin")loadAdminPanel();if(k==="cart")renderCart();if(k==="orders")safeLoadOrders();notify(`📍 ${k}`);}
+function navigate(k){if(!ROUTES[k])return;localStorage.setItem("lastPage",k);document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(ROUTES[k]).classList.add("active");if(k==="profit")loadProfit();if(k==="admin")loadAdminPanel();if(k==="cart")renderCart();if(k==="orders")safeLoadOrders();}
 function restorePage(){navigate(localStorage.getItem("lastPage")||"shop");}
-
-// ==================== التشغيل النهائي ====================
-(async function finalBoot(){await syncUser();await loadProducts();renderCart();safeLoadOrders();loadProfit();restorePage();notify("✨ VIP MARKET جاهز");})();
-
-// تسجيل Service Worker
-if("serviceWorker"in navigator){navigator.serviceWorker.register("/sw.js").catch(e=>console.log("SW error",e));}
+(async function finalBoot(){await loadProducts();renderCart();safeLoadOrders();loadProfit();restorePage();notify("جاهز");})();
+if("serviceWorker"in navigator){navigator.serviceWorker.register("/sw.js");}
 </script>
 </body>
-</html>
+                                                                                                                                                                                                                                        </html>
