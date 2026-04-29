@@ -222,31 +222,17 @@ function toggleSidebar(){document.getElementById("sidebar").classList.toggle("op
 function showLogin(){document.getElementById("registerBox").style.display="none";document.getElementById("loginBox").style.display="block"}
 function showRegister(){document.getElementById("loginBox").style.display="none";document.getElementById("registerBox").style.display="block"}
 
-// ========== AUTH (تم تعديلها لتسجيل الدخول التلقائي) ==========
+// ========== AUTH (مبسطة) ==========
 async function loginUser() {
   const i = document.getElementById("login_id").value;
   const p = document.getElementById("login_pass").value;
   if (!document.getElementById("agree_login").checked) return toast("وافق على الشروط", "error");
   const e = i.includes("@") ? i : i + "@vip.local";
 
-  let { error } = await client.auth.signInWithPassword({ email: e, password: p });
+  const { error } = await client.auth.signInWithPassword({ email: e, password: p });
 
   if (error) {
-    const { error: signUpError } = await client.auth.signUp({
-      email: e,
-      password: p,
-      options: { data: { full_name: i, contact: i } }
-    });
-
-    if (signUpError) return toast("فشل إنشاء الحساب تلقائياً", "error");
-
-    setTimeout(async () => {
-      const { error: retryError } = await client.auth.signInWithPassword({ email: e, password: p });
-      if (retryError) return toast("فشل الدخول بعد التسجيل", "error");
-      toast("تم الدخول ✅");
-      location.reload();
-    }, 1500);
-    return;
+    return toast("بيانات غير صحيحة. إذا لم تسجل بعد، اضغط على إنشاء حساب", "error");
   }
 
   toast("تم الدخول ✅");
@@ -299,4 +285,4 @@ async function rejectSeller(id){await client.from("profiles").update({seller_sta
 document.addEventListener("DOMContentLoaded",()=>{checkRoles();setTimeout(renderSmartBox,1000);loadShop()});
 </script>
 </body>
-</html>
+      </html>
