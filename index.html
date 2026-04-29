@@ -1,288 +1,37 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP MARKET | بوابتك الرقمية الذكية</title>
-<meta name="description" content="منصة متكاملة للربح، التداول، التطبيقات، والذكاء الاصطناعي">
-<meta name="author" content="Tariq Al-Jadli">
-<meta name="theme-color" content="#0f0f0f">
-<link rel="canonical" href="https://vipmarket.vercel.app/">
-<link rel="manifest" href="/manifest.json">
-<meta name="google-site-verification" content="X3ytouKZnDUMScxuPb9C7RFQ83l0815dril_ytkKnUw">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8776743718706581" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--bg:linear-gradient(135deg,#0f0f0f,#111);--card-bg:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.08);--gold:#d4af37;--text:#fff;--muted:#aaa;--radius:16px;--gap:12px;--wa:#25D366;--tg:#0088cc;--fb:#1877F2;--em:#EA4335;--danger:#f44336;--success:#4caf50}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-
-.header{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;gap:10px}
-.site-name{font-size:clamp(14px,2.5vw,18px);font-weight:900;color:var(--gold);cursor:pointer}
-.icon-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:0.3s}
-.icon-btn:hover{background:var(--gold);color:#000}
-
-.sidebar{position:fixed;top:0;left:-280px;width:260px;height:100%;background:rgba(17,17,17,0.98);z-index:2000;transition:0.3s;padding:20px;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
-.sidebar.open{left:0}
-.sidebar a{color:var(--text);padding:12px 16px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer}
-.sidebar a:hover{background:var(--gold);color:#000}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1500;display:none}
-.overlay.show{display:block}
-
-.main{max-width:1000px;margin:0 auto;padding:30px 16px 40px}
-.page{display:none;animation:fadeIn 0.35s ease}
-.page.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-
-.hero{text-align:center;padding:40px 16px;margin-bottom:30px}
-.hero h1{font-size:clamp(24px,4vw,36px);color:var(--gold)}
-.btn{padding:12px 24px;border-radius:25px;font-weight:700;font-family:'Tajawal';cursor:pointer;border:none;font-size:14px;display:inline-block}
-.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{transform:scale(1.05)}
-
-.section-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 18px;margin-bottom:var(--gap);cursor:pointer;transition:0.3s}
-.section-card:hover{transform:translateY(-4px);border-color:var(--gold)}
-.section-card h3{font-size:clamp(16px,2vw,20px);color:var(--gold);margin-bottom:6px}
-.section-card .desc{color:var(--muted);font-size:13px}
-.section-card .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.section-card .tags span{background:rgba(212,175,55,0.1);color:var(--gold);padding:4px 10px;border-radius:15px;font-size:11px;cursor:pointer}
-
-.cart-fab{position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%;background:var(--gold);border:none;font-size:22px;cursor:pointer;z-index:900}
-.cart-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;z-index:950}
-.side-cart{position:fixed;top:0;right:-380px;width:350px;height:100%;background:#1c1c1c;transition:0.3s;z-index:999;display:flex;flex-direction:column;border-left:2px solid #333}
-.side-cart.open{right:0}
-.cart-header{display:flex;justify-content:space-between;padding:15px;color:var(--gold);border-bottom:1px solid #333}
-#cartItems{flex:1;overflow:auto;padding:10px}
-.cart-item{background:#111;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #333}
-.qty-controls{display:flex;gap:8px;align-items:center;margin-top:6px}
-.qty-controls button{width:25px;height:25px;background:var(--gold);border:none;cursor:pointer}
-.cart-footer{padding:15px;border-top:1px solid #333}
-.cart-footer button{width:100%;padding:12px;background:var(--gold);border:none;cursor:pointer;font-weight:bold}
-
-.auth{max-width:360px;margin:60px auto;background:#1c1c1c;padding:20px;border-radius:15px;border:1px solid #333;text-align:center}
-.auth h2{color:var(--gold);margin-bottom:15px}
-.auth input,.auth select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#111;color:var(--text)}
-.auth button{width:100%;padding:12px;margin-top:10px;background:var(--gold);border:none;border-radius:10px;font-weight:bold;cursor:pointer}
-
-.admin-wrap{display:flex;min-height:100vh}
-.admin-sidebar{width:220px;background:#111;border-left:1px solid #333;padding:15px}
-.admin-sidebar h3{color:var(--gold);margin-bottom:15px}
-.admin-sidebar button{width:100%;margin:5px 0;padding:10px;background:#1c1c1c;border:none;color:var(--text);border-radius:8px;cursor:pointer}
-.admin-sidebar button:hover{background:var(--gold);color:#000}
-.admin-content{flex:1;padding:20px}
-.admin-page{display:none}
-.admin-page.active{display:block}
-.card{background:#1c1c1c;padding:15px;margin:10px 0;border-radius:10px;border:1px solid #333}
-
-.footer{background:rgba(0,0,0,0.4);border-top:1px solid var(--border);padding:25px 16px;text-align:center;margin-top:40px}
-.footer-social{display:flex;justify-content:center;gap:20px;margin-bottom:12px}
-.footer-social a{color:var(--muted);font-size:24px;text-decoration:none;transition:0.3s}
-.footer-social a.wa:hover{color:var(--wa)}.footer-social a.tg:hover{color:var(--tg)}
-.footer-social a.fb:hover{color:var(--fb)}.footer-social a.em:hover{color:var(--em)}
-.footer-text{color:#555;font-size:10px}
-
-.toast-msg{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1c1c1c;color:#fff;padding:12px 24px;border-radius:25px;border-left:4px solid var(--gold);z-index:9999;font-weight:700;font-size:14px;animation:toastIn 0.4s ease,toastOut 0.4s ease 2.5s forwards}
-.toast-msg.error{border-left-color:var(--danger)}
-.toast-msg.success{border-left-color:var(--success)}
-@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-@keyframes toastOut{from{opacity:1;transform:translateX(-50%) translateY(0)}to{opacity:0;transform:translateX(-50%) translateY(20px)}}
-
-@media(max-width:600px){.side-cart{width:100%;right:-100%}.admin-wrap{flex-direction:column}.admin-sidebar{width:100%}}
-</style>
+  <meta charset="UTF-8">
+  <title>VIP MARKET</title>
 </head>
 <body>
+  <!-- رأس الموقع -->
+  <header>
+    <h1>🌐 VIP MARKET</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="store.html">المتجر</a></li>
+        <li><a href="earn.html">الربح من الإنترنت</a></li>
+        <li><a href="trade.html">التداول</a></li>
+        <li><a href="apps.html">التطبيقات</a></li>
+        <li><a href="ai.html">الذكاء الاصطناعي</a></li>
+        <li><a href="contact.html">التواصل</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header class="header">
-  <div class="header-inner">
-    <button class="icon-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-    <span class="site-name" onclick="navigate('home')">👑 VIP MARKET</span>
-    <button class="icon-btn" onclick="navigate('authPage')">🔐</button>
-  </div>
-</header>
+  <!-- محتوى رئيسي -->
+  <main>
+    <section>
+      <h2>مرحباً بك في VIP MARKET</h2>
+      <p>هذا هو الهيكل الأساسي للموقع، جاهز لإضافة المحتوى في كل قسم.</p>
+    </section>
+  </main>
 
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-<div class="sidebar" id="sidebar">
-  <a onclick="navigate('home');toggleSidebar()">🏠 الرئيسية</a>
-  <a onclick="navigate('shop');toggleSidebar()">🛒 المتجر</a>
-  <a onclick="navigate('earn');toggleSidebar()">💰 الربح</a>
-  <a onclick="navigate('trading');toggleSidebar()">📊 التداول</a>
-  <a onclick="navigate('apps');toggleSidebar()">📱 التطبيقات</a>
-  <a onclick="navigate('ai');toggleSidebar()">🤖 AI</a>
-  <hr style="border-color:var(--border)">
-  <a onclick="navigate('contact');toggleSidebar()">📞 اتصل</a>
-  <a onclick="navigate('about');toggleSidebar()">ℹ️ من نحن</a>
-  <a onclick="navigate('privacy');toggleSidebar()">🛡️ الخصوصية</a>
-  <a onclick="navigate('seller');toggleSidebar()" id="sellerLink" style="display:none">👤 البائع</a>
-  <a onclick="navigate('admin');toggleSidebar()" id="adminLink" style="display:none">👑 Admin</a>
-</div>
-
-<main class="main">
-  <div id="home" class="page active">
-    <div class="hero"><h1>👑 VIP MARKET</h1><p style="color:var(--muted)">بوابتك الرقمية الذكية</p><button class="btn btn-gold" onclick="navigate('shop')">📂 تصفح المتجر</button></div>
-    <div class="section-card"><h3>✨ مقترحات لك</h3><div id="recommend-box">جاري التحليل...</div></div>
-    <div class="section-card" onclick="navigate('shop')"><h3>🛒 المتجر الذكي</h3><p class="desc">منتجات رقمية، سلة، تتبع فوري</p></div>
-    <div class="section-card" onclick="navigate('earn')"><h3>💰 الربح من الإنترنت</h3><p class="desc">استطلاعات، عمل حر، وتسويق</p></div>
-    <div class="section-card" onclick="navigate('trading')"><h3>📊 تعلم التداول</h3><p class="desc">تحليل فني، شموع، وإدارة مخاطر</p></div>
-    <div class="section-card" onclick="navigate('apps')"><h3>📱 متجر التطبيقات</h3><p class="desc">تطبيقات Pro، صيانة، وأدوات</p></div>
-    <div class="section-card" onclick="navigate('ai')"><h3>🤖 الذكاء الاصطناعي</h3><p class="desc">ChatGPT، Gemini، والمحزم</p></div>
-  </div>
-
-  <div id="shop" class="page"><h2 style="color:var(--gold)">🛒 المتجر الذكي</h2><div id="shop-products"></div></div>
-
-  <div id="earn" class="page"><h2 style="color:var(--gold)">💰 الربح من الإنترنت</h2><div class="section-card"><h3>📋 استطلاعات الرأي</h3><p class="desc">اربح من مشاركة رأيك</p></div><div class="section-card"><h3>💻 العمل الحر</h3><p class="desc">منصات مستقل وخمسات</p></div><div class="section-card"><h3>📢 التسويق بالعمولة</h3><p class="desc">اربح عمولة من الترويج</p></div></div>
-
-  <div id="trading" class="page"><h2 style="color:var(--gold)">📊 تعلم التداول</h2><div class="section-card"><h3>🕯️ الشموع اليابانية</h3><p class="desc">قراءة الرسم البياني</p></div><div class="section-card"><h3>📈 الدعم والمقاومة</h3><p class="desc">نقاط الدخول والخروج</p></div><div class="section-card"><h3>🛡️ إدارة المخاطر</h3><p class="desc">حماية رأس المال</p></div></div>
-
-  <div id="apps" class="page"><h2 style="color:var(--gold)">📱 متجر التطبيقات</h2><div class="section-card"><h3>📲 تطبيقات Pro</h3><p class="desc">تطبيقات مدفوعة مجاناً</p></div><div class="section-card"><h3>🔧 أدوات الصيانة</h3><p class="desc">إصلاح وتسريع الهاتف</p></div><div class="section-card"><h3>🛠️ برامج إنتاجية</h3><p class="desc">للعمل والمشاريع</p></div></div>
-
-  <div id="ai" class="page"><h2 style="color:var(--gold)">🤖 الذكاء الاصطناعي</h2><div class="section-card"><h3>💬 ChatGPT</h3><p class="desc">كتابة، برمجة، ترجمة</p></div><div class="section-card"><h3>🧠 Gemini</h3><p class="desc">تحليل متقدم من Google</p></div><div class="section-card"><h3>🧿 المحزم</h3><p class="desc">مساعد VIP MARKET الذكي</p></div></div>
-
-  <div id="contact" class="page"><h2 style="color:var(--gold)">📞 اتصل بنا</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
-    <a href="https://wa.me/967782138587" target="_blank" rel="noopener" class="section-card" style="text-align:center;text-decoration:none"><i class="fab fa-whatsapp" style="font-size:40px;color:var(--wa)"></i><h3>واتساب</h3><p style="color:var(--muted);direction:ltr">+967 782 138 587</p></a>
-    <a href="https://t.me/tariq77087" target="_blank" rel="noopener" class="section-card" style="text-align:center;text-decoration:none"><i class="fab fa-telegram" style="font-size:40px;color:var(--tg)"></i><h3>تيليجرام</h3><p style="color:var(--muted);direction:ltr">@tariq77087</p></a>
-    <a href="https://www.facebook.com/share/1EnALeuZGJ/" target="_blank" rel="noopener" class="section-card" style="text-align:center;text-decoration:none"><i class="fab fa-facebook" style="font-size:40px;color:var(--fb)"></i><h3>فيسبوك</h3><p style="color:var(--muted)">صفحة VIP MARKET</p></a>
-    <a href="mailto:tariq770871@gmail.com" class="section-card" style="text-align:center;text-decoration:none"><i class="fas fa-envelope" style="font-size:40px;color:var(--em)"></i><h3>البريد</h3><p style="color:var(--muted);direction:ltr">tariq770871@gmail.com</p></a>
-  </div></div>
-
-  <div id="about" class="page"><h2 style="color:var(--gold)">ℹ️ من نحن</h2><div class="section-card"><p style="color:var(--muted);line-height:2"><strong style="color:var(--gold)">VIP MARKET</strong> منصة رقمية يمنية تأسست 2024. نقدم خدمات الشحن الإلكتروني، تعليم التداول، الربح من الإنترنت، تطبيقات Pro، وأدوات الذكاء الاصطناعي.</p></div></div>
-
-  <div id="privacy" class="page"><h2 style="color:var(--gold)">🛡️ سياسة الخصوصية</h2><div class="section-card"><p style="color:var(--muted);line-height:2">خصوصيتك تهمنا. لا نشارك بياناتك مع أي طرف ثالث. نستخدم cookies لتحسين تجربة الإعلانات عبر Google AdSense.</p></div></div>
-
-  <div id="seller" class="page">
-    <h2 style="color:var(--gold)">👤 لوحة البائع</h2>
-    <div id="sellerStats" class="card" style="text-align:center"></div>
-    <div id="sellerProducts"></div>
-    <button class="btn btn-gold" onclick="addProduct(prompt('اسم المنتج'),prompt('السعر'))" style="margin-top:15px">➕ إضافة منتج</button>
-  </div>
-
-  <div id="admin" class="page">
-    <div class="admin-wrap">
-      <div class="admin-sidebar"><h3>👑 Admin</h3><button onclick="adminTab('dashboard')">📊 الرئيسية</button><button onclick="adminTab('products')">🛒 المنتجات</button><button onclick="adminTab('orders')">📦 الطلبات</button><button onclick="adminTab('sellers')">👤 البائعين</button></div>
-      <div class="admin-content"><div id="dashboard" class="admin-page active"></div><div id="products" class="admin-page"></div><div id="orders" class="admin-page"></div><div id="sellers" class="admin-page"></div></div>
-    </div>
-  </div>
-
-  <div id="authPage" class="page">
-    <div class="auth" id="loginBox">
-      <h2>🔐 دخول</h2><input id="login_id" placeholder="بريد أو هاتف"><input id="login_pass" type="password" placeholder="كلمة المرور">
-      <label><input type="checkbox" id="agree_login">أوافق</label>
-      <button class="btn btn-gold" onclick="loginUser()">دخول</button>
-      <p onclick="showRegister()" style="color:var(--gold);cursor:pointer">إنشاء حساب</p>
-    </div>
-    <div class="auth" id="registerBox" style="display:none">
-      <h2>📝 إنشاء حساب</h2><input id="r_name" placeholder="اسم"><input id="r_contact" placeholder="بريد أو هاتف"><input id="r_pass" type="password" placeholder="كلمة المرور"><input id="r_pass2" type="password" placeholder="تأكيد كلمة المرور">
-      <button class="btn btn-gold" onclick="registerUser()">إنشاء</button>
-      <p onclick="showLogin()" style="color:var(--gold);cursor:pointer">عندي حساب</p>
-    </div>
-  </div>
-</main>
-
-<button class="cart-fab" onclick="toggleCart()">🛒</button>
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<div class="side-cart" id="sideCart">
-  <div class="cart-header"><h3>🛒 السلة</h3><button onclick="toggleCart()">✖</button></div>
-  <div id="cartItems"></div>
-  <div class="cart-footer"><div>💰 <span id="cartTotal">0</span>$</div><button class="btn btn-gold" onclick="checkout()">💳 الطلب</button></div>
-</div>
-
-<footer class="footer">
-  <div class="footer-social">
-    <a href="https://wa.me/967782138587" target="_blank" rel="noopener" class="wa"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/tariq77087" target="_blank" rel="noopener" class="tg"><i class="fab fa-telegram"></i></a>
-    <a href="https://www.facebook.com/share/1EnALeuZGJ/" target="_blank" rel="noopener" class="fb"><i class="fab fa-facebook"></i></a>
-    <a href="mailto:tariq770871@gmail.com" class="em"><i class="fas fa-envelope"></i></a>
-  </div>
-  <div class="footer-text">© 2025 VIP MARKET. <strong style="color:var(--gold)">Tariq Al-Jadli</strong></div>
-</footer>
-
-<script>
-// ========== SUPABASE ==========
-const SUPABASE_URL = "https://hrbhuvirarvwwbbjbwzl.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhyYmh1dmlyYXJ2d3diYmpid3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzM1MjUsImV4cCI6MjA5MjkwOTUyNX0._6lEUIOMjNgz0SqsQScDUhocSTGvcY9nAB136HKTdL0";
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// ========== ENCRYPT ==========
-function encrypt(data){return btoa(unescape(encodeURIComponent(JSON.stringify(data))))}
-function decrypt(data){try{return JSON.parse(decodeURIComponent(escape(atob(data))))}catch(e){return[]}}
-
-// ========== CART ==========
-let CART = [];
-function loadCart(){const raw=localStorage.getItem("cart");CART=raw?decrypt(raw):[]}
-function saveCart(){localStorage.setItem("cart",encrypt(CART))}
-loadCart();
-
-// ========== TOAST ==========
-function toast(msg,type='success'){const t=document.createElement('div');t.className='toast-msg '+type;t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
-
-// ========== NAVIGATION ==========
-function navigate(p){document.querySelectorAll(".page").forEach(e=>e.classList.remove("active"));const t=document.getElementById(p);if(t)t.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});if(p==="shop")loadShop();if(p==="seller")loadSellerStats();if(p==="admin")loadAdminDashboard()}
-function toggleSidebar(){document.getElementById("sidebar").classList.toggle("open");document.getElementById("overlay").classList.toggle("show")}
-function showLogin(){document.getElementById("registerBox").style.display="none";document.getElementById("loginBox").style.display="block"}
-function showRegister(){document.getElementById("loginBox").style.display="none";document.getElementById("registerBox").style.display="block"}
-
-// ========== AUTH (مبسطة) ==========
-async function loginUser() {
-  const i = document.getElementById("login_id").value;
-  const p = document.getElementById("login_pass").value;
-  if (!document.getElementById("agree_login").checked) return toast("وافق على الشروط", "error");
-  const e = i.includes("@") ? i : i + "@vip.local";
-
-  const { error } = await client.auth.signInWithPassword({ email: e, password: p });
-
-  if (error) {
-    return toast("بيانات غير صحيحة. إذا لم تسجل بعد، اضغط على إنشاء حساب", "error");
-  }
-
-  toast("تم الدخول ✅");
-  setTimeout(() => location.reload(), 1000);
-}
-
-async function registerUser(){const n=document.getElementById("r_name").value,c=document.getElementById("r_contact").value,p=document.getElementById("r_pass").value,p2=document.getElementById("r_pass2").value;if(!n||!c||!p||!p2)return toast("املأ الحقول","error");if(p!==p2)return toast("كلمة المرور غير متطابقة","error");const e=c.includes("@")?c:c+"@vip.local";const{error}=await client.auth.signUp({email:e,password:p,options:{data:{full_name:n,contact:c}}});if(error)return toast("فشل إنشاء الحساب","error");toast("تم ✅");showLogin()}
-
-// ========== SHOP ==========
-async function loadShop(){const{data}=await client.from("products").select("*").eq("status","approved");const c=document.getElementById("shop-products");if(!data?.length){c.innerHTML="<p style='color:var(--muted)'>لا منتجات</p>";return}c.innerHTML=data.map(p=>`<div class="section-card"><h3>${p.title}</h3><p class="desc">${p.price}$</p><div class="tags"><span onclick="addToCart('${p.id}','${p.title}',${p.price})">🛒 إضافة</span></div></div>`).join("")}
-
-// ========== CART FUNCTIONS ==========
-function toggleCart(){const c=document.getElementById("sideCart"),o=document.getElementById("cartOverlay");c.classList.toggle("open");o.style.display=c.classList.contains("open")?"block":"none";renderCart()}
-function addToCart(id,t,p){let i=CART.find(x=>x.id===id);if(i)i.qty++;else CART.push({id,title:t,price:p,qty:1});saveCart();renderCart();trackAction("cart",{id,title:t,price:p,category:""});toast("تمت الإضافة 🛒")}
-function renderCart(){const b=document.getElementById("cartItems");let total=0;if(!CART.length){b.innerHTML="<p style='color:var(--muted)'>فارغة</p>";document.getElementById("cartTotal").innerText="0";return}b.innerHTML="";CART.forEach((i,x)=>{let s=i.price*i.qty;total+=s;b.innerHTML+=`<div class="cart-item"><h4>${i.title}</h4><p>${i.price}$ × ${i.qty}=${s}$</p><div class="qty-controls"><button onclick="changeQty(${x},-1)">-</button><span>${i.qty}</span><button onclick="changeQty(${x},1)">+</button><button onclick="removeItem(${x})">🗑</button></div></div>`});document.getElementById("cartTotal").innerText=total}
-function changeQty(i,v){CART[i].qty+=v;if(CART[i].qty<=0)CART.splice(i,1);saveCart();renderCart()}
-function removeItem(i){CART.splice(i,1);saveCart();renderCart();toast("تم الحذف")}
-async function checkout(){const u=await client.auth.getUser();if(!u.data.user)return toast("سجل دخول","error");if(!CART.length)return toast("السلة فارغة","error");sendWhatsAppOrder();CART=[];saveCart();renderCart();toast("تم الطلب ✅")}
-function sendWhatsAppOrder(){let m="🛒 طلب جديد%0A%0A";CART.forEach(i=>m+=`- ${i.title} ×${i.qty}%0A`);let t=CART.reduce((a,b)=>a+b.price*b.qty,0);m+=`%0A💰 ${t}$`;window.open(`https://wa.me/967782138587?text=${encodeURIComponent(m)}`,"_blank")}
-
-// ========== TRACK ==========
-function trackAction(type,p){let h=decrypt(localStorage.getItem("history")||encrypt([]));h.push({type,id:p.id,category:p.category||"",price:p.price,time:Date.now()});if(h.length>50)h.shift();localStorage.setItem("history",encrypt(h))}
-
-// ========== RECOMMEND ==========
-async function smartAIRecommend(){const h=decrypt(localStorage.getItem("history")||encrypt([]));if(!h.length)return await getTrending();let cm={};h.forEach(x=>cm[x.category]=(cm[x.category]||0)+(x.type==="buy"?5:x.type==="cart"?3:1));let top=Object.keys(cm).sort((a,b)=>cm[b]-cm[a])[0];const{data}=await client.from("products").select("*").eq("category",top).eq("status","approved").limit(8);return data||[]}
-async function getTrending(){const{data}=await client.from("products").select("*").eq("status","approved").order("created_at",{ascending:false}).limit(8);return data||[]}
-async function renderSmartBox(){const b=document.getElementById("recommend-box");if(!b)return;const p=await smartAIRecommend();if(!p.length){b.innerHTML="<p style='color:var(--muted)'>لا توصيات</p>";return}b.innerHTML=p.map(x=>`<div class="section-card"><h3>✨ ${x.title}</h3><p class="desc">${x.price}$</p><div class="tags"><span onclick="addToCart('${x.id}','${x.title}',${x.price})">🛒</span></div></div>`).join("")}
-
-// ========== ROLE ==========
-async function getRole(){const u=await client.auth.getUser();if(!u.data.user)return"guest";const{data}=await client.from("profiles").select("role").eq("id",u.data.user.id).single();return data?.role||"user"}
-async function checkRoles(){const{data}=await client.auth.getUser();if(!data.user)return;const{data:profile}=await client.from("profiles").select("role,seller_status").eq("id",data.user.id).single();if(profile?.role==="admin"){document.getElementById("adminLink").style.display="block";document.getElementById("sellerLink").style.display="block"}else if(profile?.role==="seller"||profile?.seller_status==="approved"){document.getElementById("sellerLink").style.display="block"}}
-
-// ========== SELLER ==========
-async function loadSellerStats(){const u=await client.auth.getUser();if(!u.data.user)return;const{data:p}=await client.from("products").select("*").eq("owner_id",u.data.user.id);const{data:o}=await client.from("orders").select("*").in("product_id",p?.map(x=>x.id)||[]);const total=o?.reduce((a,b)=>a+(b.amount||0),0)||0;const completed=o?.filter(x=>x.status==="paid").length||0;document.getElementById("sellerStats").innerHTML=`<p>📦 منتجاتك: ${p?.length||0}</p><p>💰 مبيعاتك: ${total}$</p><p>✅ تم: ${completed}</p>`;document.getElementById("sellerProducts").innerHTML=p?.map(x=>`<div class="section-card"><h3>${x.title}</h3><p>${x.price}$</p></div>`).join("")||""}
-async function addProduct(title,price){const u=await client.auth.getUser();if(!u.data.user)return toast("سجل دخول","error");if(!title||!price)return toast("املأ البيانات","error");await client.from("products").insert([{title,price:Number(price),owner_id:u.data.user.id}]);toast("تم ✅");loadSellerStats();loadShop()}
-
-// ========== ADMIN ==========
-function adminTab(t){document.querySelectorAll(".admin-page").forEach(e=>e.classList.remove("active"));document.getElementById(t).classList.add("active");if(t==="dashboard")loadAdminDashboard();if(t==="products")loadAdminProducts();if(t==="orders")loadAdminOrders();if(t==="sellers")loadAdminSellers()}
-async function loadAdminDashboard(){const{data:o}=await client.from("orders").select("*");const total=o?.reduce((a,b)=>a+(b.amount||0),0)||0;document.getElementById("dashboard").innerHTML=`<div class="card">📦 الطلبات: ${o?.length||0}</div><div class="card">💰 الأرباح: ${total}$</div>`}
-async function loadAdminProducts(){const{data}=await client.from("products").select("*");document.getElementById("products").innerHTML=data?.map(x=>`<div class="card"><h4>${x.title}</h4><p>${x.price}$ - ${x.status}</p><button class="btn btn-gold" onclick="approveProduct('${x.id}')">✔ موافقة</button><button class="btn" style="background:#f44336;color:#fff" onclick="deleteProduct('${x.id}')">حذف</button></div>`).join("")||"<p>لا منتجات</p>"}
-async function approveProduct(id){await client.from("products").update({status:"approved"}).eq("id",id);toast("تم ✅");loadAdminProducts();loadShop()}
-async function deleteProduct(id){await client.from("products").delete().eq("id",id);toast("تم ✅");loadAdminProducts();loadShop()}
-async function loadAdminOrders(){const{data}=await client.from("orders").select("*");document.getElementById("orders").innerHTML=data?.map(x=>`<div class="card"><h4>طلب #${x.id}</h4><p>${x.amount}$ - ${x.status}</p><button class="btn btn-gold" onclick="updateOrder('${x.id}','paid')">✔ دفع</button><button class="btn" style="background:#f44336;color:#fff" onclick="updateOrder('${x.id}','cancelled')">❌ إلغاء</button></div>`).join("")||"<p>لا طلبات</p>"}
-async function updateOrder(id,s){await client.from("orders").update({status:s}).eq("id",id);toast("تم ✅");loadAdminOrders()}
-async function loadAdminSellers(){const{data}=await client.from("profiles").select("*").eq("seller_status","pending");document.getElementById("sellers").innerHTML=data?.map(x=>`<div class="card"><p>📧 ${x.contact||x.id}</p><button class="btn btn-gold" onclick="approveSeller('${x.id}')">✔ قبول</button><button class="btn" style="background:#f44336;color:#fff" onclick="rejectSeller('${x.id}')">❌ رفض</button></div>`).join("")||"<p>لا طلبات</p>"}
-async function approveSeller(id){await client.from("profiles").update({role:"seller",seller_status:"approved"}).eq("id",id);toast("تم ✅");loadAdminSellers()}
-async function rejectSeller(id){await client.from("profiles").update({seller_status:"rejected"}).eq("id",id);toast("تم ❌");loadAdminSellers()}
-
-// ========== INIT ==========
-document.addEventListener("DOMContentLoaded",()=>{checkRoles();setTimeout(renderSmartBox,1000);loadShop()});
-</script>
+  <!-- تذييل -->
+  <footer>
+    <p>© 2026 VIP MARKET</p>
+  </footer>
 </body>
-      </html>
+</html>
