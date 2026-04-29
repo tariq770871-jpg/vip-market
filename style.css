@@ -35,3 +35,23 @@ body {
   color: #d4af37; /* ذهبي */
   font-size: 16px;
 }
+.cart-item {
+  background: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+button {
+  background: #d4af37; /* ذهبي */
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #b38e2f;
+  color: #fff;
+}
