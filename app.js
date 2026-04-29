@@ -89,3 +89,21 @@ function checkout() {
   cart = [];
   renderCart();
 }
+document.getElementById('addProductForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('productName').value;
+  const description = document.getElementById('productDescription').value;
+  const price = document.getElementById('productPrice').value;
+
+  const { error } = await supabase.from('products').insert([
+    { name, description, price }
+  ]);
+
+  if (error) {
+    alert("خطأ في إضافة المنتج: " + error.message);
+  } else {
+    alert("تمت إضافة المنتج بنجاح ✅");
+    loadProducts(); // إعادة تحميل المنتجات
+  }
+});
