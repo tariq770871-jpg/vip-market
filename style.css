@@ -55,3 +55,10 @@ button:hover {
   background: #b38e2f;
   color: #fff;
 }
+.order-item {
+  background: #fff3cd;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+}
