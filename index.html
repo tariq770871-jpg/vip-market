@@ -222,8 +222,37 @@ function toggleSidebar(){document.getElementById("sidebar").classList.toggle("op
 function showLogin(){document.getElementById("registerBox").style.display="none";document.getElementById("loginBox").style.display="block"}
 function showRegister(){document.getElementById("loginBox").style.display="none";document.getElementById("registerBox").style.display="block"}
 
-// ========== AUTH ==========
-async function loginUser(){const i=document.getElementById("login_id").value,p=document.getElementById("login_pass").value;if(!document.getElementById("agree_login").checked)return toast("وافق على الشروط","error");const e=i.includes("@")?i:i+"@vip.local";const{error}=await client.auth.signInWithPassword({email:e,password:p});if(error)return toast("بيانات غير صحيحة","error");toast("تم الدخول ✅");setTimeout(()=>location.reload(),1000)}
+// ========== AUTH (تم تعديلها لتسجيل الدخول التلقائي) ==========
+async function loginUser() {
+  const i = document.getElementById("login_id").value;
+  const p = document.getElementById("login_pass").value;
+  if (!document.getElementById("agree_login").checked) return toast("وافق على الشروط", "error");
+  const e = i.includes("@") ? i : i + "@vip.local";
+
+  let { error } = await client.auth.signInWithPassword({ email: e, password: p });
+
+  if (error) {
+    const { error: signUpError } = await client.auth.signUp({
+      email: e,
+      password: p,
+      options: { data: { full_name: i, contact: i } }
+    });
+
+    if (signUpError) return toast("فشل إنشاء الحساب تلقائياً", "error");
+
+    setTimeout(async () => {
+      const { error: retryError } = await client.auth.signInWithPassword({ email: e, password: p });
+      if (retryError) return toast("فشل الدخول بعد التسجيل", "error");
+      toast("تم الدخول ✅");
+      location.reload();
+    }, 1500);
+    return;
+  }
+
+  toast("تم الدخول ✅");
+  setTimeout(() => location.reload(), 1000);
+}
+
 async function registerUser(){const n=document.getElementById("r_name").value,c=document.getElementById("r_contact").value,p=document.getElementById("r_pass").value,p2=document.getElementById("r_pass2").value;if(!n||!c||!p||!p2)return toast("املأ الحقول","error");if(p!==p2)return toast("كلمة المرور غير متطابقة","error");const e=c.includes("@")?c:c+"@vip.local";const{error}=await client.auth.signUp({email:e,password:p,options:{data:{full_name:n,contact:c}}});if(error)return toast("فشل إنشاء الحساب","error");toast("تم ✅");showLogin()}
 
 // ========== SHOP ==========
@@ -252,50 +281,7 @@ async function checkRoles(){const{data}=await client.auth.getUser();if(!data.use
 
 // ========== SELLER ==========
 async function loadSellerStats(){const u=await client.auth.getUser();if(!u.data.user)return;const{data:p}=await client.from("products").select("*").eq("owner_id",u.data.user.id);const{data:o}=await client.from("orders").select("*").in("product_id",p?.map(x=>x.id)||[]);const total=o?.reduce((a,b)=>a+(b.amount||0),0)||0;const completed=o?.filter(x=>x.status==="paid").length||0;document.getElementById("sellerStats").innerHTML=`<p>📦 منتجاتك: ${p?.length||0}</p><p>💰 مبيعاتك: ${total}$</p><p>✅ تم: ${completed}</p>`;document.getElementById("sellerProducts").innerHTML=p?.map(x=>`<div class="section-card"><h3>${x.title}</h3><p>${x.price}$</p></div>`).join("")||""}
- async function addProduct() {
-    const title = prompt("اسم المنتج:");
-    const price = prompt("السعر:");
-    const category = prompt("القسم (apps أو trading أو services):");
-
-    if (!title || !price) return toast("يرجى ملء البيانات", "error");
-
-    // إنشاء اختيار ملف من الموبايل
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-
-    input.onchange = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        toast("جاري رفع الصورة والبيانات...");
-
-        try {
-            // استخدام دالة الرفع التي أضفناها في الخطوة السابقة
-            const imageUrl = await uploadProductImage(file);
-            const u = await client.auth.getUser();
-
-            // إدخال البيانات كاملة لجدول المنتجات
-            const { error } = await client.from("products").insert([{
-                title: title,
-                price: Number(price),
-                image: imageUrl,
-                category: category || 'apps',
-                owner_id: u.data.user.id,
-                status: 'approved'
-            }]);
-
-            if (error) throw error;
-
-            toast("تم إضافة المنتج بنجاح ✅");
-            loadShop(); // تحديث المتجر فوراً
-        } catch (err) {
-            console.error(err);
-            toast("فشل الإضافة: تأكد من تفعيل Storage باسم products", "error");
-        }
-    };
-    input.click();
-}
+async function addProduct(title,price){const u=await client.auth.getUser();if(!u.data.user)return toast("سجل دخول","error");if(!title||!price)return toast("املأ البيانات","error");await client.from("products").insert([{title,price:Number(price),owner_id:u.data.user.id}]);toast("تم ✅");loadSellerStats();loadShop()}
 
 // ========== ADMIN ==========
 function adminTab(t){document.querySelectorAll(".admin-page").forEach(e=>e.classList.remove("active"));document.getElementById(t).classList.add("active");if(t==="dashboard")loadAdminDashboard();if(t==="products")loadAdminProducts();if(t==="orders")loadAdminOrders();if(t==="sellers")loadAdminSellers()}
@@ -311,27 +297,6 @@ async function rejectSeller(id){await client.from("profiles").update({seller_sta
 
 // ========== INIT ==========
 document.addEventListener("DOMContentLoaded",()=>{checkRoles();setTimeout(renderSmartBox,1000);loadShop()});
-  // 1. دالة لرفع الصورة إلى مخزن Supabase والحصول على الرابط
-async function uploadProductImage(file) {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
-    const filePath = `${fileName}`;
-
-    const { error: uploadError } = await client.storage
-        .from('products')
-        .upload(filePath, file);
-
-    if (uploadError) {
-        throw uploadError;
-    }
-
-    const { data } = client.storage
-        .from('products')
-        .getPublicUrl(filePath);
-
-    return data.publicUrl;
-}
-
 </script>
 </body>
-  </html>
+</html>
