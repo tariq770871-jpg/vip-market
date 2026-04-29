@@ -268,6 +268,27 @@ async function rejectSeller(id){await client.from("profiles").update({seller_sta
 
 // ========== INIT ==========
 document.addEventListener("DOMContentLoaded",()=>{checkRoles();setTimeout(renderSmartBox,1000);loadShop()});
+  // 1. دالة لرفع الصورة إلى مخزن Supabase والحصول على الرابط
+async function uploadProductImage(file) {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await client.storage
+        .from('products')
+        .upload(filePath, file);
+
+    if (uploadError) {
+        throw uploadError;
+    }
+
+    const { data } = client.storage
+        .from('products')
+        .getPublicUrl(filePath);
+
+    return data.publicUrl;
+}
+
 </script>
 </body>
   </html>
