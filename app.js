@@ -107,3 +107,49 @@ document.getElementById('addProductForm').addEventListener('submit', async (e) =
     loadProducts(); // إعادة تحميل المنتجات
   }
 });
+async function loadOrders() {
+  const { data, error } = await supabase.from('orders').select(`
+    id, status, created_at,
+    products (name, price)
+  `);
+
+  if (error) {
+    console.error("خطأ في جلب الطلبات:", error);
+    return;
+  }
+
+  const container = document.getElementById('ordersList');
+  container.innerHTML = '';
+
+  data.forEach(order => {
+    const div = document.createElement('div');
+    div.className = "order-item";
+    div.innerHTML = `
+      <p>طلب رقم: ${order.id}</p>
+      <p>المنتج: ${order.products?.name || "غير معروف"} - ${order.products?.price || 0} $</p>
+      <p>الحالة: ${order.status}</p>
+      <button onclick="updateOrderStatus(${order.id}, 'approved')">قبول</button>
+      <button onclick="updateOrderStatus(${order.id}, 'delivered')">تسليم</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+async function updateOrderStatus(orderId, newStatus) {
+  const { error } = await supabase.from('orders')
+    .update({ status: newStatus })
+    .eq('id', orderId);
+
+  if (error) {
+    alert("خطأ في تحديث الحالة: " + error.message);
+  } else {
+    alert("تم تحديث حالة الطلب ✅");
+    loadOrders();
+  }
+}
+
+// تشغيل عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+  loadProducts();
+  loadOrders();
+});
