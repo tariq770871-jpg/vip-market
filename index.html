@@ -252,7 +252,50 @@ async function checkRoles(){const{data}=await client.auth.getUser();if(!data.use
 
 // ========== SELLER ==========
 async function loadSellerStats(){const u=await client.auth.getUser();if(!u.data.user)return;const{data:p}=await client.from("products").select("*").eq("owner_id",u.data.user.id);const{data:o}=await client.from("orders").select("*").in("product_id",p?.map(x=>x.id)||[]);const total=o?.reduce((a,b)=>a+(b.amount||0),0)||0;const completed=o?.filter(x=>x.status==="paid").length||0;document.getElementById("sellerStats").innerHTML=`<p>📦 منتجاتك: ${p?.length||0}</p><p>💰 مبيعاتك: ${total}$</p><p>✅ تم: ${completed}</p>`;document.getElementById("sellerProducts").innerHTML=p?.map(x=>`<div class="section-card"><h3>${x.title}</h3><p>${x.price}$</p></div>`).join("")||""}
-async function addProduct(title,price){const u=await client.auth.getUser();if(!u.data.user)return toast("سجل دخول","error");if(!title||!price)return toast("املأ البيانات","error");await client.from("products").insert([{title,price:Number(price),owner_id:u.data.user.id}]);toast("تم ✅");loadSellerStats();loadShop()}
+ async function addProduct() {
+    const title = prompt("اسم المنتج:");
+    const price = prompt("السعر:");
+    const category = prompt("القسم (apps أو trading أو services):");
+
+    if (!title || !price) return toast("يرجى ملء البيانات", "error");
+
+    // إنشاء اختيار ملف من الموبايل
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+
+    input.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        toast("جاري رفع الصورة والبيانات...");
+
+        try {
+            // استخدام دالة الرفع التي أضفناها في الخطوة السابقة
+            const imageUrl = await uploadProductImage(file);
+            const u = await client.auth.getUser();
+
+            // إدخال البيانات كاملة لجدول المنتجات
+            const { error } = await client.from("products").insert([{
+                title: title,
+                price: Number(price),
+                image: imageUrl,
+                category: category || 'apps',
+                owner_id: u.data.user.id,
+                status: 'approved'
+            }]);
+
+            if (error) throw error;
+
+            toast("تم إضافة المنتج بنجاح ✅");
+            loadShop(); // تحديث المتجر فوراً
+        } catch (err) {
+            console.error(err);
+            toast("فشل الإضافة: تأكد من تفعيل Storage باسم products", "error");
+        }
+    };
+    input.click();
+}
 
 // ========== ADMIN ==========
 function adminTab(t){document.querySelectorAll(".admin-page").forEach(e=>e.classList.remove("active"));document.getElementById(t).classList.add("active");if(t==="dashboard")loadAdminDashboard();if(t==="products")loadAdminProducts();if(t==="orders")loadAdminOrders();if(t==="sellers")loadAdminSellers()}
