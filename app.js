@@ -50,3 +50,42 @@ function addToCart(id, name, price) {
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
+let cart = [];
+
+function addToCart(id, name, price) {
+  cart.push({ id, name, price });
+  renderCart();
+}
+
+function renderCart() {
+  const cartContainer = document.getElementById('cart');
+  cartContainer.innerHTML = '';
+
+  cart.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = "cart-item";
+    div.innerHTML = `
+      ${item.name} - ${item.price} $
+      <button onclick="removeFromCart(${index})">حذف</button>
+    `;
+    cartContainer.appendChild(div);
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  document.getElementById('total').innerText = `الإجمالي: ${total} $`;
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("السلة فارغة!");
+    return;
+  }
+  alert("تم إرسال الطلب بنجاح!");
+  cart = [];
+  renderCart();
+}
