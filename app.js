@@ -171,3 +171,4 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     // هنا يمكننا تحديد الصلاحيات حسب المستخدم
   }
 });
+<button id="checkoutBtn">إتمام الطلب</button>
