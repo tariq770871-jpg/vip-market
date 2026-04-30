@@ -3,186 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منصة عالمية</title>
+<title>منصة احترافية</title>
 
 <style>
-body {margin:0;font-family:Arial;background:#0f172a;color:#fff}
-a{text-decoration:none;color:inherit}
-
-/* NAVBAR */
-.navbar {
-display:flex;justify-content:space-between;
-padding:15px 20px;background:#020617;
-position:fixed;width:100%;top:0;z-index:1000
+:root{
+--main:#22c55e;
+--bg:#0f172a;
+--card:#020617;
 }
-.menu-btn{cursor:pointer;font-size:22px}
+
+*{box-sizing:border-box}
+body{
+margin:0;font-family:system-ui;
+background:var(--bg);color:#fff;
+}
+
+/* NAV */
+.nav{
+display:flex;justify-content:space-between;
+padding:15px;background:#020617;
+position:fixed;width:100%;top:0;z-index:10
+}
+.menu{font-size:24px;cursor:pointer}
 
 /* SIDEBAR */
-.sidebar {
-position:fixed;top:0;right:-300px;
-width:300px;height:100%;
+.sidebar{
+position:fixed;top:0;right:-100%;
+width:80%;height:100%;
 background:#020617;padding:20px;
-transition:.3s;z-index:2000
+transition:.3s;z-index:20
 }
 .sidebar.active{right:0}
-.sidebar a{display:block;padding:12px 0;border-bottom:1px solid #333}
+.sidebar a{
+display:block;padding:14px 0;
+border-bottom:1px solid #333;
+font-size:18px
+}
 
 /* HERO */
-.hero {
-height:100vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
-text-align:center;padding:20px
+.hero{
+padding:100px 20px 40px;
+text-align:center
 }
-.hero h1{font-size:40px}
+.hero h1{font-size:28px}
 .btn{
-background:#22c55e;padding:12px 25px;
-border-radius:8px;margin-top:15px;
-display:inline-block
+display:block;width:100%;
+margin-top:15px;
+padding:14px;
+background:var(--main);
+border-radius:10px;
+text-align:center;
+font-weight:bold
 }
 
-/* SECTIONS */
-.section{padding:80px 20px;text-align:center}
-.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:15px;padding:20px
+}
 .card{
-background:#020617;padding:20px;border-radius:10px;
-width:250px
+background:var(--card);
+padding:20px;border-radius:12px;
+text-align:center
 }
 
-/* FOOTER */
-footer{background:#020617;padding:20px;text-align:center}
-
-/* AI BUTTON */
-.ai-btn{
-position:fixed;bottom:20px;left:20px;
-background:#22c55e;width:60px;height:60px;
-border-radius:50%;display:flex;
-justify-content:center;align-items:center;
-cursor:pointer;font-size:22px;
-box-shadow:0 0 15px #22c55e
+/* DESKTOP */
+@media(min-width:768px){
+.grid{grid-template-columns:repeat(3,1fr)}
+.hero h1{font-size:40px}
+.sidebar{width:300px}
 }
 
 /* MODAL */
 .modal{
+display:none;
 position:fixed;top:0;left:0;
 width:100%;height:100%;
 background:rgba(0,0,0,.7);
-display:none;justify-content:center;
-align-items:center
+justify-content:center;align-items:center
 }
-.modal-content{
-background:#020617;padding:20px;
-border-radius:10px;width:300px
+.box{
+background:#020617;
+padding:20px;border-radius:10px;
+width:90%;max-width:350px
 }
 input{
-width:100%;padding:10px;margin:10px 0;
-border:none;border-radius:6px
+width:100%;padding:12px;
+margin:8px 0;border:none;border-radius:8px
+}
+
+/* AI */
+.ai{
+position:fixed;bottom:15px;left:15px;
+width:55px;height:55px;
+background:var(--main);
+border-radius:50%;
+display:flex;justify-content:center;align-items:center;
+font-size:22px;cursor:pointer
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+<div class="nav">
+<div class="menu" onclick="toggle()">☰</div>
 <div>منصتي</div>
 </div>
 
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-<a href="#" onclick="openModal('login')">تسجيل الدخول</a>
-<a href="#" onclick="openModal('signup')">إنشاء حساب</a>
-<a href="#">الدخول كزائر</a>
+<div class="sidebar" id="side">
+<a onclick="openModal('login')">تسجيل الدخول</a>
+<a onclick="openModal('signup')">إنشاء حساب</a>
+<a>الدخول كزائر</a>
 <a href="#services">الخدمات</a>
 <a href="#about">من نحن</a>
-<a href="#contact">تواصل معنا</a>
-<a href="#privacy">سياسة الخصوصية</a>
+<a href="#contact">تواصل</a>
+<a href="#privacy">الخصوصية</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
-<h1>منصة رقمية احترافية</h1>
-<p>ابدأ الآن وطور مشروعك بسهولة</p>
-<a href="#" class="btn">ابدأ الآن</a>
+<h1>ابدأ مشروعك الرقمي بسهولة</h1>
+<p>واجهة سريعة ومتجاوبة على كل الأجهزة</p>
+<div class="btn">ابدأ الآن</div>
 </section>
 
-<!-- SERVICES -->
-<section class="section" id="services">
-<h2>الخدمات</h2>
-<div class="cards">
-<div class="card">تسويق رقمي</div>
-<div class="card">تحليل بيانات</div>
+<section id="services" class="grid">
+<div class="card">تسويق</div>
+<div class="card">تحليل</div>
 <div class="card">ذكاء اصطناعي</div>
-</div>
 </section>
 
-<!-- ABOUT -->
-<section class="section" id="about">
-<h2>من نحن</h2>
-<p>نحن منصة تهدف إلى تمكين المستخدمين من النجاح الرقمي.</p>
+<section id="about" class="grid">
+<div class="card">نحن نساعدك تنجح رقمياً</div>
 </section>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
-<h2>تواصل معنا</h2>
+<section id="contact" class="grid">
+<div class="card">
 <input placeholder="اسمك">
 <input placeholder="بريدك">
 <input placeholder="رسالتك">
-<button class="btn">إرسال</button>
-</section>
-
-<!-- PRIVACY -->
-<section class="section" id="privacy">
-<h2>سياسة الخصوصية</h2>
-<p>نحافظ على بياناتك ولا نشاركها مع أي طرف.</p>
-</section>
-
-<!-- FOOTER -->
-<footer>
-<p>© 2026 جميع الحقوق محفوظة</p>
-</footer>
-
-<!-- AI BUTTON -->
-<div class="ai-btn" onclick="alert('أداة الذكاء الاصطناعي قريباً')">
-🤖
+<div class="btn">إرسال</div>
 </div>
+</section>
 
-<!-- LOGIN/SIGNUP MODAL -->
+<section id="privacy" class="grid">
+<div class="card">نحمي بياناتك بالكامل</div>
+</section>
+
+<div class="ai">🤖</div>
+
 <div class="modal" id="modal">
-<div class="modal-content" id="modalContent"></div>
+<div class="box" id="content"></div>
 </div>
 
 <script>
-function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("active")
+function toggle(){
+document.getElementById("side").classList.toggle("active")
 }
 
 function openModal(type){
-let content = ''
+let c=''
 if(type==='login'){
-content = `
-<h3>تسجيل الدخول</h3>
+c=`<h3>دخول</h3>
 <input placeholder="البريد">
 <input type="password" placeholder="كلمة المرور">
-<button class="btn">دخول</button>
-`
+<div class="btn">دخول</div>`
 }else{
-content = `
-<h3>إنشاء حساب</h3>
+c=`<h3>تسجيل</h3>
 <input placeholder="الاسم">
 <input placeholder="البريد">
 <input type="password" placeholder="كلمة المرور">
-<button class="btn">اشتراك</button>
-`
+<div class="btn">اشتراك</div>`
 }
-document.getElementById("modalContent").innerHTML = content
+document.getElementById("content").innerHTML=c
 document.getElementById("modal").style.display="flex"
 }
 
-document.getElementById("modal").onclick = function(e){
-if(e.target.id==="modal"){
-this.style.display="none"
+document.getElementById("modal").onclick=(e)=>{
+if(e.target.id==='modal'){
+e.target.style.display='none'
 }
 }
 </script>
