@@ -1,164 +1,191 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>VIP Market</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة عالمية</title>
+
+<style>
+body {margin:0;font-family:Arial;background:#0f172a;color:#fff}
+a{text-decoration:none;color:inherit}
+
+/* NAVBAR */
+.navbar {
+display:flex;justify-content:space-between;
+padding:15px 20px;background:#020617;
+position:fixed;width:100%;top:0;z-index:1000
+}
+.menu-btn{cursor:pointer;font-size:22px}
+
+/* SIDEBAR */
+.sidebar {
+position:fixed;top:0;right:-300px;
+width:300px;height:100%;
+background:#020617;padding:20px;
+transition:.3s;z-index:2000
+}
+.sidebar.active{right:0}
+.sidebar a{display:block;padding:12px 0;border-bottom:1px solid #333}
+
+/* HERO */
+.hero {
+height:100vh;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;padding:20px
+}
+.hero h1{font-size:40px}
+.btn{
+background:#22c55e;padding:12px 25px;
+border-radius:8px;margin-top:15px;
+display:inline-block
+}
+
+/* SECTIONS */
+.section{padding:80px 20px;text-align:center}
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.card{
+background:#020617;padding:20px;border-radius:10px;
+width:250px
+}
+
+/* FOOTER */
+footer{background:#020617;padding:20px;text-align:center}
+
+/* AI BUTTON */
+.ai-btn{
+position:fixed;bottom:20px;left:20px;
+background:#22c55e;width:60px;height:60px;
+border-radius:50%;display:flex;
+justify-content:center;align-items:center;
+cursor:pointer;font-size:22px;
+box-shadow:0 0 15px #22c55e
+}
+
+/* MODAL */
+.modal{
+position:fixed;top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.7);
+display:none;justify-content:center;
+align-items:center
+}
+.modal-content{
+background:#020617;padding:20px;
+border-radius:10px;width:300px
+}
+input{
+width:100%;padding:10px;margin:10px 0;
+border:none;border-radius:6px
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <nav>
-    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
-    <ul>
-      <li><a href="#home">الرئيسية</a></li>
-      <li><a href="#store">المتجر</a></li>
-      <li><a href="#earn">الربح</a></li>
-      <li><a href="#trade">التداول</a></li>
-      <li><a href="#apps">التطبيقات</a></li>
-      <li><a href="#ai">الذكاء الاصطناعي</a></li>
-      <li><a href="#contact">تواصل</a></li>
-      <li><a href="#login">تسجيل الدخول</a></li>
-    </ul>
-  </nav>
-</header>
+<!-- NAVBAR -->
+<div class="navbar">
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+<div>منصتي</div>
+</div>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-  <ul>
-    <li><a href="#home">الرئيسية</a></li>
-    <li><a href="#store">المتجر</a></li>
-    <li><a href="#earn">الربح</a></li>
-    <li><a href="#trade">التداول</a></li>
-    <li><a href="#apps">التطبيقات</a></li>
-    <li><a href="#ai">الذكاء الاصطناعي</a></li>
-    <li><a href="#contact">تواصل</a></li>
-  </ul>
+<a href="#" onclick="openModal('login')">تسجيل الدخول</a>
+<a href="#" onclick="openModal('signup')">إنشاء حساب</a>
+<a href="#">الدخول كزائر</a>
+<a href="#services">الخدمات</a>
+<a href="#about">من نحن</a>
+<a href="#contact">تواصل معنا</a>
+<a href="#privacy">سياسة الخصوصية</a>
 </div>
 
-<section id="home">
-  <h1>مرحبًا بك في VIP Market</h1>
-  <p>أفضل منصة للتسوق والربح من الإنترنت</p>
-</section>
-
-<section id="store" class="products-grid">
-  <div class="product-card">
-    <h3>منتج VIP</h3>
-    <p>وصف المنتج</p>
-    <strong>50$</strong>
-    <a href="https://wa.me/967XXXXXXXXX" class="btn btn-gold">اطلب</a>
-  </div>
-</section>
-
-<section id="earn">
-  <h2>الربح من الإنترنت</h2>
-</section>
-
-<section id="trade">
-  <h2>التداول</h2>
-</section>
-
-<section id="apps">
-  <h2>التطبيقات</h2>
-</section>
-
-<section id="ai">
-  <h2>الذكاء الاصطناعي</h2>
-</section>
-
-<section id="contact">
-  <h2>تواصل معنا</h2>
-</section>
-
-<section id="login" class="auth-container">
-  <h2>تسجيل الدخول</h2>
-  <input type="email" placeholder="البريد">
-  <input type="password" placeholder="كلمة المرور">
-  <button class="btn btn-gold">دخول</button>
-</section>
-
-<script src="app.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>VIP Market</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header class="topbar">
-  <div class="logo">VIP MARKET</div>
-  <div class="menu" onclick="toggleSidebar()">☰</div>
-</header>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <a href="#home">الرئيسية</a>
-  <a href="#store">المتجر</a>
-  <a href="#earn">الربح</a>
-  <a href="#trade">التداول</a>
-  <a href="#apps">التطبيقات</a>
-  <a href="#ai">الذكاء الاصطناعي</a>
-  <a href="#contact">التواصل</a>
-</aside>
-
 <!-- HERO -->
-<section id="home" class="hero">
-  <h1>منصة VIP للربح والتسويق الذكي</h1>
-  <p>كل أدواتك في مكان واحد</p>
-  <button class="cta">ابدأ الآن</button>
+<section class="hero">
+<h1>منصة رقمية احترافية</h1>
+<p>ابدأ الآن وطور مشروعك بسهولة</p>
+<a href="#" class="btn">ابدأ الآن</a>
 </section>
 
-<!-- DASHBOARD CARDS -->
-<section class="grid">
-
-  <a href="#store" class="card">🛍 المتجر</a>
-  <a href="#earn" class="card">💼 الربح من الإنترنت</a>
-  <a href="#trade" class="card">📈 التداول</a>
-  <a href="#apps" class="card">📱 التطبيقات</a>
-  <a href="#ai" class="card">🤖 الذكاء الاصطناعي</a>
-
+<!-- SERVICES -->
+<section class="section" id="services">
+<h2>الخدمات</h2>
+<div class="cards">
+<div class="card">تسويق رقمي</div>
+<div class="card">تحليل بيانات</div>
+<div class="card">ذكاء اصطناعي</div>
+</div>
 </section>
 
-<!-- SECTIONS -->
-
-<section id="store" class="section">
-  <h2>المتجر</h2>
-  <p>اطلب عبر واتساب مباشرة</p>
-</section>
-
-<section id="earn" class="section">
-  <h2>الربح من الإنترنت</h2>
-  <p>طرق احترافية لبناء دخل</p>
-</section>
-
-<section id="trade" class="section">
-  <h2>التداول</h2>
-  <p>تعلم الأسواق المالية</p>
-</section>
-
-<section id="apps" class="section">
-  <h2>التطبيقات</h2>
-  <p>أدوات تسويقية حديثة</p>
-</section>
-
-<section id="ai" class="section">
-  <h2>الذكاء الاصطناعي</h2>
-  <p>حلول ذكية للأعمال</p>
+<!-- ABOUT -->
+<section class="section" id="about">
+<h2>من نحن</h2>
+<p>نحن منصة تهدف إلى تمكين المستخدمين من النجاح الرقمي.</p>
 </section>
 
 <!-- CONTACT -->
-<footer id="contact" class="footer">
-  <p>تواصل معنا:</p>
-  <p>واتساب | تليجرام | فيسبوك</p>
+<section class="section" id="contact">
+<h2>تواصل معنا</h2>
+<input placeholder="اسمك">
+<input placeholder="بريدك">
+<input placeholder="رسالتك">
+<button class="btn">إرسال</button>
+</section>
+
+<!-- PRIVACY -->
+<section class="section" id="privacy">
+<h2>سياسة الخصوصية</h2>
+<p>نحافظ على بياناتك ولا نشاركها مع أي طرف.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 جميع الحقوق محفوظة</p>
 </footer>
 
-<script src="app.js"></script>
+<!-- AI BUTTON -->
+<div class="ai-btn" onclick="alert('أداة الذكاء الاصطناعي قريباً')">
+🤖
+</div>
+
+<!-- LOGIN/SIGNUP MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content" id="modalContent"></div>
+</div>
+
+<script>
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("active")
+}
+
+function openModal(type){
+let content = ''
+if(type==='login'){
+content = `
+<h3>تسجيل الدخول</h3>
+<input placeholder="البريد">
+<input type="password" placeholder="كلمة المرور">
+<button class="btn">دخول</button>
+`
+}else{
+content = `
+<h3>إنشاء حساب</h3>
+<input placeholder="الاسم">
+<input placeholder="البريد">
+<input type="password" placeholder="كلمة المرور">
+<button class="btn">اشتراك</button>
+`
+}
+document.getElementById("modalContent").innerHTML = content
+document.getElementById("modal").style.display="flex"
+}
+
+document.getElementById("modal").onclick = function(e){
+if(e.target.id==="modal"){
+this.style.display="none"
+}
+}
+</script>
+
 </body>
 </html>
