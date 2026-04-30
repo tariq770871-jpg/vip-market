@@ -2,83 +2,145 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>المتجر</title>
+  <title>VIP Market</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="store.html">المتجر</a></li>
-        <li><a href="earn.html">الربح من الإنترنت</a></li>
-        <li><a href="trade.html">التداول</a></li>
-        <li><a href="apps.html">التطبيقات</a></li>
-        <li><a href="ai.html">الذكاء الاصطناعي</a></li>
-        <li><a href="contact.html">التواصل</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <!-- قسم المنتجات -->
-    <section>
-      <h2>المنتجات</h2>
-      <div id="products" class="products-grid"></div>
-    </section>
+<!-- NAVBAR -->
+<header>
+  <nav>
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+    <ul>
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#store">المتجر</a></li>
+      <li><a href="#earn">الربح</a></li>
+      <li><a href="#trade">التداول</a></li>
+      <li><a href="#apps">التطبيقات</a></li>
+      <li><a href="#ai">الذكاء</a></li>
+      <li><a href="#contact">تواصل</a></li>
+      <li><a href="#login">دخول</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- قسم السلة -->
-    <section>
-      <h2>سلة المشتريات</h2>
-      <div id="cart"></div>
-      <p id="total">الإجمالي: 0 $</p>
-      <button id="checkoutBtn">إتمام الطلب</button>
-    </section>
-  </main>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="#home">🏠 الرئيسية</a></li>
+    <li><a href="#store">🛍 المتجر</a></li>
+    <li><a href="#earn">💼 الربح</a></li>
+    <li><a href="#trade">📈 التداول</a></li>
+    <li><a href="#apps">📱 التطبيقات</a></li>
+    <li><a href="#ai">🤖 الذكاء</a></li>
+    <li><a href="#contact">📞 تواصل</a></li>
+    <li><a href="#login">🔑 دخول</a></li>
+  </ul>
+</div>
 
-  <!-- لوحة التحكم -->
-  <section id="admin">
-    <h2>لوحة التحكم</h2>
-    <form id="addProductForm">
-      <input type="text" id="productName" placeholder="اسم المنتج" required>
-      <input type="text" id="productDescription" placeholder="الوصف">
-      <input type="number" id="productPrice" placeholder="السعر" required>
-      <button type="submit">إضافة المنتج</button>
-    </form>
-  </section>
+<!-- HERO -->
+<section id="home" class="hero section">
+  <h1>VIP MARKET</h1>
+  <p>منصة احترافية للتجارة، التعلم، والربح الرقمي</p>
+  <a href="#store" class="btn btn-gold">ابدأ الآن</a>
+</section>
 
-  <!-- تسجيل الدخول مثل فيسبوك -->
-  <section id="auth" class="auth-container">
-    <h2>تسجيل الدخول</h2>
-    <form id="loginForm" class="login-form">
-      <input type="email" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
-      
-      <div class="password-wrapper">
-        <input type="password" id="password" placeholder="كلمة المرور" required>
-        <span id="togglePassword" class="eye">👁️</span>
-      </div>
-      
-      <button type="submit" class="login-btn">تسجيل الدخول</button>
-      <p><a href="#" id="forgotPassword">هل نسيت كلمة السر؟</a></p>
-      <hr>
-      <button type="button" id="createAccount" class="create-btn">إنشاء حساب جديد</button>
-    </form>
-  </section>
+<!-- STORE -->
+<section id="store" class="section">
+  <h2>🛍 المتجر</h2>
 
-  <!-- تتبع الطلبات -->
-  <section id="trackOrder">
-    <h2>تتبع الطلب</h2>
-    <form id="trackOrderForm">
-      <input type="text" id="orderId" placeholder="رقم الطلب" required>
-      <button type="submit">تتبع</button>
-    </form>
-    <div id="orderStatus"></div>
-  </section>
+  <div class="products-grid">
 
-  <footer>
-    <p>© 2026 جميع الحقوق محفوظة</p>
-  </footer>
+    <div class="product-card">
+      <h3>منتج VIP</h3>
+      <p>وصف احترافي عالي الجودة</p>
+      <strong>50 $</strong>
+      <a href="https://wa.me/967XXXXXXXXX?text=طلب منتج VIP" class="btn btn-gold">طلب واتساب</a>
+    </div>
 
-  <script src="app.js"></script>
+    <div class="product-card">
+      <h3>منتج احترافي</h3>
+      <p>تفاصيل مختصرة قوية</p>
+      <strong>30 $</strong>
+      <a href="https://wa.me/967XXXXXXXXX?text=طلب منتج" class="btn btn-gold">طلب واتساب</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EARN -->
+<section id="earn" class="section">
+  <h2>💼 الربح من الإنترنت</h2>
+
+  <div class="cards">
+    <div class="card">التسويق بالعمولة</div>
+    <div class="card">إنشاء محتوى</div>
+    <div class="card">العمل الحر</div>
+    <div class="card">التجارة الإلكترونية</div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section id="trade" class="section">
+  <h2>📈 التداول</h2>
+  <p>تعلم التداول وإدارة المخاطر باحتراف</p>
+  <a class="btn btn-success" href="https://binance.com" target="_blank">بينانس</a>
+</section>
+
+<!-- APPS -->
+<section id="apps" class="section">
+  <h2>📱 التطبيقات</h2>
+
+  <div class="cards">
+    <div class="card">إدارة الطلبات</div>
+    <div class="card">CRM العملاء</div>
+    <div class="card">ذكاء اصطناعي</div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai" class="section">
+  <h2>🤖 الذكاء الاصطناعي</h2>
+
+  <div class="cards">
+    <div class="card">تحليل بيانات</div>
+    <div class="card">توليد محتوى</div>
+    <div class="card">أتمتة أعمال</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>📞 تواصل معنا</h2>
+
+  <div class="cards">
+    <div class="card">واتساب</div>
+    <div class="card">تليجرام</div>
+    <div class="card">بريد إلكتروني</div>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section id="login" class="auth-container">
+  <h2>تسجيل الدخول</h2>
+
+  <form>
+    <input type="email" placeholder="البريد الإلكتروني">
+
+    <div class="password-wrapper">
+      <input type="password" placeholder="كلمة المرور">
+      <span class="eye">👁</span>
+    </div>
+
+    <button type="button" class="btn btn-gold">دخول</button>
+    <button type="button" class="btn btn-success">إنشاء حساب</button>
+  </form>
+</section>
+
+<script src="app.js"></script>
 </body>
-</html>
+  </html>
