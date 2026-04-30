@@ -191,3 +191,20 @@ const observer = new IntersectionObserver((entries) => {
 cards.forEach(card => {
   observer.observe(card);
 });
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+
+      // إيقاف المراقبة لتحسين الأداء (مثل مواقع الشركات)
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+// تشغيل
+cards.forEach(card => observer.observe(card));
