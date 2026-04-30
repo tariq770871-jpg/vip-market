@@ -221,3 +221,12 @@ input{
   .hero h1{font-size:36px;}
   .auth-container{width:90%;}
 }
+html {
+  scroll-behavior: smooth;
+}
+
+.active-section {
+  transform: scale(1.01);
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(212,175,55,0.3);
+}
