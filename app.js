@@ -1,185 +1,103 @@
-/* ===== Intersection Observer (Optimized) ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+/* =========================
+   GLOBAL SECTION HANDLER
+   ========================= */
 
-      // تحسين الأداء: إيقاف المراقبة بعد الظهور
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.15
-});
-
-/* مراقبة العناصر */
-function initReveal() {
-  const elements = document.querySelectorAll(".card, .product-card");
-
-  elements.forEach(el => observer.observe(el));
-}
-
-/* ===== Sidebar Toggle (Safer) ===== */
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  if (!sidebar) return;
-
-  sidebar.classList.toggle("active");
-}
-
-/* ===== Password Toggle (Flexible + Multi-safe) ===== */
 document.addEventListener("DOMContentLoaded", () => {
 
-  initReveal();
+  // ===== Smooth Scroll لكل الروابط =====
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
 
-  document.querySelectorAll(".password-wrapper").forEach(wrapper => {
-    const input = wrapper.querySelector("input");
-    const eye = wrapper.querySelector(".eye");
+      const targetId = link.getAttribute("href");
+      const target = document.querySelector(targetId);
 
-    if (!input || !eye) return;
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
 
-    eye.addEventListener("click", () => {
-      const isHidden = input.type === "password";
-
-      input.type = isHidden ? "text" : "password";
-      eye.textContent = isHidden ? "🙈" : "👁";
+      // إغلاق السايدبار لو مفتوح
+      const sidebar = document.getElementById("sidebar");
+      if (sidebar) sidebar.classList.remove("active");
     });
   });
 
-});
-/* ===== Intersection Observer (Optimized) ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      // تحسين الأداء: إيقاف المراقبة بعد الظهور
-      observer.unobserve(entry.target);
-    }
+
+  // ===== تفعيل أزرار الأقسام (تحويلها لتفاعل) =====
+  const sections = ["home", "store", "earn", "trade", "apps", "ai", "contact", "login"];
+
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    section.addEventListener("click", () => {
+      section.classList.add("active-section");
+
+      setTimeout(() => {
+        section.classList.remove("active-section");
+      }, 500);
+    });
   });
-}, { threshold: 0.15 });
 
-/* مراقبة العناصر */
-function initReveal() {
-  const elements = document.querySelectorAll(".card, .product-card");
-  elements.forEach(el => observer.observe(el));
-}
 
-/* ===== Sidebar Toggle ===== */
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  if (!sidebar) return;
-  sidebar.classList.toggle("active");
-}
-
-/* ===== تفعيل الأزرار ===== */
-document.addEventListener("DOMContentLoaded", () => {
-  // تشغيل الأنيميشن للكروت
-  initReveal();
-
-  // تفعيل أزرار تسجيل الدخول وإنشاء حساب
-  const loginBtn = document.querySelector("#login .btn-gold");
-  const signupBtn = document.querySelector("#login .btn-success");
-
-  if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      alert("مرحبًا عزيزنا العميل، تم تسجيل الدخول (تجريبي)");
-    });
-  }
-
-  if (signupBtn) {
-    signupBtn.addEventListener("click", () => {
-      alert("مرحبًا عزيزنا العميل، تم إنشاء حساب جديد (تجريبي)");
-    });
-  }
-
-  // تفعيل أزرار واتساب في المتجر
+  // ===== متجر: أزرار الطلب =====
   document.querySelectorAll("#store .btn-gold").forEach(btn => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault(); // منع السلوك الافتراضي
       const link = btn.getAttribute("href");
-      window.open(link, "_blank"); // فتح واتساب في نافذة جديدة
-    });
-  });
 
-  // تفعيل زر كلمة المرور (إظهار/إخفاء)
-  document.querySelectorAll(".password-wrapper").forEach(wrapper => {
-    const input = wrapper.querySelector("input");
-    const eye = wrapper.querySelector(".eye");
-    if (!input || !eye) return;
-
-    eye.addEventListener("click", () => {
-      const isHidden = input.type === "password";
-      input.type = isHidden ? "text" : "password";
-      eye.textContent = isHidden ? "🙈" : "👁";
-    });
-  });
-});
-/* ===== Intersection Observer (Optimized) ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      // تحسين الأداء: إيقاف المراقبة بعد الظهور
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-/* مراقبة العناصر */
-function initReveal() {
-  const elements = document.querySelectorAll(".card, .product-card");
-  elements.forEach(el => observer.observe(el));
-}
-
-/* ===== Sidebar Toggle ===== */
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  if (!sidebar) return;
-  sidebar.classList.toggle("active");
-}
-
-/* ===== تفعيل الأزرار ===== */
-document.addEventListener("DOMContentLoaded", () => {
-  // تشغيل الأنيميشن للكروت
-  initReveal();
-
-  // تفعيل أزرار تسجيل الدخول وإنشاء حساب
-  const loginBtn = document.querySelector("#login .btn-gold");
-  const signupBtn = document.querySelector("#login .btn-success");
-
-  if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      alert("مرحبًا عزيزنا العميل، تم تسجيل الدخول (تجريبي)");
-    });
-  }
-
-  if (signupBtn) {
-    signupBtn.addEventListener("click", () => {
-      alert("مرحبًا عزيزنا العميل، تم إنشاء حساب جديد (تجريبي)");
-    });
-  }
-
-  // تفعيل أزرار واتساب في المتجر
-  document.querySelectorAll("#store .btn-gold").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault(); // منع السلوك الافتراضي
-      const link = btn.getAttribute("href");
-      if (link) {
-        window.open(link, "_blank"); // فتح واتساب في نافذة جديدة
+      if (link && link.includes("wa.me")) {
+        window.open(link, "_blank");
       }
     });
   });
 
-  // تفعيل زر كلمة المرور (إظهار/إخفاء)
-  document.querySelectorAll(".password-wrapper").forEach(wrapper => {
-    const input = wrapper.querySelector("input");
-    const eye = wrapper.querySelector(".eye");
-    if (!input || !eye) return;
 
-    eye.addEventListener("click", () => {
-      const isHidden = input.type === "password";
-      input.type = isHidden ? "text" : "password";
-      eye.textContent = isHidden ? "🙈" : "👁";
+  // ===== التداول =====
+  const tradeBtn = document.querySelector("#trade .btn-success");
+  if (tradeBtn) {
+    tradeBtn.addEventListener("click", () => {
+      window.open("https://www.binance.com", "_blank");
     });
-  });
+  }
+
+
+  // ===== التطبيقات =====
+  const appsSection = document.getElementById("apps");
+  if (appsSection) {
+    appsSection.innerHTML += `
+      <div class="app-actions">
+        <button class="btn btn-gold" onclick="alert('سيتم إطلاق أدوات قريباً')">
+          فتح أدوات الإدارة
+        </button>
+      </div>
+    `;
+  }
+
+
+  // ===== الذكاء الاصطناعي =====
+  const aiSection = document.getElementById("ai");
+  if (aiSection) {
+    aiSection.innerHTML += `
+      <div class="ai-actions">
+        <button class="btn btn-success" onclick="alert('جاري تشغيل نموذج AI...')">
+          تشغيل الذكاء الاصطناعي
+        </button>
+      </div>
+    `;
+  }
+
+
+  // ===== تواصل =====
+  const contactSection = document.getElementById("contact");
+  if (contactSection) {
+    contactSection.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        a.style.color = "#d4af37";
+      });
+    });
+  }
+
 });
