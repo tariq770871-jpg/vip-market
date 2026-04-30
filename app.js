@@ -1,27 +1,6 @@
-async function loadProducts() {
-  const { data, error } = await supabase.from('products').select('*');
-  if (error) {
-    console.error("خطأ في جلب البيانات:", error);
-    return;
-  }
+let cart = [];
 
-  const container = document.getElementById('products');
-  container.innerHTML = '';
-
-  data.forEach(product => {
-    const item = document.createElement('div');
-    item.className = "product-card";
-    item.innerHTML = `
-      <h3>${product.name}</h3>
-      <p>${product.description}</p>
-      <strong>${product.price} $</strong>
-    `;
-    container.appendChild(item);
-  });
-}
-
-// تشغيل عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", loadProducts);
+// تحميل المنتجات
 async function loadProducts() {
   const { data, error } = await supabase.from('products').select('*');
   if (error) {
@@ -45,25 +24,19 @@ async function loadProducts() {
   });
 }
 
-function addToCart(id, name, price) {
-  alert(`تمت إضافة ${name} بسعر ${price}$ إلى السلة`);
-}
-
-document.addEventListener("DOMContentLoaded", loadProducts);
-let cart = [];
-
+// إضافة للسلة
 function addToCart(id, name, price) {
   cart.push({ id, name, price });
   renderCart();
 }
 
+// عرض السلة
 function renderCart() {
   const cartContainer = document.getElementById('cart');
   cartContainer.innerHTML = '';
 
   cart.forEach((item, index) => {
     const div = document.createElement('div');
-    div.className = "cart-item";
     div.innerHTML = `
       ${item.name} - ${item.price} $
       <button onclick="removeFromCart(${index})">حذف</button>
@@ -75,99 +48,55 @@ function renderCart() {
   document.getElementById('total').innerText = `الإجمالي: ${total} $`;
 }
 
+// حذف من السلة
 function removeFromCart(index) {
   cart.splice(index, 1);
   renderCart();
 }
 
-function checkout() {
+// إتمام الطلب
+async function checkout() {
   if (cart.length === 0) {
     alert("السلة فارغة!");
     return;
   }
-  alert("تم إرسال الطلب بنجاح!");
+
+  const userEmail = document.getElementById("email").value;
+  const userPhone = prompt("أدخل رقم هاتفك للتأكيد عبر واتساب:");
+
+  for (const item of cart) {
+    await fetch("https://<project>.supabase.co/functions/v1/dynamic-checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userEmail,
+        userPhone,
+        productId: item.id
+      })
+    });
+  }
+
+  alert("تم إرسال الطلبات بنجاح ✅ سيتم التواصل معك عبر واتساب لإتمام الدفع.");
   cart = [];
   renderCart();
 }
-document.getElementById('addProductForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
 
-  const name = document.getElementById('productName').value;
-  const description = document.getElementById('productDescription').value;
-  const price = document.getElementById('productPrice').value;
-
-  const { error } = await supabase.from('products').insert([
-    { name, description, price }
-  ]);
-
-  if (error) {
-    alert("خطأ في إضافة المنتج: " + error.message);
-  } else {
-    alert("تمت إضافة المنتج بنجاح ✅");
-    loadProducts(); // إعادة تحميل المنتجات
-  }
+// زر العين لرؤية كلمة السر
+document.getElementById("togglePassword").addEventListener("click", () => {
+  const passwordInput = document.getElementById("password");
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
 });
-async function loadOrders() {
-  const { data, error } = await supabase.from('orders').select(`
-    id, status, created_at,
-    products (name, price)
-  `);
 
-  if (error) {
-    console.error("خطأ في جلب الطلبات:", error);
+// زر نسيت كلمة السر
+document.getElementById("forgotPassword").addEventListener("click", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  if (!email) {
+    alert("أدخل بريدك الإلكتروني أولاً!");
     return;
   }
 
-  const container = document.getElementById('ordersList');
-  container.innerHTML = '';
-
-  data.forEach(order => {
-    const div = document.createElement('div');
-    div.className = "order-item";
-    div.innerHTML = `
-      <p>طلب رقم: ${order.id}</p>
-      <p>المنتج: ${order.products?.name || "غير معروف"} - ${order.products?.price || 0} $</p>
-      <p>الحالة: ${order.status}</p>
-      <button onclick="updateOrderStatus(${order.id}, 'approved')">قبول</button>
-      <button onclick="updateOrderStatus(${order.id}, 'delivered')">تسليم</button>
-    `;
-    container.appendChild(div);
-  });
-}
-
-async function updateOrderStatus(orderId, newStatus) {
-  const { error } = await supabase.from('orders')
-    .update({ status: newStatus })
-    .eq('id', orderId);
-
+  const { error } = await supabase.auth.resetPasswordForEmail(email);
   if (error) {
-    alert("خطأ في تحديث الحالة: " + error.message);
-  } else {
-    alert("تم تحديث حالة الطلب ✅");
-    loadOrders();
-  }
-}
-
-// تشغيل عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", () => {
-  loadProducts();
-  loadOrders();
-});
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if (error) {
-    alert("خطأ في تسجيل الدخول: " + error.message);
-  } else {
-    alert("تم تسجيل الدخول بنجاح ✅");
-    // هنا يمكننا تحديد الصلاحيات حسب المستخدم
-  }
-});
+    alert("خطأ في إرسال رابط إعادة
