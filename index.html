@@ -1,44 +1,84 @@
-<main>
-  <section>
-    <h2>المنتجات</h2>
-    <div id="products"></div>
-  </section>
-</main>
-<main>
-  <section>
-    <h2>المنتجات</h2>
-    <div id="products" class="products-grid"></div>
-  </section>
-</main>
-<link rel="stylesheet" href="style.css">
-<script src="app.js"></script>
-<main>
-  <section>
-    <h2>المنتجات</h2>
-    <div id="products" class="products-grid"></div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>المتجر</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="store.html">المتجر</a></li>
+        <li><a href="earn.html">الربح من الإنترنت</a></li>
+        <li><a href="trade.html">التداول</a></li>
+        <li><a href="apps.html">التطبيقات</a></li>
+        <li><a href="ai.html">الذكاء الاصطناعي</a></li>
+        <li><a href="contact.html">التواصل</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- قسم المنتجات -->
+    <section>
+      <h2>المنتجات</h2>
+      <div id="products" class="products-grid"></div>
+    </section>
+
+    <!-- قسم السلة -->
+    <section>
+      <h2>سلة المشتريات</h2>
+      <div id="cart"></div>
+      <p id="total">الإجمالي: 0 $</p>
+      <button id="checkoutBtn">إتمام الطلب</button>
+    </section>
+  </main>
+
+  <!-- لوحة التحكم -->
+  <section id="admin">
+    <h2>لوحة التحكم</h2>
+    <form id="addProductForm">
+      <input type="text" id="productName" placeholder="اسم المنتج" required>
+      <input type="text" id="productDescription" placeholder="الوصف">
+      <input type="number" id="productPrice" placeholder="السعر" required>
+      <button type="submit">إضافة المنتج</button>
+    </form>
   </section>
 
-  <section>
-    <h2>سلة المشتريات</h2>
-    <div id="cart"></div>
-    <p id="total">الإجمالي: 0 $</p>
-    <button onclick="checkout()">إتمام الطلب</button>
-  </section><button id="checkoutBtn">إتمام الطلب</button>
-</main>
-<section id="admin">
-  <h2>لوحة التحكم</h2>
-  <form id="addProductForm">
-    <input type="text" id="productName" placeholder="اسم المنتج" required>
-    <input type="text" id="productDescription" placeholder="الوصف">
-    <input type="number" id="productPrice" placeholder="السعر" required>
-    <button type="submit">إضافة المنتج</button>
-  </form>
-</section>
-<section id="auth">
-  <h2>تسجيل الدخول</h2>
-  <form id="loginForm">
-    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-    <input type="password" id="password" placeholder="كلمة المرور" required>
-    <button type="submit">دخول</button>
-  </form>
-</section>
+  <!-- تسجيل الدخول مثل فيسبوك -->
+  <section id="auth" class="auth-container">
+    <h2>تسجيل الدخول</h2>
+    <form id="loginForm" class="login-form">
+      <input type="email" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
+      
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="كلمة المرور" required>
+        <span id="togglePassword" class="eye">👁️</span>
+      </div>
+      
+      <button type="submit" class="login-btn">تسجيل الدخول</button>
+      <p><a href="#" id="forgotPassword">هل نسيت كلمة السر؟</a></p>
+      <hr>
+      <button type="button" id="createAccount" class="create-btn">إنشاء حساب جديد</button>
+    </form>
+  </section>
+
+  <!-- تتبع الطلبات -->
+  <section id="trackOrder">
+    <h2>تتبع الطلب</h2>
+    <form id="trackOrderForm">
+      <input type="text" id="orderId" placeholder="رقم الطلب" required>
+      <button type="submit">تتبع</button>
+    </form>
+    <div id="orderStatus"></div>
+  </section>
+
+  <footer>
+    <p>© 2026 جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
