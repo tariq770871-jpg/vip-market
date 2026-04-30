@@ -208,3 +208,35 @@ const observer = new IntersectionObserver((entries) => {
 
 // تشغيل
 cards.forEach(card => observer.observe(card));
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ================= SIDEBAR =================
+  window.toggleSidebar = function () {
+    document.getElementById("sidebar").classList.toggle("active");
+  };
+
+  // ================= INTERSECTION OBSERVER =================
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  // Cards + Sections animation
+  document.querySelectorAll(".card, .section").forEach(el => {
+    observer.observe(el);
+  });
+
+  // ================= BUTTON MICRO INTERACTIONS =================
+  document.querySelectorAll("button, .card").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      el.style.transition = "0.2s";
+    });
+  });
+
+});
