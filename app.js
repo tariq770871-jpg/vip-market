@@ -168,3 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+function openModal() {
+  document.getElementById("modalOverlay").classList.remove("hidden");
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.add("hidden");
+}
