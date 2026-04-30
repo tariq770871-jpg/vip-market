@@ -240,3 +240,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ================= SIDEBAR =================
+  window.toggleSidebar = function () {
+    document.getElementById("sidebar").classList.toggle("active");
+  };
+
+  // ================= GLOBAL SCROLL REVEAL =================
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  document.querySelectorAll(".card, .section").forEach(el => {
+    observer.observe(el);
+  });
+
+  // ================= SMOOTH MICRO UX =================
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      card.style.transition = "0.25s";
+    });
+  });
+
+});
