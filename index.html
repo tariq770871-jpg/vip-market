@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIP Market - منصة الخدمات الشاملة للتطبيقات وأدوات الذكاء الاصطناعي والربح من الإنترنت والتداول">
     <title>VIP Market - منصة الخدمات الشاملة</title>
     <style>
         *,
@@ -126,6 +127,7 @@
             color: var(--primary);
             cursor: pointer;
             transition: color 0.3s;
+            text-decoration: none;
         }
 
         .icon-btn {
@@ -309,12 +311,15 @@
             margin-bottom: 20px;
             text-align: center;
             box-shadow: var(--card-shadow);
-            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .section-icon {
-            font-size: 40px;
-            background: var(--section-icon-bg);
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -322,6 +327,17 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
+            background: var(--section-icon-bg);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover .section-icon {
+            transform: scale(1.1);
+        }
+
+        .section-icon svg {
+            width: 36px;
+            height: 36px;
         }
 
         .section-card h2 {
@@ -337,6 +353,31 @@
             margin-bottom: 8px;
             line-height: 1.8;
             transition: color 0.3s;
+        }
+
+        .section-features {
+            text-align: right;
+            margin: 15px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .section-features li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-features li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .section-question {
@@ -441,41 +482,128 @@
         [data-theme="light"] .logo {
             color: #c9a227;
         }
+
+        /* تأثير الظهور */
+        .section-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section-card:nth-child(1) { animation-delay: 0.1s; }
+        .section-card:nth-child(2) { animation-delay: 0.2s; }
+        .section-card:nth-child(3) { animation-delay: 0.3s; }
+        .section-card:nth-child(4) { animation-delay: 0.4s; }
+        .section-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* شريط التقدم */
+        .progress-bar {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.1s;
+        }
     </style>
 </head>
 <body>
 
+    <!-- شريط التقدم -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- ==================== هيدر ==================== -->
     <header class="header" id="header">
-        <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">☰</button>
-        <div class="logo">VIP Market</div>
-        <button class="icon-btn" aria-label="بحث">🔍</button>
-        <button class="icon-btn" aria-label="تسجيل الدخول">👤</button>
+        <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+        </button>
+        <a href="index.html" class="logo">VIP Market</a>
+        <div style="display: flex; gap: 5px;">
+            <button class="icon-btn" id="searchBtn" aria-label="بحث">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </button>
+            <button class="icon-btn" id="userBtn" aria-label="تسجيل الدخول">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+        </div>
     </header>
 
     <!-- ==================== قائمة الهامبرجر ==================== -->
     <div class="overlay" id="overlay"></div>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <button class="close-btn" id="closeBtn" aria-label="إغلاق">✕</button>
+            <button class="close-btn" id="closeBtn" aria-label="إغلاق">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#" class="sidebar-link">👤 تسجيل الدخول</a></li>
+            <li><a href="contact.html" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                تسجيل الدخول
+            </a></li>
             <li>
                 <button class="sidebar-link theme-toggle" id="sidebarThemeToggle">
-                    🌓 تبديل الوضع <span class="theme-label" id="themeLabel">ليلي</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                    </svg>
+                    تبديل الوضع <span class="theme-label" id="themeLabel">ليلي</span>
                 </button>
             </li>
             <li class="divider"></li>
-            <li><a href="#" class="sidebar-link">🛒 المتجر</a></li>
-            <li><a href="#" class="sidebar-link">📱 تطبيقات احترافية</a></li>
-            <li><a href="#" class="sidebar-link">🤖 أدوات الذكاء الاصطناعي</a></li>
-            <li><a href="#" class="sidebar-link">💰 الربح من الإنترنت</a></li>
-            <li><a href="#" class="sidebar-link">📈 التداول والتحليل</a></li>
+            <li><a href="#shop" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                المتجر
+            </a></li>
+            <li><a href="#apps" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-4.2-5.78v1.75l1.72 1.03-1.72 1.03V18H7v-4.77l-1.72-1.03 1.72-1.03V11H17v1.22z"/>
+                </svg>
+                تطبيقات احترافية
+            </a></li>
+            <li><a href="#ai" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
+                </svg>
+                أدوات الذكاء الاصطناعي
+            </a></li>
+            <li><a href="#income" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.12 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+                الربح من الإنترنت
+            </a></li>
+            <li><a href="#trading" class="sidebar-link">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                    <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
+                </svg>
+                التداول والتحليل
+            </a></li>
             <li class="divider"></li>
-            <li><a href="#" class="sidebar-link">من نحن</a></li>
-            <li><a href="#" class="sidebar-link">تواصل معنا</a></li>
-            <li><a href="#" class="sidebar-link">سياسة الخصوصية</a></li>
+            <li><a href="about.html" class="sidebar-link">من نحن</a></li>
+            <li><a href="contact.html" class="sidebar-link">تواصل معنا</a></li>
+            <li><a href="privacy.html" class="sidebar-link">سياسة الخصوصية</a></li>
         </ul>
     </nav>
 
@@ -489,53 +617,103 @@
     </nav>
 
     <!-- ==================== الترحيب ==================== -->
-<section class="hero">
-    <h1>ابدأ دخلك من الإنترنت باستخدام هاتفك فقط 🚀</h1>
-    <p>تعلم، جرّب، وابدأ خطوة بخطوة باستخدام أدوات وتطبيقات مختارة بعناية.</p>
-    <a href="#income" class="btn-go">ابدأ الآن</a>
-</section>
+    <section class="hero">
+        <h1>ابدأ دخلك من الإنترنت باستخدام هاتفك فقط</h1>
+        <p>تعلم، جرّب، وابدأ خطوة بخطوة باستخدام أدوات وتطبيقات مختارة بعناية من فريق VIP Market.</p>
+        <a href="#income" class="btn-go">ابدأ الآن</a>
+    </section>
 
     <!-- ==================== الأقسام ==================== -->
     <main class="sections-container">
 
         <section class="section-card" id="shop">
-            <div class="section-icon">🛒</div>
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="#3b82f6">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+            </div>
             <h2>متجر المنتجات</h2>
-            <p>منتجات غير رقمية عالية الجودة، شحن سريع، وضمان شامل على جميع المنتجات. نوفر لك تشكيلة واسعة من المنتجات المختارة بعناية لتلبية احتياجاتك اليومية.</p>
-            <p class="section-question">هل تريد الانتقال إلى قسم المتجر؟</p>
-     <a href="#" class="btn-go">تصفح المنتجات</a>
+            <p>منتجات عالية الجودة بشحن سريع وضمان شامل. نوفر لك تشكيلة واسعة من المنتجات المختارة بعناية لتلبية احتياجاتك اليومية.</p>
+            <ul class="section-features">
+                <li>منتجات أصلية 100% مع ضمان الجودة</li>
+                <li>شحن سريع لجميع الدول العربية</li>
+                <li>خدمة عملاء متاحة على مدار الساعة</li>
+                <li>سياسة إرجاع مرنة وسهلة</li>
+            </ul>
+            <p class="section-question">هل تريد استكشاف منتجاتنا؟</p>
+            <a href="shop.html" class="btn-go">تصفح المنتجات</a>
         </section>
 
         <section class="section-card" id="apps">
-            <div class="section-icon">📱</div>
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="#3b82f6">
+                    <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-4.2-5.78v1.75l1.72 1.03-1.72 1.03V18H7v-4.77l-1.72-1.03 1.72-1.03V11H17v1.22z"/>
+                </svg>
+            </div>
             <h2>تطبيقات احترافية</h2>
-            <p>أحدث التطبيقات الجاهزة للنشر، مصممة بجودة عالية وأداء متميز. نوفر تطبيقات موبايل وسطح مكتب تناسب مختلف المجالات والاحتياجات.</p>
-            <p class="section-question">هل تريد الانتقال إلى قسم التطبيقات؟</p>
-            <a href="#" class="btn-go">استكشف التطبيقات</a>
+            <p>أحدث التطبيقات الجاهزة للنشر، مصممة بجودة عالية وأداء متميز. تطبيقات موبايل وسطح مكتب تناسب مختلف المجالات.</p>
+            <ul class="section-features">
+                <li>تطبيقات جاهزة للأندرويد والآيفون</li>
+                <li>تطبيقات سطح المكتب لأنظمة ويندوز وماك ولينكس</li>
+                <li>دعم فني متواصل بعد الشراء</li>
+                <li>تحديثات مجانية مدى الحياة</li>
+            </ul>
+            <p class="section-question">هل تبحث عن تطبيق احترافي؟</p>
+            <a href="apps.html" class="btn-go">استكشف التطبيقات</a>
         </section>
 
         <section class="section-card" id="ai">
-            <div class="section-icon">🤖</div>
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="#3b82f6">
+                    <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>
+                </svg>
+            </div>
             <h2>أدوات الذكاء الاصطناعي</h2>
-            <p>أدوات ذكاء اصطناعي متطورة لتحسين إنتاجيتك وأعمالك. من المساعدات الذكية إلى أدوات التحليل والإبداع، كل ما تحتاجه في مكان واحد.</p>
-            <p class="section-question">هل تريد الانتقال إلى قسم أدوات الذكاء الاصطناعي؟</p>
-            <a href="#" class="btn-go">جرّب الأدوات</a>
+            <p>أدوات ذكاء اصطناعي متطورة لتحسين إنتاجيتك وأعمالك. من المساعدات الذكية إلى أدوات التحليل والإبداع.</p>
+            <ul class="section-features">
+                <li>مساعدين ذكيين لكتابة المحتوى والتسويق</li>
+                <li>أدوات تحليل البيانات والبيانات الضخمة</li>
+                <li>مولدات الصور بالذكاء الاصطناعي</li>
+                <li>أدوات تحسين محركات البحث SEO</li>
+            </ul>
+            <p class="section-question">هل تريد تجربة أدوات الذكاء الاصطناعي؟</p>
+            <a href="ai-tools.html" class="btn-go">جرّب الأدوات</a>
         </section>
 
         <section class="section-card" id="income">
-            <div class="section-icon">💰</div>
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="#3b82f6">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.12 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+            </div>
             <h2>الربح من الإنترنت</h2>
-            <p>دورات وطرق مثبتة للربح من الإنترنت، من التسويق بالعمولة إلى العمل الحر وإنشاء المحتوى. نرشدك خطوة بخطوة لتحقيق دخل مستدام.</p>
-            <p class="section-question">هل تريد الانتقال إلى قسم الربح من الإنترنت؟</p>
-            <a href="#" class="btn-go">ابدأ الربح الآن</a>
+            <p>دورات وطرق مثبتة للربح من الإنترنت، من التسويق بالعمولة إلى العمل الحر وإنشاء المحتوى. نرشدك خطوة بخطوة.</p>
+            <ul class="section-features">
+                <li>دورات تسويق بالعمولة خطوة بخطوة</li>
+                <li>طرق العمل الحر عبر الإنترنت</li>
+                <li>إنشاء المحتوى على يوتيوب وتيكتوك</li>
+                <li>بناء متجر إلكتروني ناجح</li>
+            </ul>
+            <p class="section-question">هل تريد البدء في الربح من الإنترنت؟</p>
+            <a href="income.html" class="btn-go">ابدأ الربح الآن</a>
         </section>
 
         <section class="section-card" id="trading">
-            <div class="section-icon">📈</div>
+            <div class="section-icon">
+                <svg viewBox="0 0 24 24" fill="#3b82f6">
+                    <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
+                </svg>
+            </div>
             <h2>التداول والتحليل</h2>
-            <p>تعليم التداول في الأسواق العالمية بأسلوب مبسط، مع تحليلات فنية وأساسية تساعدك على اتخاذ قرارات استثمارية صائبة وتنمية رأس مالك.</p>
-            <p class="section-question">هل تريد الانتقال إلى قسم التداول والتحليل؟</p>
-            <a href="#" class="btn-go">تعلم التداول</a>
+            <p>تعليم التداول في الأسواق العالمية بأسلوب مبسط، مع تحليلات فنية وأساسية帮助你 اتخاذ قرارات استثمارية صائبة.</p>
+            <ul class="section-features">
+                <li>دورات تعليم التداول للمبتدئين والمحترفين</li>
+                <li>تحليلات فنية يومية للأسواق</li>
+                <li>استراتيجيات تداول مربحة ومدروسة</li>
+                <li>إدارة المخاطر وحماية رأس المال</li>
+            </ul>
+            <p class="section-question">هل تريد تعلم التداول؟</p>
+            <a href="trading.html" class="btn-go">تعلم التداول</a>
         </section>
 
     </main>
@@ -543,11 +721,11 @@
     <!-- ==================== فوتر ==================== -->
     <footer class="footer">
         <div class="footer-links">
-            <a href="#">من نحن</a>
+            <a href="about.html">من نحن</a>
             <span>|</span>
-            <a href="#">تواصل</a>
+            <a href="contact.html">تواصل</a>
             <span>|</span>
-            <a href="#">الخصوصية</a>
+            <a href="privacy.html">الخصوصية</a>
         </div>
         <div class="footer-social">
             <a href="https://wa.me/967782138587" target="_blank" rel="noopener" class="social-icon whatsapp" aria-label="واتساب">
@@ -561,7 +739,7 @@
             </a>
         </div>
         <div class="footer-copy">
-            <p>© 2025 VIP Market - جميع الحقوق محفوظة</p>
+            <p>جميع الحقوق محفوظة لشركة VIP Market</p>
         </div>
     </footer>
 
@@ -578,6 +756,7 @@
             const html = document.documentElement;
             const sectionNav = document.getElementById('sectionNav');
             const header = document.getElementById('header');
+            const progressBar = document.getElementById('progressBar');
 
             function openSidebar() {
                 sidebar.classList.add('active');
@@ -599,7 +778,28 @@
             sidebarLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     if (link === sidebarThemeToggle) return;
-                    setTimeout(closeSidebar, 150);
+                    if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            setTimeout(function() {
+                                closeSidebar();
+                                setTimeout(function() {
+                                    const navHeight = sectionNav.offsetHeight;
+                                    const headerHeight = header.offsetHeight;
+                                    const totalOffset = navHeight + headerHeight + 10;
+                                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+                                    window.scrollTo({
+                                        top: targetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                }, 200);
+                            }, 150);
+                        }
+                    } else {
+                        setTimeout(closeSidebar, 150);
+                    }
                 });
             });
 
@@ -607,9 +807,9 @@
                 html.setAttribute('data-theme', theme);
                 localStorage.setItem('vipmarket-theme', theme);
                 if (theme === 'dark') {
-                    themeLabel.textContent = 'ليلي';
-                } else {
                     themeLabel.textContent = 'نهاري';
+                } else {
+                    themeLabel.textContent = 'ليلي';
                 }
             }
 
@@ -665,6 +865,52 @@
                     }
                 });
             });
+
+            // شريط التقدم عند التمرير
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+
+            // تأثير الظهور عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-card').forEach(function(card) {
+                observer.observe(card);
+            });
+
+            // البحث
+            const searchBtn = document.getElementById('searchBtn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const searchTerm = prompt('اكتب كلمة البحث:');
+                    if (searchTerm) {
+                        window.location.href = 'search.html?q=' + encodeURIComponent(searchTerm);
+                    }
+                });
+            }
+
+            // تسجيل الدخول
+            const userBtn = document.getElementById('userBtn');
+            if (userBtn) {
+                userBtn.addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                });
+            }
 
         })();
     </script>
