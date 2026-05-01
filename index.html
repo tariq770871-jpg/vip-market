@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Market - منصة الخدمات الشاملة</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f7fa;
+            --text: #060d17;
+            --text-secondary: #555;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent: #3b82f6;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+            --card-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            --header-bg: #ffffff;
+            --header-border: #e5e7eb;
+            --nav-bg: #f5f7fa;
+            --nav-border: #e5e7eb;
+            --nav-link: #060d17;
+            --nav-link-hover: #3b82f6;
+            --btn-go-bg: #060d17;
+            --btn-go-text: #ffffff;
+            --btn-go-hover: #0d1b2a;
+            --sidebar-bg: #ffffff;
+            --sidebar-link: #060d17;
+            --sidebar-link-hover: #3b82f6;
+            --sidebar-divider: #e5e7eb;
+            --footer-bg: #1a1a2e;
+            --footer-text: #cccccc;
+            --footer-link: #ffffff;
+            --overlay-bg: rgba(0,0,0,0.5);
+            --section-icon-bg: #eff6ff;
+            --hero-text: #060d17;
+            --hero-sub: #555;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0a1a;
+            --bg-secondary: #111128;
+            --text: #ffffff;
+            --text-secondary: #cccccc;
+            --primary: #d4af37;
+            --primary-hover: #e5c158;
+            --accent: #d4af37;
+            --card-bg: #141428;
+            --card-border: #2a2a40;
+            --card-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            --header-bg: #0f0f20;
+            --header-border: #2a2a40;
+            --nav-bg: #111128;
+            --nav-border: #2a2a40;
+            --nav-link: #ffffff;
+            --nav-link-hover: #d4af37;
+            --btn-go-bg: #d4af37;
+            --btn-go-text: #000000;
+            --btn-go-hover: #e5c158;
+            --sidebar-bg: #0f0f20;
+            --sidebar-link: #ffffff;
+            --sidebar-link-hover: #d4af37;
+            --sidebar-divider: #2a2a40;
+            --footer-bg: #0a0a15;
+            --footer-text: #999999;
+            --footer-link: #d4af37;
+            --overlay-bg: rgba(0,0,0,0.7);
+            --section-icon-bg: #1a1a30;
+            --hero-text: #ffffff;
+            --hero-sub: #cccccc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
+            padding-top: 56px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--header-border);
+            height: 56px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text);
+            padding: 5px;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text);
+            padding: 5px;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--overlay-bg);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: var(--sidebar-bg);
+            z-index: 3000;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            padding: 15px 0;
+            border-left: 1px solid var(--sidebar-divider);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 15px 10px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text);
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 0 15px;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 12px 10px;
+            color: var(--sidebar-link);
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: right;
+            font-family: inherit;
+        }
+
+        .sidebar-link:hover {
+            background: var(--section-icon-bg);
+            color: var(--sidebar-link-hover);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--sidebar-divider);
+            margin: 8px 15px;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .theme-label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .section-nav {
+            position: sticky;
+            top: 56px;
+            z-index: 900;
+            display: flex;
+            overflow-x: auto;
+            gap: 5px;
+            padding: 10px 15px;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--nav-border);
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .section-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 8px 16px;
+            color: var(--nav-link);
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--nav-link-hover);
+            border-color: var(--nav-link-hover);
+            background: var(--section-icon-bg);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 35px 20px 25px;
+            transition: color 0.3s;
+        }
+
+        .hero h1 {
+            font-size: 22px;
+            color: var(--hero-text);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: var(--hero-sub);
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .sections-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px 30px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .section-icon {
+            font-size: 40px;
+            background: var(--section-icon-bg);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .section-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        .section-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.8;
+            transition: color 0.3s;
+        }
+
+        .section-question {
+            font-size: 14px;
+            color: var(--text);
+            margin: 15px 0 12px;
+            font-weight: 500;
+        }
+
+        .btn-go {
+            display: inline-block;
+            background: var(--btn-go-bg);
+            color: var(--btn-go-text);
+            padding: 13px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-go:hover {
+            background: var(--btn-go-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .footer {
+            background: var(--footer-bg);
+            text-align: center;
+            padding: 25px 15px 20px;
+            transition: background-color 0.3s;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--footer-link);
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-links span {
+            color: var(--footer-text);
+            font-size: 12px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        .social-icon.whatsapp {
+            background: #25D366;
+        }
+
+        .social-icon.telegram {
+            background: #0088cc;
+        }
+
+        .social-icon.facebook {
+            background: #1877F2;
+        }
+
+        .footer-copy {
+            color: var(--footer-text);
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+
+        [data-theme="light"] .logo {
+            color: #c9a227;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== هيدر ==================== -->
+    <header class="header" id="header">
+        <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">☰</button>
+        <div class="logo">VIP Market</div>
+        <button class="icon-btn" aria-label="بحث">🔍</button>
+        <button class="icon-btn" aria-label="تسجيل الدخول">👤</button>
+    </header>
+
+    <!-- ==================== قائمة الهامبرجر ==================== -->
+    <div class="overlay" id="overlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn" id="closeBtn" aria-label="إغلاق">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="sidebar-link">👤 تسجيل الدخول</a></li>
+            <li>
+                <button class="sidebar-link theme-toggle" id="sidebarThemeToggle">
+                    🌓 تبديل الوضع <span class="theme-label" id="themeLabel">ليلي</span>
+                </button>
+            </li>
+            <li class="divider"></li>
+            <li><a href="#" class="sidebar-link">🛒 المتجر</a></li>
+            <li><a href="#" class="sidebar-link">📱 تطبيقات احترافية</a></li>
+            <li><a href="#" class="sidebar-link">🤖 أدوات الذكاء الاصطناعي</a></li>
+            <li><a href="#" class="sidebar-link">💰 الربح من الإنترنت</a></li>
+            <li><a href="#" class="sidebar-link">📈 التداول والتحليل</a></li>
+            <li class="divider"></li>
+            <li><a href="#" class="sidebar-link">من نحن</a></li>
+            <li><a href="#" class="sidebar-link">تواصل معنا</a></li>
+            <li><a href="#" class="sidebar-link">سياسة الخصوصية</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==================== أزرار الأقسام الأفقية ==================== -->
+    <nav class="section-nav" id="sectionNav">
+        <a href="#shop" class="nav-link">المتجر</a>
+        <a href="#apps" class="nav-link">تطبيقات</a>
+        <a href="#ai" class="nav-link">أدوات الذكاء</a>
+        <a href="#income" class="nav-link">الربح</a>
+        <a href="#trading" class="nav-link">التداول</a>
+    </nav>
+
+    <!-- ==================== الترحيب ==================== -->
+    <section class="hero">
+        <h1>✦ مرحباً بك في VIP Market ✦</h1>
+        <p>منصتك الشاملة للمنتجات، التطبيقات، أدوات الذكاء الاصطناعي، وتعليم الربح والتداول في الأسواق العالمية. نوفر لك كل ما تحتاجه لبدء مشوارك الرقمي بنجاح، مع أدوات احترافية وخدمات موثوقة تلبي طموحك.</p>
+    </section>
+
+    <!-- ==================== الأقسام ==================== -->
+    <main class="sections-container">
+
+        <section class="section-card" id="shop">
+            <div class="section-icon">🛒</div>
+            <h2>متجر المنتجات</h2>
+            <p>منتجات غير رقمية عالية الجودة، شحن سريع، وضمان شامل على جميع المنتجات. نوفر لك تشكيلة واسعة من المنتجات المختارة بعناية لتلبية احتياجاتك اليومية.</p>
+            <p class="section-question">هل تريد الانتقال إلى قسم المتجر؟</p>
+            <a href="#" class="btn-go">اضغط هنا</a>
+        </section>
+
+        <section class="section-card" id="apps">
+            <div class="section-icon">📱</div>
+            <h2>تطبيقات احترافية</h2>
+            <p>أحدث التطبيقات الجاهزة للنشر، مصممة بجودة عالية وأداء متميز. نوفر تطبيقات موبايل وسطح مكتب تناسب مختلف المجالات والاحتياجات.</p>
+            <p class="section-question">هل تريد الانتقال إلى قسم التطبيقات؟</p>
+            <a href="#" class="btn-go">اضغط هنا</a>
+        </section>
+
+        <section class="section-card" id="ai">
+            <div class="section-icon">🤖</div>
+            <h2>أدوات الذكاء الاصطناعي</h2>
+            <p>أدوات ذكاء اصطناعي متطورة لتحسين إنتاجيتك وأعمالك. من المساعدات الذكية إلى أدوات التحليل والإبداع، كل ما تحتاجه في مكان واحد.</p>
+            <p class="section-question">هل تريد الانتقال إلى قسم أدوات الذكاء الاصطناعي؟</p>
+            <a href="#" class="btn-go">اضغط هنا</a>
+        </section>
+
+        <section class="section-card" id="income">
+            <div class="section-icon">💰</div>
+            <h2>الربح من الإنترنت</h2>
+            <p>دورات وطرق مثبتة للربح من الإنترنت، من التسويق بالعمولة إلى العمل الحر وإنشاء المحتوى. نرشدك خطوة بخطوة لتحقيق دخل مستدام.</p>
+            <p class="section-question">هل تريد الانتقال إلى قسم الربح من الإنترنت؟</p>
+            <a href="#" class="btn-go">اضغط هنا</a>
+        </section>
+
+        <section class="section-card" id="trading">
+            <div class="section-icon">📈</div>
+            <h2>التداول والتحليل</h2>
+            <p>تعليم التداول في الأسواق العالمية بأسلوب مبسط، مع تحليلات فنية وأساسية تساعدك على اتخاذ قرارات استثمارية صائبة وتنمية رأس مالك.</p>
+            <p class="section-question">هل تريد الانتقال إلى قسم التداول والتحليل؟</p>
+            <a href="#" class="btn-go">اضغط هنا</a>
+        </section>
+
+    </main>
+
+    <!-- ==================== فوتر ==================== -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">من نحن</a>
+            <span>|</span>
+            <a href="#">تواصل</a>
+            <span>|</span>
+            <a href="#">الخصوصية</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://wa.me/967782138587" target="_blank" rel="noopener" class="social-icon whatsapp" aria-label="واتساب">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+            <a href="https://t.me/tariq77087" target="_blank" rel="noopener" class="social-icon telegram" aria-label="تيليجرام">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.717-.962 4.084-1.362 5.411-.168.56-.5.748-.823.766-.7.064-1.23-.462-1.91-.906-1.06-.695-1.66-1.128-2.69-1.806-1.19-.784-.418-1.216.26-1.92.178-.184 3.271-2.998 3.332-3.255.007-.032.014-.15-.056-.212s-.174-.04-.248-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.01-1.252-.242-1.865-.44-.752-.244-1.35-.374-1.297-.789.027-.216.324-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.1-.002.32.023.464.14.119.098.152.228.168.33.016.103.036.338.02.536z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/18SmUWm6nw/" target="_blank" rel="noopener" class="social-icon facebook" aria-label="فيسبوك">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+        </div>
+        <div class="footer-copy">
+            <p>© 2025 VIP Market - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const sidebarThemeToggle = document.getElementById('sidebarThemeToggle');
+            const themeLabel = document.getElementById('themeLabel');
+            const html = document.documentElement;
+            const sectionNav = document.getElementById('sectionNav');
+            const header = document.getElementById('header');
+
+            function openSidebar() {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            hamburgerBtn.addEventListener('click', openSidebar);
+            closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
+            sidebarLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (link === sidebarThemeToggle) return;
+                    setTimeout(closeSidebar, 150);
+                });
+            });
+
+            function setTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                localStorage.setItem('vipmarket-theme', theme);
+                if (theme === 'dark') {
+                    themeLabel.textContent = 'ليلي';
+                } else {
+                    themeLabel.textContent = 'نهاري';
+                }
+            }
+
+            const savedTheme = localStorage.getItem('vipmarket-theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                setTheme('light');
+            }
+
+            sidebarThemeToggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme');
+                if (current === 'dark') {
+                    setTheme('light');
+                } else {
+                    setTheme('dark');
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                    closeSidebar();
+                }
+            });
+
+            function updateNavShadow() {
+                const headerHeight = header.offsetHeight;
+                if (window.scrollY > headerHeight) {
+                    sectionNav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                } else {
+                    sectionNav.style.boxShadow = 'none';
+                }
+            }
+
+            window.addEventListener('scroll', updateNavShadow);
+            window.addEventListener('resize', updateNavShadow);
+
+            const navLinks = sectionNav.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        const navHeight = sectionNav.offsetHeight;
+                        const headerHeight = header.offsetHeight;
+                        const totalOffset = navHeight + headerHeight + 10;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
