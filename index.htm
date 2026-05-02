@@ -1,368 +1,423 @@
 <!DOCTYPE html>
 
-<html dir="rtl" lang="ar"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>VIP MARKET - المنصة الرقمية المتميزة</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            light: '#e5c05a',
-                            DEFAULT: '#d4af37',
-                            dark: '#b08d26',
-                        },
-                        dark: '#0f0f0f',
-                    },
-                    fontFamily: {
-                        tajawal: ['Tajawal', 'sans-serif'],
-                    }
-                }
-            }
-        }
+<html lang="ar" dir="rtl" data-theme="dark">
 
-        function showPage(pageId) {
-            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-            window.scrollTo(0, 0);
-            
-            // Update active state in nav if needed
-            document.querySelectorAll('nav a').forEach(a => {
-                a.classList.remove('text-gold');
-                a.classList.add('text-stone-400');
-            });
-            const activeLink = document.querySelector(`nav a[onclick*="${pageId}"]`);
-            if (activeLink) {
-                activeLink.classList.remove('text-stone-400');
-                activeLink.classList.add('text-gold');
-            }
-        }
-    </script>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIP MARKET - الرئيسية</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #0f0f0f; color: white; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f7e08a 50%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gold-btn { background: linear-gradient(135deg, #d4af37 0%, #b08d26 100%); transition: all 0.3s ease; border: none; }
-        .gold-btn:hover { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); transform: translateY(-2px); }
-        .nav-link { transition: color 0.3s ease; cursor: pointer; }
-        .page-content { animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+
+:root {
+
+--gold: #c9a227;
+
+--navy: #060d17;
+
+}
+
+[data-theme='light'] {
+
+--bg-primary: #ffffff;
+
+--text-primary: #060d17;
+
+--card-bg: #ffffff;
+
+--btn-bg: #060d17;
+
+--btn-text: #ffffff;
+
+}
+
+[data-theme='dark'] {
+
+--bg-primary: #121317;
+
+--text-primary: #ffffff;
+
+--card-bg: rgba(255, 255, 255, 0.05);
+
+--btn-bg: #c9a227;
+
+--btn-text: #000000;
+
+}
+
+body {
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+background-color: var(--bg-primary);
+
+color: var(--text-primary);
+
+transition: background-color 0.3s, color 0.3s;
+
+margin: 0;
+
+overflow-x: hidden;
+
+}
+
+.glass {
+
+background: var(--card-bg);
+
+backdrop-filter: blur(10px);
+
+border: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.sticky-nav {
+
+position: sticky;
+
+top: 56px;
+
+z-index: 40;
+
+background: var(--bg-primary);
+
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.no-scroll {
+
+overflow: hidden;
+
+}
+
+.sidebar {
+
+transition: transform 0.3s ease-in-out;
+
+transform: translateX(100%);
+
+}
+
+.sidebar.active {
+
+transform: translateX(0);
+
+}
+
+.overlay {
+
+display: none;
+
+background: rgba(0, 0, 0, 0.5);
+
+}
+
+.overlay.active {
+
+display: block;
+
+}
+
+</style>
+
 </head>
-<body class="overflow-x-hidden">
-<!-- Sticky Header -->
-<header class="fixed top-0 left-0 w-full z-50 glass border-b border-white/10 px-6 py-4 flex items-center justify-between">
-<div class="flex items-center gap-8">
-<div class="text-2xl font-black gold-gradient tracking-tighter cursor-pointer" onclick="showPage('home')">VIP MARKET</div>
-<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-400">
-<a class="nav-link text-gold" onclick="showPage('home')">الرئيسية</a>
-<a class="nav-link hover:text-gold" onclick="showPage('shop')">المتجر</a>
-<a class="nav-link hover:text-gold" onclick="showPage('contact')">اتصل بنا</a>
-<a class="nav-link hover:text-gold">كسب</a>
-<a class="nav-link hover:text-gold">تداول</a>
-<a class="nav-link hover:text-gold">الذكاء الاصطناعي</a>
-</nav>
-</div>
+
+<body>
+
+<!-- Header -->
+
+<header class="h-[56px] flex items-center justify-between px-4 fixed top-0 w-full z-50 glass border-b border-white/10">
+
 <div class="flex items-center gap-4">
-<button class="gold-btn px-6 md:px-8 py-2 rounded-full text-black font-bold text-xs md:text-sm" onclick="showPage('auth')">تسجيل الدخول</button>
+
+<button onclick="toggleSidebar()" class="text-2xl">☰</button>
+
 </div>
+
+<h1 class="text-xl font-bold text-[#c9a227]">VIP MARKET</h1>
+
+<div class="w-8"></div> <!-- Spacer for centering -->
+
 </header>
-<!-- Homepage -->
-<div class="page-content pt-20" id="home">
-<!-- Hero -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-<div class="absolute top-1/4 -right-20 w-64 h-64 bg-gold/10 rounded-full blur-[100px]"></div>
-<div class="absolute bottom-1/4 -left-20 w-80 h-80 bg-gold/5 rounded-full blur-[120px]"></div>
-<h1 class="text-6xl md:text-8xl font-black gold-gradient mb-4">VIP MARKET</h1>
-<p class="text-xl md:text-2xl text-stone-400 mb-8 max-w-2xl">بوابتك الرقمية الذكية للوصول إلى النخبة في الخدمات المالية والتقنية</p>
-<div class="flex flex-col sm:flex-row gap-4">
-<button class="gold-btn px-10 py-4 rounded-full text-black font-bold text-lg" onclick="showPage('shop')">تصفح المتجر</button>
-<button class="glass px-10 py-4 rounded-full text-white font-bold text-lg hover:bg-white/10 transition-all" onclick="showPage('contact')">تواصل معنا</button>
-</div>
+
+<!-- Sticky Sub-nav -->
+
+<nav class="sticky-nav h-[48px] mt-[56px] flex items-center justify-center gap-4 px-2 overflow-x-auto whitespace-nowrap scroll-smooth">
+
+<a href="#shop" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">المتجر</a>
+
+<a href="#apps" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">تطبيقات</a>
+
+<a href="#ai" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">أدوات الذكاء</a>
+
+<a href="#income" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">الربح</a>
+
+<a href="#trading" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">التداول</a>
+
+</nav>
+
+<!-- Hero Section -->
+
+<section class="py-16 px-6 text-center">
+
+<h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight">ابدأ دخلك من الإنترنت باستخدام هاتفك فقط 🚀</h2>
+
+<p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">تعلم، جرّب، وابدأ خطوة بخطوة باستخدام أدوات وتطبيقات مختارة بعناية.</p>
+
+<a href="#income" class="inline-block px-8 py-4 bg-[#c9a227] text-black font-bold rounded-full shadow-lg shadow-amber-500/20 hover:scale-105 transition-transform">ابدأ الآن</a>
+
 </section>
-<!-- Services -->
-<section class="py-24 px-6 max-w-7xl mx-auto">
-<h2 class="text-3xl font-bold text-center mb-16 text-gold">خدماتنا المتميزة</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Smart Shop -->
-<div class="glass p-8 rounded-3xl hover:border-gold/50 transition-all group cursor-pointer" onclick="showPage('shop')">
-<div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-gold text-3xl">shopping_bag</span>
-</div>
-<h3 class="text-xl font-bold mb-3">Smart Shop</h3>
-<p class="text-stone-400 text-sm leading-relaxed">تسوق أحدث المنتجات الرقمية والحصرية بلمسة واحدة وبأعلى معايير الأمان.</p>
-</div>
-<!-- Earn Online -->
-<div class="glass p-8 rounded-3xl hover:border-gold/50 transition-all group">
-<div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-gold text-3xl">payments</span>
-</div>
-<h3 class="text-xl font-bold mb-3">Earn Online</h3>
-<p class="text-stone-400 text-sm leading-relaxed">فرص استثمارية ذكية تتيح لك تحقيق عوائد مالية من خلال منصتنا المتطورة.</p>
-</div>
+
+<!-- Sections Wrapper -->
+
+<main class="max-w-4xl mx-auto px-6 space-y-12 pb-20">
+
+<!-- Store -->
+
+<section id="shop" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
+
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🛒</div>
+
+<h3 class="text-2xl font-bold mb-3">متجر المنتجات</h3>
+
+<p class="opacity-70 mb-6">منتجات غير رقمية عالية الجودة، شحن سريع، وضمان شامل على جميع المنتجات. نوفر لك تشكيلة واسعة من المنتجات المختارة بعناية لتلبية احتياجاتك اليومية.</p>
+
+<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم المتجر؟</p>
+
+<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">تصفح المنتجات</button>
+
+</section>
+
+<!-- Apps -->
+
+<section id="apps" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
+
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">📱</div>
+
+<h3 class="text-2xl font-bold mb-3">تطبيقات احترافية</h3>
+
+<p class="opacity-70 mb-6">أحدث التطبيقات الجاهزة للنشر، مصممة بجودة عالية وأداء متميز. نوفر تطبيقات موبايل وسطح مكتب تناسب مختلف المجالات والاحتياجات.</p>
+
+<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم التطبيقات؟</p>
+
+<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">استكشف التطبيقات</button>
+
+</section>
+
+<!-- AI -->
+
+<section id="ai" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
+
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🤖</div>
+
+<h3 class="text-2xl font-bold mb-3">أدوات الذكاء الاصطناعي</h3>
+
+<p class="opacity-70 mb-6">أدوات ذكاء اصطناعي متطورة لتحسين إنتاجيتك وأعمالك. من المساعدات الذكية إلى أدوات التحليل والإبداع، كل ما تحتاجه في مكان واحد.</p>
+
+<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم أدوات الذكاء الاصطناعي؟</p>
+
+<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">جرّب الأدوات</button>
+
+</section>
+
+<!-- Earn -->
+
+<section id="income" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
+
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">💰</div>
+
+<h3 class="text-2xl font-bold mb-3">الربح من الإنترنت</h3>
+
+<p class="opacity-70 mb-6">دورات وطرق مثبتة للربح من الإنترنت، من التسويق بالعمولة إلى العمل الحر وإنشاء المحتوى. نرشدك خطوة بخطوة لتحقيق دخل مستدام.</p>
+
+<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم الربح من الإنترنت؟</p>
+
+<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">ابدأ الربح الآن</button>
+
+</section>
+
 <!-- Trading -->
-<div class="glass p-8 rounded-3xl hover:border-gold/50 transition-all group">
-<div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-gold text-3xl">candlestick_chart</span>
-</div>
-<h3 class="text-xl font-bold mb-3">Trading</h3>
-<p class="text-stone-400 text-sm leading-relaxed">منصة تداول احترافية بأدوات تحليلية متقدمة لتنفيذ صفقاتك بدقة متناهية.</p>
-</div>
-<!-- AI Tools -->
-<div class="glass p-8 rounded-3xl hover:border-gold/50 transition-all group">
-<div class="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-gold text-3xl">smart_toy</span>
-</div>
-<h3 class="text-xl font-bold mb-3">AI Tools</h3>
-<p class="text-stone-400 text-sm leading-relaxed">سخر قوة الذكاء الاصطناعي لخدمة أعمالك مع مجموعتنا المتكاملة من الأدوات الذكية.</p>
-</div>
-</div>
+
+<section id="trading" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
+
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">📈</div>
+
+<h3 class="text-2xl font-bold mb-3">التداول والتحليل</h3>
+
+<p class="opacity-70 mb-6">تعليم التداول في الأسواق العالمية بأسلوب مبسط، مع تحليلات فنية وأساسية تساعدك على اتخاذ قرارات استثمارية صائبة وتنمية رأس مالك.</p>
+
+<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم التداول والتحليل؟</p>
+
+<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">تعلم التداول</button>
+
 </section>
-<!-- Stats -->
-<section class="py-20 bg-white/5">
-<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-<div>
-<div class="text-5xl font-black text-gold mb-2">150+</div>
-<div class="text-stone-400 uppercase tracking-widest text-sm">منتجات رقمية</div>
-</div>
-<div>
-<div class="text-5xl font-black text-gold mb-2">1200+</div>
-<div class="text-stone-400 uppercase tracking-widest text-sm">عميل VIP</div>
-</div>
-<div>
-<div class="text-5xl font-black text-gold mb-2">98%</div>
-<div class="text-stone-400 uppercase tracking-widest text-sm">رضا العملاء</div>
-</div>
-</div>
-</section>
-</div>
-<!-- Shop Page -->
-<div class="page-content pt-32 hidden" id="shop">
-<section class="px-6 max-w-7xl mx-auto pb-24">
-<header class="text-center mb-16">
-<h1 class="text-4xl md:text-5xl font-black text-gold mb-4">المتجر الحصري</h1>
-<p class="text-stone-400 max-w-2xl mx-auto">اكتشف مجموعتنا المختارة من الأصول الرقمية والخدمات والمؤشرات المصممة للنخبة.</p>
-</header>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-<!-- Product Card 1 -->
-<div class="glass rounded-3xl overflow-hidden group hover:border-gold transition-all">
-<div class="aspect-square bg-stone-900 flex items-center justify-center p-8 relative overflow-hidden">
-<div class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors"></div>
-<div class="w-full h-full bg-gold/10 rounded-2xl flex items-center justify-center border border-white/5 relative z-10">
-<span class="material-symbols-outlined text-gold/40 text-7xl group-hover:scale-110 transition-transform">terminal</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-lg font-bold mb-2">خوارزمية في آي بي المتقدمة</h3>
-<p class="text-stone-500 text-xs mb-6 leading-relaxed">نظام تداول آلي يعتمد على الذكاء الاصطناعي لتحليل السوق العالمي.</p>
-<div class="flex items-center justify-between">
-<span class="text-gold font-bold">GOLD 2,500</span>
-<button class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center hover:bg-gold hover:text-black transition-all">
-<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Product Card 2 -->
-<div class="glass rounded-3xl overflow-hidden group hover:border-gold transition-all">
-<div class="aspect-square bg-stone-900 flex items-center justify-center p-8 relative">
-<div class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors"></div>
-<div class="w-full h-full bg-gold/10 rounded-2xl flex items-center justify-center border border-white/5 relative z-10">
-<span class="material-symbols-outlined text-gold/40 text-7xl group-hover:scale-110 transition-transform">security</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-lg font-bold mb-2">محفظة الأمان الفائق</h3>
-<p class="text-stone-500 text-xs mb-6 leading-relaxed">تشفير من الدرجة العسكرية لحماية أصولك الرقمية الأكثر قيمة.</p>
-<div class="flex items-center justify-between">
-<span class="text-gold font-bold">GOLD 3,800</span>
-<button class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center hover:bg-gold hover:text-black transition-all">
-<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Product Card 3 -->
-<div class="glass rounded-3xl overflow-hidden group hover:border-gold transition-all">
-<div class="aspect-square bg-stone-900 flex items-center justify-center p-8 relative">
-<div class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors"></div>
-<div class="w-full h-full bg-gold/10 rounded-2xl flex items-center justify-center border border-white/5 relative z-10">
-<span class="material-symbols-outlined text-gold/40 text-7xl group-hover:scale-110 transition-transform">auto_graph</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-lg font-bold mb-2">مؤشر التحليل الذكي</h3>
-<p class="text-stone-500 text-xs mb-6 leading-relaxed">مؤشر فني حصري يكشف مناطق السيولة والتلاعب السعري بدقة.</p>
-<div class="flex items-center justify-between">
-<span class="text-gold font-bold">GOLD 1,200</span>
-<button class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center hover:bg-gold hover:text-black transition-all">
-<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Product Card 4 -->
-<div class="glass rounded-3xl overflow-hidden group hover:border-gold transition-all">
-<div class="aspect-square bg-stone-900 flex items-center justify-center p-8 relative">
-<div class="absolute inset-0 bg-gold/5 group-hover:bg-gold/10 transition-colors"></div>
-<div class="w-full h-full bg-gold/10 rounded-2xl flex items-center justify-center border border-white/5 relative z-10">
-<span class="material-symbols-outlined text-gold/40 text-7xl group-hover:scale-110 transition-transform">memory</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-lg font-bold mb-2">خادم تداول VIP</h3>
-<p class="text-stone-500 text-xs mb-6 leading-relaxed">خادم مخصص بزمن استجابة فائق لضمان تنفيذ الصفقات بسرعة الضوء.</p>
-<div class="flex items-center justify-between">
-<span class="text-gold font-bold">GOLD 5,500</span>
-<button class="w-10 h-10 rounded-full bg-gold/10 text-gold flex items-center justify-center hover:bg-gold hover:text-black transition-all">
-<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-<!-- Contact Page -->
-<div class="page-content pt-32 hidden" id="contact">
-<section class="px-6 max-w-7xl mx-auto pb-24">
-<div class="text-center mb-16">
-<h1 class="text-4xl md:text-5xl font-black text-gold mb-4">اتصل بنا</h1>
-<p class="text-stone-400 max-w-2xl mx-auto">فريق الدعم الفني متاح على مدار الساعة لخدمة أعضاء النخبة.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-<!-- Contact Info Cards -->
-<div class="space-y-6">
-<div class="glass p-8 rounded-3xl flex items-start gap-6">
-<div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-gold text-3xl">mail</span>
-</div>
-<div>
-<h3 class="text-xl font-bold mb-2">الدعم الفني</h3>
-<p class="text-stone-400 mb-2">للاستفسارات التقنية والمشاكل البرمجية</p>
-<a class="text-gold font-bold hover:underline" href="mailto:support@vip.market">support@vip.market</a>
-</div>
-</div>
-<div class="glass p-8 rounded-3xl flex items-start gap-6">
-<div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-gold text-3xl">chat</span>
-</div>
-<div>
-<h3 class="text-xl font-bold mb-2">تيليجرام VIP</h3>
-<p class="text-stone-400 mb-2">تواصل مباشر وسريع مع مديري الحسابات</p>
-<a class="text-gold font-bold hover:underline" href="#">@VIP_Market_Support</a>
-</div>
-</div>
-<div class="glass p-8 rounded-3xl flex items-start gap-6">
-<div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-gold text-3xl">location_on</span>
-</div>
-<div>
-<h3 class="text-xl font-bold mb-2">المكتب الرئيسي</h3>
-<p class="text-stone-400">دبي، الإمارات العربية المتحدة<br/>برج الخليفة، الطابق ١٢٢</p>
-</div>
-</div>
-</div>
-<!-- Contact Form -->
-<div class="glass p-10 rounded-[2rem]">
-<h3 class="text-2xl font-bold mb-8">أرسل لنا رسالة</h3>
-<form class="space-y-6">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div>
-<label class="block text-xs font-bold text-stone-500 mb-2 mr-2">الاسم الكامل</label>
-<input class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all" placeholder="أدخل اسمك" type="text"/>
-</div>
-<div>
-<label class="block text-xs font-bold text-stone-500 mb-2 mr-2">البريد الإلكتروني</label>
-<input class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all" placeholder="example@vip.market" type="email"/>
-</div>
-</div>
-<div>
-<label class="block text-xs font-bold text-stone-500 mb-2 mr-2">الموضوع</label>
-<input class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all" placeholder="ما هو استفسارك؟" type="text"/>
-</div>
-<div>
-<label class="block text-xs font-bold text-stone-500 mb-2 mr-2">الرسالة</label>
-<textarea class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all resize-none" placeholder="اكتب تفاصيل استفسارك هنا..." rows="4"></textarea>
-</div>
-<button class="w-full gold-btn py-4 rounded-2xl text-black font-black" type="submit">إرسال الرسالة</button>
-</form>
-</div>
-</div>
-</section>
-</div>
-<!-- Auth Page -->
-<div class="page-content pt-32 min-h-screen flex items-center justify-center px-6 hidden" id="auth">
-<div class="glass p-10 rounded-[2rem] w-full max-w-md">
-<div class="text-center mb-10">
-<div class="text-3xl font-black gold-gradient mb-2">VIP MARKET</div>
-<p class="text-stone-400 text-sm">بوابة النخبة للتداول الرقمي</p>
-</div>
-<div class="flex gap-4 mb-8">
-<button class="flex-1 py-2 border-b-2 border-gold text-gold font-bold">تسجيل الدخول</button>
-<button class="flex-1 py-2 text-stone-500 font-bold hover:text-stone-300">إنشاء حساب</button>
-</div>
-<form class="space-y-6" onsubmit="event.preventDefault(); alert('مرحباً بك في لوحة التحكم'); showPage('home');">
-<div>
-<label class="block text-xs font-bold text-stone-500 mb-2 mr-2">البريد الإلكتروني</label>
-<input class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all" placeholder="example@vip.market" type="email"/>
-</div>
-<div>
-<div class="flex justify-between mb-2 px-2">
-<label class="text-xs font-bold text-stone-500">كلمة المرور</label>
-<a class="text-xs font-bold text-gold hover:underline" href="#">نسيت كلمة المرور؟</a>
-</div>
-<input class="w-full bg-stone-900 border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gold/50 transition-all" placeholder="••••••••" type="password"/>
-</div>
-<div class="flex items-center gap-3 px-2">
-<input class="w-4 h-4 rounded border-white/10 bg-stone-900 text-gold focus:ring-0" id="remember" type="checkbox"/>
-<label class="text-sm text-stone-400" for="remember">تذكرني على هذا الجهاز</label>
-</div>
-<button class="w-full gold-btn py-4 rounded-2xl text-black font-black" type="submit">تسجيل الدخول للوحة التحكم</button>
-</form>
-<div class="relative my-10 flex items-center">
-<div class="flex-grow border-t border-white/5"></div>
-<span class="flex-shrink mx-4 text-xs font-bold text-stone-600 uppercase tracking-widest">أو المتابعة عبر</span>
-<div class="flex-grow border-t border-white/5"></div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<button class="glass py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-white/5 transition-all">
-<span class="text-sm font-bold">جوجل</span>
-</button>
-<button class="glass py-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-white/5 transition-all">
-<span class="text-sm font-bold">آبل</span>
-</button>
-</div>
-</div>
-</div>
+
+</main>
+
 <!-- Footer -->
-<footer class="mt-20 border-t border-white/5 py-16 px-6 bg-dark">
-<div class="max-w-7xl mx-auto flex flex-col items-center">
-<div class="text-2xl font-black gold-gradient mb-8 cursor-pointer" onclick="showPage('home')">VIP MARKET</div>
-<div class="flex flex-wrap justify-center gap-8 mb-12 text-stone-400 text-sm">
-<a class="hover:text-gold transition-colors cursor-pointer" onclick="showPage('home')">الرئيسية</a>
-<a class="hover:text-gold transition-colors cursor-pointer" onclick="showPage('shop')">المتجر</a>
-<a class="hover:text-gold transition-colors cursor-pointer" onclick="showPage('contact')">اتصل بنا</a>
-<a class="hover:text-gold transition-colors cursor-pointer">الشروط والأحكام</a>
-<a class="hover:text-gold transition-colors cursor-pointer">سياسة الخصوصية</a>
+
+<footer class="glass border-t border-white/10 py-12 px-6 text-center mt-auto">
+
+<div class="flex justify-center gap-6 mb-8 text-sm opacity-80">
+
+<a href="about.html">من نحن</a>
+
+<a href="contact.html">تواصل معنا</a>
+
+<a href="privacy.html">سياسة الخصوصية</a>
+
 </div>
-<div class="flex gap-6 mb-12">
-<a class="w-10 h-10 rounded-full glass flex items-center justify-center text-stone-400 hover:text-gold hover:border-gold transition-all" href="#">
-<span class="font-bold">FB</span>
+
+<div class="flex justify-center gap-4 mb-8">
+
+<a href="https://wa.me/967782138587" target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white">
+
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.89 4.44-9.892 9.886-.001 2.125.593 3.456 1.574 5.111l-.973 3.558 3.691-.969z"/></svg>
+
 </a>
-<a class="w-10 h-10 rounded-full glass flex items-center justify-center text-stone-400 hover:text-gold hover:border-gold transition-all" href="#">
-<span class="font-bold">TG</span>
+
+<a href="https://t.me/tariq77087" target="_blank" class="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center text-white">
+
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.852 8.466l-1.924 9.063c-.145.636-.52.793-1.054.493l-2.929-2.16-1.412 1.36c-.156.156-.287.287-.588.287l.21-2.973 5.409-4.887c.235-.211-.051-.328-.364-.12l-6.685 4.21-2.882-.9c-.626-.196-.638-.626.13-.923l11.267-4.343c.522-.196.979.117.818.893z"/></svg>
+
 </a>
-<a class="w-10 h-10 rounded-full glass flex items-center justify-center text-stone-400 hover:text-gold hover:border-gold transition-all" href="#">
-<span class="font-bold">WA</span>
+
+<a href="https://www.facebook.com/share/18SmUWm6nw/" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white">
+
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+
 </a>
+
 </div>
-<p class="text-stone-600 text-xs">© ٢٠٢٤ في آي بي ماركت. جميع الحقوق محفوظة</p>
-</div>
+
+<p class="text-xs opacity-50">&copy; 2025 VIP Market - جميع الحقوق محفوظة</p>
+
 </footer>
-</body></html>
+
+<!-- Sidebar Overlay -->
+
+<div id="overlay" onclick="toggleSidebar()" class="overlay fixed inset-0 z-[90]"></div>
+
+<!-- Sidebar -->
+
+<aside id="sidebar" class="sidebar fixed top-0 right-0 h-full w-[280px] bg-[var(--bg-primary)] z-[100] shadow-2xl p-6 border-l border-white/10 overflow-y-auto">
+
+<div class="flex justify-between items-center mb-8">
+
+<button onclick="toggleSidebar()" class="text-2xl">✕</button>
+
+<span class="font-bold text-[#c9a227]">القائمة</span>
+
+</div>
+
+<nav class="space-y-6">
+
+<a href="#" class="flex items-center gap-3 py-2 text-lg">👤 تسجيل الدخول</a>
+
+<button onclick="toggleTheme()" class="flex items-center gap-3 py-2 text-lg w-full text-right">
+
+<span id="theme-icon">🌓</span> 
+
+<span>تبديل الوضع</span>
+
+<span id="current-theme" class="text-xs opacity-50 mr-auto">(داكن)</span>
+
+</button>
+
+<div class="border-t border-white/10 my-4"></div>
+
+<a href="#shop" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">🛒 المتجر</a>
+
+<a href="#apps" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">📱 تطبيقات احترافية</a>
+
+<a href="#ai" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">🤖 الذكاء الاصطناعي</a>
+
+<a href="#income" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">💰 الربح من الإنترنت</a>
+
+<a href="#trading" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">📈 التداول والتحليل</a>
+
+<div class="border-t border-white/10 my-4"></div>
+
+<a href="about.html" class="block py-2">من نحن</a>
+
+<a href="contact.html" class="block py-2">تواصل معنا</a>
+
+<a href="privacy.html" class="block py-2">سياسة الخصوصية</a>
+
+</nav>
+
+</aside>
+
+<script>
+
+function toggleSidebar() {
+
+const sidebar = document.getElementById('sidebar');
+
+const overlay = document.getElementById('overlay');
+
+const body = document.body;
+
+sidebar.classList.toggle('active');
+
+overlay.classList.toggle('active');
+
+body.classList.toggle('no-scroll');
+
+}
+
+function toggleTheme() {
+
+const html = document.documentElement;
+
+const current = html.getAttribute('data-theme');
+
+const next = current === 'dark' ? 'light' : 'dark';
+
+html.setAttribute('data-theme', next);
+
+localStorage.setItem('vipmarket-theme', next);
+
+updateThemeUI(next);
+
+}
+
+function updateThemeUI(theme) {
+
+document.getElementById('current-theme').innerText = theme === 'dark' ? '(داكن)' : '(نهاري)';
+
+}
+
+// Initialize theme
+
+const savedTheme = localStorage.getItem('vipmarket-theme') || 'dark';
+
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+updateThemeUI(savedTheme);
+
+// Close on Escape
+
+document.addEventListener('keydown', (e) => {
+
+if (e.key === 'Escape') {
+
+const sidebar = document.getElementById('sidebar');
+
+if (sidebar.classList.contains('active')) toggleSidebar();
+
+}
+
+});
+
+</script>
+
+</body>
+
+        </html>
