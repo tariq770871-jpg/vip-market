@@ -1,62 +1,159 @@
-!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP MARKET - سياسة الخصوصية</title>
-<script src="https://cdn.tailwindcss.com">
-</script>
-<style>
-:root { --gold: #c9a227; }
-[data-theme='light'] { --bg-primary: #ffffff; --text-primary: #060d17; --card-bg: #ffffff; }
-[data-theme='dark'] { --bg-primary: #121317; --text-primary: #ffffff; --card-bg: rgba(255, 255, 255, 0.05); }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s; margin: 0; }
-.glass { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-</style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>سياسة الخصوصية | VIP MARKET</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface": "#e3e2e7", "primary-fixed-dim": "#e9c349", "on-secondary-fixed": "#1c1b1b",
+            "tertiary-container": "#b4b2b2", "surface": "#121317", "secondary": "#c8c6c5",
+            "on-secondary-container": "#bab8b7", "on-primary-fixed": "#241a00", "on-tertiary": "#313030",
+            "surface-container-highest": "#343539", "on-primary": "#3c2f00", "background": "#121317",
+            "tertiary-fixed-dim": "#c8c6c5", "tertiary": "#d0cdcd", "outline": "#99907c",
+            "surface-container-low": "#1a1b1f", "error": "#ffb4ab", "on-tertiary-fixed": "#1c1b1b",
+            "on-secondary-fixed-variant": "#474646", "surface-container-high": "#292a2e", "on-tertiary-container": "#454544",
+            "inverse-primary": "#735c00", "surface-tint": "#e9c349", "primary": "#f2ca50",
+            "inverse-surface": "#e3e2e7", "on-error-container": "#ffdad6", "error-container": "#93000a",
+            "surface-container-lowest": "#0d0e12", "secondary-fixed-dim": "#c8c6c5", "secondary-container": "#4a4949",
+            "on-surface-variant": "#d0c5af", "on-primary-fixed-variant": "#574500", "tertiary-fixed": "#e5e2e1",
+            "surface-dim": "#121317", "on-tertiary-fixed-variant": "#474746", "primary-fixed": "#ffe088",
+            "inverse-on-surface": "#2f3034", "secondary-fixed": "#e5e2e1", "on-background": "#e3e2e7",
+            "primary-container": "#d4af37", "on-error": "#690005", "outline-variant": "#4d4635",
+            "on-secondary": "#313030", "surface-variant": "#343539", "on-primary-container": "#554300",
+            "surface-container": "#1e1f23", "surface-bright": "#38393d"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Tajawal', sans-serif; cursor: none; }
+    /* المؤشر الموحد */
+    #custom-cursor { width: 8px; height: 8px; background: #f2ca50; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.1s ease; }
+    #cursor-ring { width: 40px; height: 40px; border: 2px solid rgba(242, 202, 80, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); animation: rotateRing 4s linear infinite; transform: translate(-50%, -50%); }
+    @keyframes rotateRing { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    #canvas-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
-<header class="h-[56px] flex items-center justify-between px-6 fixed top-0 w-full z-50 glass">
-<a href="index.html" class="text-sm border border-[#c9a227]/30 px-3 py-1 rounded-lg">← العودة للرئيسية</a>
-<h1 class="text-xl font-bold text-[#c9a227]">VIP MARKET</h1>
-</header>
-<main class="mt-24 px-6 max-w-3xl mx-auto flex-grow mb-20">
-<h2 class="text-3xl font-black text-center mb-10 text-[#c9a227]">سياسة الخصوصية</h2>
-<div class="space-y-6">
-<div class="glass p-8 rounded-3xl">
-<h3 class="text-xl font-bold mb-3 text-[#c9a227]">جمع واستخدام البيانات</h3>
-<p class="opacity-80">نحن لا نقوم بجمع أي بيانات شخصية عنك تلقائياً عند زيارتك للموقع. يتم جمع البيانات فقط في حال قمت بمراسلتنا طواعية عبر نماذج الاتصال أو وسائل التواصل الرسمية.</p>
-</div>
-<div class="glass p-8 rounded-3xl">
-<h3 class="text-xl font-bold mb-3 text-[#c9a227]">مشاركة البيانات</h3>
-<p class="opacity-80">نحن نؤكد التزامنا التام بعدم بيع، تأجير، أو مشاركة بياناتك الشخصية مع أي أطراف ثالثة لأغراض تجارية أو تسويقية.</p>
-</div>
-<div class="glass p-8 rounded-3xl">
-<h3 class="text-xl font-bold mb-3 text-[#c9a227]">ملفات التعريف (Cookies)</h3>
-<p class="opacity-80">قد نستخدم ملفات تعريف الارتباط التقنية الضرورية لضمان عمل الموقع بشكل سليم وتحسين تجربة التصفح. يمكنك تعطيلها عبر إعدادات متصفحك.</p>
-</div>
-</div>
-</main>
-<footer class="glass border-t border-white/10 py-12 px-6 text-center mt-auto">
-<div class="flex justify-center gap-6 mb-8 text-sm opacity-80">
-<a href="about.html">من نحن</a>
-<a href="contact.html">تواصل معنا</a>
-<a href="privacy.html">سياسة الخصوصية</a>
-</div>
-<div class="flex justify-center gap-4 mb-8">
-<a href="https://wa.me/967782138587" target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.89 4.44-9.892 9.886-.001 2.125.593 3.456 1.574 5.111l-.973 3.558 3.691-.969z"/></svg>
-</a>
-<a href="https://t.me/tariq77087" target="_blank" class="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.852 8.466l-1.924 9.063c-.145.636-.52.793-1.054.493l-2.929-2.16-1.412 1.36c-.156.156-.287.287-.588.287l.21-2.973 5.409-4.887c.235-.211-.051-.328-.364-.12l-6.685 4.21-2.882-.9c-.626-.196-.638-.626.13-.923l11.267-4.343c.522-.196.979.117.818.893z"/></svg>
-</a>
-<a href="https://www.facebook.com/share/18SmUWm6nw/" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-</a>
-</div>
-<p class="text-xs opacity-50">&copy; 2025 VIP Market - جميع الحقوق محفوظة</p>
-</footer>
-<script>
-document.documentElement.setAttribute('data-theme', localStorage.getItem('vipmarket-theme') || 'dark');
-</script>
+<body class="bg-background text-on-background selection:bg-primary/30 transition-colors duration-300 overflow-x-hidden">
+  <canvas id="canvas-particles"></canvas>
+  <div id="custom-cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- الهيدر الموحد -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/5 dark:bg-background/80 bg-white/80 backdrop-blur-md">
+    <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-8 h-16">
+      <div class="text-xl font-bold text-primary tracking-wider">VIP MARKET</div>
+      <div class="flex items-center gap-6">
+        <button class="p-2 rounded-full hover:bg-primary/10 text-on-surface-variant transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+          <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined hidden dark:block text-primary">light_mode</span>
+        </button>
+        <a class="flex items-center gap-2 text-primary hover-glow transition-all text-sm font-bold group px-4 py-2 rounded-lg bg-primary/5 border border-primary/20" href="mastery.html">
+          <span>العودة للرئيسية</span>
+          <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10 pt-32 pb-24 px-6 max-w-4xl mx-auto min-h-screen">
+    <header class="text-center mb-16 reveal active">
+      <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase">بروتوكول الإتقان</div>
+      <h1 class="text-4xl md:text-5xl font-bold text-on-surface mb-6">سياسة الخصوصية</h1>
+      <p class="text-on-surface-variant max-w-2xl mx-auto leading-relaxed text-lg">نحن في <span class="text-primary font-bold">VIP MARKET</span> نؤمن بالوضوح التام.</p>
+    </header>
+    <div class="space-y-6">
+      <section class="glass-panel p-8 rounded-2xl transition-all hover:border-primary/20 group reveal">
+        <div class="flex items-center gap-5 mb-6"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">shield_person</span></div><div><h2 class="text-2xl font-bold text-on-surface">كيف نتعامل مع بياناتك؟</h2><p class="text-sm text-primary/60">بساطة وصدق</p></div></div>
+        <div class="text-on-surface-variant leading-loose space-y-4"><p>نحن لا نجمع بياناتك الشخصية لأغراض ترويجية.</p><div class="bg-primary/5 p-4 rounded-lg border-r-4 border-primary/40"><span class="font-bold text-on-surface">سياسة الصفر بيانات:</span> لا نقوم بطلب بريدك الإلكتروني أو رقم هاتفك إلا إذا قررت أنت مراسلتنا.</div></div>
+      </section>
+      <section class="glass-panel p-8 rounded-2xl transition-all hover:border-primary/20 group reveal">
+        <div class="flex items-center gap-5 mb-6"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">visibility_off</span></div><div><h2 class="text-2xl font-bold text-on-surface">عدم مشاركة البيانات</h2><p class="text-sm text-primary/60">خصوصيتك ملكك</p></div></div>
+        <div class="text-on-surface-variant leading-loose"><p>لن تجد بياناتك تباع لشركات الإعلانات.</p></div>
+      </section>
+      <section class="glass-panel p-8 rounded-2xl transition-all hover:border-primary/20 group reveal">
+        <div class="flex items-center gap-5 mb-6"><div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">stat_0</span></div><div><h2 class="text-2xl font-bold text-on-surface">ملفات التعريف (Cookies)</h2><p class="text-sm text-primary/60">للتفضيلات فقط</p></div></div>
+        <div class="text-on-surface-variant leading-loose"><p>نستخدم الحد الأدنى من ملفات الكوكيز لنتذكر فقط تفضيلاتك البصرية.</p></div>
+      </section>
+    </div>
+    <div class="mt-16 text-center reveal">
+      <p class="text-on-surface-variant text-sm mb-6">آخر تحديث: يناير 2025</p>
+      <a class="inline-flex items-center gap-2 px-8 py-3 bg-primary text-on-primary rounded-full font-bold hover:opacity-90 transition-all" href="contact.html">
+        <span class="material-symbols-outlined text-xl">contact_support</span>
+        <span>لديك سؤال عن الخصوصية؟</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- الفوتر الموحد -->
+  <footer class="relative z-10 w-full border-t border-white/5 pt-16 pb-8 dark:bg-black/40 bg-stone-100 transition-colors duration-300">
+    <div class="max-w-[1440px] mx-auto px-8">
+      <div class="flex flex-col items-center gap-10 text-center">
+        <div class="text-2xl font-bold text-primary tracking-wider">VIP MARKET</div>
+        <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-on-surface-variant">
+          <a class="hover:text-primary transition-colors" href="mastery.html">الرئيسية</a>
+          <a class="hover:text-primary transition-colors" href="about.html">من نحن</a>
+          <a class="hover:text-primary transition-colors" href="contact.html">تواصل معنا</a>
+          <a class="hover:text-primary transition-colors text-primary font-bold" href="privacy.html">سياسة الخصوصية</a>
+        </div>
+        <div class="flex gap-6">
+          <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary/10 text-on-surface-variant hover:text-primary" href="https://wa.me/967782138587" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+          <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary/10 text-on-surface-variant hover:text-primary" href="https://t.me/tariq77087" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg></a>
+          <a class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary/10 text-on-surface-variant hover:text-primary" href="https://facebook.com/share/18SmUWm6nw/" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+        <div class="text-xs text-on-surface-variant font-medium opacity-60">Copyright © 2025 VIP Market. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // المؤشر الموحد
+    const cursor = document.getElementById('custom-cursor');
+    const ring = document.getElementById('cursor-ring');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+      if (e.target.closest('a') || e.target.closest('button')) {
+        ring.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        ring.style.borderColor = '#f2ca50';
+      } else {
+        ring.style.transform = 'translate(-50%, -50%) scale(1)';
+        ring.style.borderColor = 'rgba(242, 202, 80, 0.5)';
+      }
+    });
+    // Particles Canvas
+    const canvas = document.getElementById('canvas-particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
+    class Particle {
+      constructor() { this.reset(); }
+      reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedX = Math.random() * 0.4 - 0.2; this.speedY = Math.random() * 0.4 - 0.2; this.opacity = Math.random() * 0.4 + 0.1; }
+      update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
+      draw() { ctx.fillStyle = `rgba(242, 202, 80, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+    animate();
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
