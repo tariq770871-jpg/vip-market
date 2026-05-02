@@ -1,132 +1,221 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html class="dark" dir="rtl" lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP MARKET - الرئيسية</title>
-<script src="https://cdn.tailwindcss.com">
-</script>
-<style>
-:root { --gold: #c9a227; --navy: #060d17; }
-[data-theme='light'] { --bg-primary: #ffffff; --text-primary: #060d17; --card-bg: #ffffff; --btn-bg: #060d17; --btn-text: #ffffff; }
-[data-theme='dark'] { --bg-primary: #121317; --text-primary: #ffffff; --card-bg: rgba(255, 255, 255, 0.05); --btn-bg: #c9a227; --btn-text: #000000; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s, color 0.3s; margin: 0; overflow-x: hidden; }
-.glass { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-.sticky-nav { position: sticky; top: 56px; z-index: 40; background: var(--bg-primary); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-.no-scroll { overflow: hidden; }
-.sidebar { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
-.sidebar.active { transform: translateX(0); }
-.overlay { display: none; background: rgba(0, 0, 0, 0.5); }
-.overlay.active { display: block; }
-</style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>VIP MARKET - الصفحه الرئيسيه </title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#f7e08a', DEFAULT: '#f2ca50', dark: '#b08d26' },
+            navy: '#060d17',
+            stone: { 950: '#121317' },
+            primary: '#f2ca50',
+            "on-primary": "#3c2f00",
+            "surface-container-lowest": "#0d0e12",
+            "on-surface": "#e3e2e7",
+            "on-surface-variant": "#d0c5af",
+            "background": "#121317",
+            "inverse-surface": "#e3e2e7"
+          },
+          fontFamily: { tajawal: ['Tajawal', 'sans-serif'] },
+          animation: {
+            'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glitch-luxury': 'glitch-luxury 0.6s cubic-bezier(.25,.46,.45,.94) both',
+            'spin-slow': 'spin 8s linear infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Tajawal', sans-serif; cursor: none; overflow-x: hidden; background-color: #121317; }
+    /* المؤشر الموحد */
+    #custom-cursor { width: 8px; height: 8px; background: #f2ca50; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.1s ease; }
+    #cursor-ring { width: 40px; height: 40px; border: 2px solid rgba(242, 202, 80, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); animation: rotateRing 4s linear infinite; transform: translate(-50%, -50%); }
+    @keyframes rotateRing { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .gold-gradient { background: linear-gradient(135deg, #f2ca50 0%, #f7e08a 50%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gold-btn { background: linear-gradient(135deg, #f2ca50 0%, #b08d26 100%); transition: all 0.5s; }
+    .gold-btn:hover { box-shadow: 0 0 35px rgba(242, 202, 80, 0.6); transform: translateY(-5px); }
+    .sidebar-drawer { transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1); width: 85%; max-width: 420px; }
+    .sticky-subnav { top: 56px; }
+    .reveal { opacity: 0; transform: translateY(60px) scale(0.98); transition: opacity 1s cubic-bezier(0.2, 0, 0.2, 1), transform 1s cubic-bezier(0.2, 0, 0.2, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+    .service-card { perspective: 1000px; }
+    .service-inner { transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); transform-style: preserve-3d; }
+    .service-card:hover .service-inner { transform: rotateY(3deg) rotateX(2deg) scale(1.01); }
+    .typewriter-ready::after { content: '|'; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; pointer-events: none; }
+  </style>
 </head>
-<body>
-<header class="h-[56px] flex items-center justify-between px-4 fixed top-0 w-full z-50 glass border-b border-white/10">
-<div class="flex items-center gap-4">
-<button onclick="toggleSidebar()" class="text-2xl">☰</button>
-</div>
-<h1 class="text-xl font-bold text-[#c9a227]">VIP MARKET</h1>
-<div class="w-8"></div>
-</header>
-<nav class="sticky-nav h-[48px] mt-[56px] flex items-center justify-center gap-4 px-2 overflow-x-auto whitespace-nowrap scroll-smooth">
-<a href="#shop" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">المتجر</a>
-<a href="#apps" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">تطبيقات</a>
-<a href="#ai" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">أدوات الذكاء</a>
-<a href="#income" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">الربح</a>
-<a href="#trading" class="px-3 py-1 text-sm hover:bg-white/5 rounded-full transition-all">التداول</a>
-</nav>
-<section class="py-16 px-6 text-center">
-<h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight">ابدأ دخلك من الإنترنت باستخدام هاتفك فقط 🚀</h2>
-<p class="text-lg opacity-80 mb-8 max-w-2xl mx-auto">تعلم، جرّب، وابدأ خطوة بخطوة باستخدام أدوات وتطبيقات مختارة بعناية.</p>
-<a href="#income" class="inline-block px-8 py-4 bg-[#c9a227] text-black font-bold rounded-full shadow-lg shadow-amber-500/20 hover:scale-105 transition-transform">ابدأ الآن</a>
-</section>
-<main class="max-w-4xl mx-auto px-6 space-y-12 pb-20">
-<section id="shop" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
-<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🛒</div>
-<h3 class="text-2xl font-bold mb-3">متجر المنتجات</h3>
-<p class="opacity-70 mb-6">منتجات غير رقمية عالية الجودة، شحن سريع، وضمان شامل على جميع المنتجات. نوفر لك تشكيلة واسعة من المنتجات المختارة بعناية لتلبية احتياجاتك اليومية.</p>
-<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم المتجر؟</p>
-<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">تصفح المنتجات</button>
-</section>
-<section id="apps" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
-<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">📱</div>
-<h3 class="text-2xl font-bold mb-3">تطبيقات احترافية</h3>
-<p class="opacity-70 mb-6">أحدث التطبيقات الجاهزة للنشر، مصممة بجودة عالية وأداء متميز. نوفر تطبيقات موبايل وسطح مكتب تناسب مختلف المجالات والاحتياجات.</p>
-<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم التطبيقات؟</p>
-<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">استكشف التطبيقات</button>
-</section>
-<section id="ai" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
-<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🤖</div>
-<h3 class="text-2xl font-bold mb-3">أدوات الذكاء الاصطناعي</h3>
-<p class="opacity-70 mb-6">أدوات ذكاء اصطناعي متطورة لتحسين إنتاجيتك وأعمالك. من المساعدات الذكية إلى أدوات التحليل والإبداع، كل ما تحتاجه في مكان واحد.</p>
-<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم أدوات الذكاء الاصطناعي؟</p>
-<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">جرّب الأدوات</button>
-</section>
-<section id="income" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
-<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">💰</div>
-<h3 class="text-2xl font-bold mb-3">الربح من الإنترنت</h3>
-<p class="opacity-70 mb-6">دورات وطرق مثبتة للربح من الإنترنت، من التسويق بالعمولة إلى العمل الحر وإنشاء المحتوى. نرشدك خطوة بخطوة لتحقيق دخل مستدام.</p>
-<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم الربح من الإنترنت؟</p>
-<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">ابدأ الربح الآن</button>
-</section>
-<section id="trading" class="glass rounded-3xl p-8 text-center transition-all hover:scale-[1.02]">
-<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">📈</div>
-<h3 class="text-2xl font-bold mb-3">التداول والتحليل</h3>
-<p class="opacity-70 mb-6">تعليم التداول في الأسواق العالمية بأسلوب مبسط، مع تحليلات فنية وأساسية تساعدك على اتخاذ قرارات استثمارية صائبة وتنمية رأس مالك.</p>
-<p class="text-sm font-bold text-[#c9a227] mb-4">هل تريد الانتقال إلى قسم التداول والتحليل؟</p>
-<button class="w-full py-3 bg-[var(--btn-bg)] text-[var(--btn-text)] font-bold rounded-xl">تعلم التداول</button>
-</section>
-</main>
-<footer class="glass border-t border-white/10 py-12 px-6 text-center mt-auto">
-<div class="flex justify-center gap-6 mb-8 text-sm opacity-80">
-<a href="about.html">من نحن</a>
-<a href="contact.html">تواصل معنا</a>
-<a href="privacy.html">سياسة الخصوصية</a>
-</div>
-<div class="flex justify-center gap-4 mb-8">
-<a href="https://wa.me/967782138587" target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.89 4.44-9.892 9.886-.001 2.125.593 3.456 1.574 5.111l-.973 3.558 3.691-.969z"/></svg>
-</a>
-<a href="https://t.me/tariq77087" target="_blank" class="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.852 8.466l-1.924 9.063c-.145.636-.52.793-1.054.493l-2.929-2.16-1.412 1.36c-.156.156-.287.287-.588.287l.21-2.973 5.409-4.887c.235-.211-.051-.328-.364-.12l-6.685 4.21-2.882-.9c-.626-.196-.638-.626.13-.923l11.267-4.343c.522-.196.979.117.818.893z"/></svg>
-</a>
-<a href="https://www.facebook.com/share/18SmUWm6nw/" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-</a>
-</div>
-<p class="text-xs opacity-50">&copy; 2025 VIP Market - جميع الحقوق محفوظة</p>
-</footer>
-<div id="overlay" onclick="toggleSidebar()" class="overlay fixed inset-0 z-[90]"></div>
-<aside id="sidebar" class="sidebar fixed top-0 right-0 h-full w-[280px] bg-[var(--bg-primary)] z-[100] shadow-2xl p-6 border-l border-white/10 overflow-y-auto">
-<div class="flex justify-between items-center mb-8">
-<button onclick="toggleSidebar()" class="text-2xl">✕</button>
-<span class="font-bold text-[#c9a227]">القائمة</span>
-</div>
-<nav class="space-y-6">
-<a href="#" class="flex items-center gap-3 py-2 text-lg">👤 تسجيل الدخول</a>
-<button onclick="toggleTheme()" class="flex items-center gap-3 py-2 text-lg w-full text-right">
-<span id="theme-icon">🌓</span>
-<span>تبديل الوضع</span>
-<span id="current-theme" class="text-xs opacity-50 mr-auto">(داكن)</span>
-</button>
-<div class="border-t border-white/10 my-4"></div>
-<a href="#shop" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">🛒 المتجر</a>
-<a href="#apps" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">📱 تطبيقات احترافية</a>
-<a href="#ai" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">🤖 الذكاء الاصطناعي</a>
-<a href="#income" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">💰 الربح من الإنترنت</a>
-<a href="#trading" onclick="toggleSidebar()" class="flex items-center gap-3 py-2 text-lg">📈 التداول والتحليل</a>
-<div class="border-t border-white/10 my-4"></div>
-<a href="about.html" class="block py-2">من نحن</a>
-<a href="contact.html" class="block py-2">تواصل معنا</a>
-<a href="privacy.html" class="block py-2">سياسة الخصوصية</a>
-</nav>
-</aside>
-<script>
-function toggleSidebar() { const sidebar = document.getElementById('sidebar'); const overlay = document.getElementById('overlay'); const body = document.body; sidebar.classList.toggle('active'); overlay.classList.toggle('active'); body.classList.toggle('no-scroll'); }
-function toggleTheme() { const html = document.documentElement; const current = html.getAttribute('data-theme'); const next = current === 'dark' ? 'light' : 'dark'; html.setAttribute('data-theme', next); localStorage.setItem('vipmarket-theme', next); updateThemeUI(next); }
-function updateThemeUI(theme) { document.getElementById('current-theme').innerText = theme === 'dark' ? '(داكن)' : '(نهاري)'; }
-const savedTheme = localStorage.getItem('vipmarket-theme') || 'dark'; document.documentElement.setAttribute('data-theme', savedTheme); updateThemeUI(savedTheme);
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const sidebar = document.getElementById('sidebar'); if (sidebar.classList.contains('active')) toggleSidebar(); } });
-</script>
+<body class="bg-stone-950 text-white selection:bg-gold/30">
+  <div id="custom-cursor"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="particles-js"></canvas>
+
+  <!-- Sidebar Overlay -->
+  <div class="fixed inset-0 bg-black/90 z-[60] hidden backdrop-blur-xl" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+  <!-- Sidebar Drawer -->
+  <div class="fixed top-0 right-0 h-full bg-stone-950 z-[70] translate-x-full sidebar-drawer border-l border-white/5" id="sidebar">
+    <div class="p-8 flex flex-col h-full">
+      <div class="flex items-center justify-between mb-12">
+        <button class="p-3 hover:bg-white/5 rounded-full" onclick="toggleSidebar()"><span class="material-symbols-outlined text-gold">close</span></button>
+        <div class="text-2xl font-black gold-gradient">VIP MARKET</div>
+      </div>
+      <nav class="space-y-4">
+        <a class="flex items-center gap-5 p-5 hover:bg-white/5 rounded-2xl" href="#shop" onclick="toggleSidebar()">🛒 <span class="font-bold text-lg">المتجر</span></a>
+        <a class="flex items-center gap-5 p-5 hover:bg-white/5 rounded-2xl" href="#apps" onclick="toggleSidebar()">📱 <span class="font-bold text-lg">التطبيقات</span></a>
+        <a class="flex items-center gap-5 p-5 hover:bg-white/5 rounded-2xl" href="#ai" onclick="toggleSidebar()">🤖 <span class="font-bold text-lg">الذكاء الاصطناعي</span></a>
+        <a class="flex items-center gap-5 p-5 hover:bg-white/5 rounded-2xl" href="#income" onclick="toggleSidebar()">💰 <span class="font-bold text-lg">الربح من الإنترنت</span></a>
+        <a class="flex items-center gap-5 p-5 hover:bg-white/5 rounded-2xl" href="#trading" onclick="toggleSidebar()">📈 <span class="font-bold text-lg">التداول والتحليل</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- الهيدر الموحد -->
+  <header class="fixed top-0 left-0 w-full z-50 glass border-b border-white/5 flex items-center justify-center px-6 h-16">
+    <div class="text-2xl font-black gold-gradient">VIP MARKET</div>
+    <button class="absolute right-6 p-2 text-gold" onclick="toggleSidebar()">
+      <span class="material-symbols-outlined text-3xl">menu</span>
+    </button>
+  </header>
+
+  <!-- Sticky Sub-nav -->
+  <nav class="fixed sticky-subnav left-0 w-full z-40 glass border-b border-white/5 flex items-center justify-center gap-8 md:gap-16 py-3.5 text-xs md:text-sm font-black overflow-x-auto whitespace-nowrap px-8 scrollbar-hide" id="subnav">
+    <a class="hover:text-gold transition-all" href="#shop">المتجر</a>
+    <a class="hover:text-gold transition-all" href="#apps">تطبيقات</a>
+    <a class="hover:text-gold transition-all" href="#ai">أدوات الذكاء</a>
+    <a class="hover:text-gold transition-all" href="#income">الربح</a>
+    <a class="hover:text-gold transition-all" href="#trading">التداول</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-32 relative">
+    <section class="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden reveal">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] animate-pulse"></div>
+      <div class="relative z-10 max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-7xl lg:text-9xl font-black gold-gradient mb-10 tracking-tighter typewriter-ready" id="hero-title"></h1>
+        <p class="text-xl md:text-2xl text-stone-400 mb-14 max-w-3xl mx-auto font-light">نحن لا نقدم مجرد أدوات، نحن نصنع مستقبلك الرقمي.</p>
+        <a class="gold-btn px-20 py-6 rounded-full text-black font-black text-2xl inline-block animate-pulse-glow" href="#income">ابدأ رحلتك الآن</a>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 space-y-40 py-32">
+      <!-- Shop -->
+      <section class="reveal service-card" id="shop">
+        <div class="service-inner relative group rounded-[3.5rem] overflow-hidden glass p-1 min-h-[600px] flex items-center">
+          <div class="absolute inset-0 z-0"><img alt="Store" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcVd9ZIZoqUstNFgIMFoq3w46AiVxem9rGK8lNE7sWoIbzcylxt2s-Dr7KqXNHKrcUelUwEmR0AF7FZNkn6kjYTrNTFscoqQCQHfVQNjES8ytudceRMBSoEK0iXnE0QOv4NdyhCab9hsa2_t3AyOD_gpwfS-waPv47R1n7WR5TAQ2a5vII4nYtHiqbBQdAu8W_Om5W29m9Bshj91knfmTAsf8nC7n975f1h2O-01cuM7xLUo42dQaVNvZH2_K5lNhtRvTVsguNX3E" /><div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div></div>
+          <div class="relative z-10 p-10 md:p-24"><h2 class="text-5xl font-black text-gold mb-6">متجر النخبة</h2><p class="text-stone-300 text-xl mb-10">بوابتك لامتلاك أرقى المنتجات الرقمية.</p><button class="gold-btn px-12 py-5 rounded-2xl text-black font-black">تصفح المجموعة</button></div>
+        </div>
+      </section>
+      <!-- Apps -->
+      <section class="reveal service-card" id="apps">
+        <div class="service-inner relative group rounded-[3.5rem] overflow-hidden glass p-1 min-h-[600px] flex items-center flex-row-reverse">
+          <div class="absolute inset-0 z-0"><img alt="Apps" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDccbCxDvF8oNiLKl-7VG9mCbK3BRGyYcMrKWTWqG39dzotZV_APLYfl-kj96ZPEPyvdbwWQ72ZO-IB-jdefMVbqwGbZ-nTYBbNhb3fNkvLE7p76OROP_eZT6szienz0JZygC42VXr4Ay6ypmdW6eLmfVExPpClZTml6gPts2itYYbcwQyH8IFpGaIJCqvJFiCqjzNTfLi0uvU6U0QI8RZmcsUnI0Gx15dH9u-9x_HiJCpzToVrhafDf4lT_KN94bGbSCWdo-CEUZc" /><div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div></div>
+          <div class="relative z-10 p-10 md:p-24 text-right"><h2 class="text-5xl font-black text-gold mb-6">حلول برمجية</h2><p class="text-stone-300 text-xl mb-10">تطبيقات تم بناؤها لتغيير قواعد اللعبة.</p><button class="gold-btn px-12 py-5 rounded-2xl text-black font-black">اكتشف التطبيقات</button></div>
+        </div>
+      </section>
+      <!-- AI -->
+      <section class="reveal service-card" id="ai">
+        <div class="service-inner relative group rounded-[3.5rem] overflow-hidden glass p-1 min-h-[600px] flex items-center">
+          <div class="absolute inset-0 z-0"><img alt="AI" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeX7o0JBxcKblaiPq_lZlPNmDTbOUO4ZuKVHsCQ0qpW18l9-Ly6NbTjEOd8U9GhCg7B8tCtmknUWKtsuELkUa-S2xPCs9jTzpqDpPkn2aU6txtAHU5Djapbnb3Y29zd4CZGPz06mQVGyboJPbVXBLmnZ80RKzUIcYrM_hTQpVVQ3uFwK1Xr68_NaUcjSGBUUzpU9u9JLLRAoLaoBvuie7BvAg6zLK1xrmvwbCJwHoneXhOU6lNlz0Qs0cO0TeI69wicSmaSMYbFfY" /><div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div></div>
+          <div class="relative z-10 p-10 md:p-24"><h2 class="text-5xl font-black text-gold mb-6">ذكاء بلا حدود</h2><p class="text-stone-300 text-xl mb-10">سخر طاقة الذكاء الاصطناعي لرفع إنتاجيتك.</p><button class="gold-btn px-12 py-5 rounded-2xl text-black font-black">تجربة الأدوات</button></div>
+        </div>
+      </section>
+      <!-- Income -->
+      <section class="reveal service-card" id="income">
+        <div class="service-inner relative group rounded-[3.5rem] overflow-hidden glass p-1 min-h-[600px] flex items-center flex-row-reverse">
+          <div class="absolute inset-0 z-0"><img alt="Income" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs8MZckVySSWz4MezSz4QmPHbwzSD83X2XeCH2BdfK_Wynsyn-EbYZEuV-WaLWCSRUNwCEJtWulLneSKxe7SOQ0UGFwBYJ73L3n95RoECdW9Tig4zEZrx7RduQ6Hbn0a0pMENQXdvASo1oKAgYR-M0LPFkKcv52GmlQfFXz5bgMJMxOotxNChfv6jLuvnW08HODegz4jtj6bGuCFOGdCPQalfiDQwQzQvCZIrxEfLZQ3obyFFw-HunDrTUigjxyf9_P26-f56ihxc" /><div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div></div>
+          <div class="relative z-10 p-10 md:p-24 text-right"><h2 class="text-5xl font-black text-gold mb-6">صناعة الثروة</h2><p class="text-stone-300 text-xl mb-10">تعلم كيف تحول هاتفك إلى ماكينة لإنتاج الدخل.</p><button class="gold-btn px-12 py-5 rounded-2xl text-black font-black">ابدأ الربح</button></div>
+        </div>
+      </section>
+      <!-- Trading -->
+      <section class="reveal service-card" id="trading">
+        <div class="service-inner relative group rounded-[3.5rem] overflow-hidden glass p-1 min-h-[600px] flex items-center">
+          <div class="absolute inset-0 z-0"><img alt="Trading" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMu304KXRJiO94G84KDHQjvwSgyqmmWbQWtVdo_a7KaGiV1F5IcrrygIkeo_2J71o6o5OkAIf88-bTiUiq0Q_Tehze_K8RJpFUQ8veFEGuWDODCUB2tNGvC_iQw2i4T7UamwX_2vVe_kWIi6NpPTCFe-Pniw5m6ah8XzcvJuuivxlZwQ-ELpfUC_XwULiXkA-j0pNPkRFDOxZWcy1_YA3tqxCBSyhMDJVzvfXruhTTbbpMjnhnnI-Uu0ggMlFvi6L6bYorMnM8BfY" /><div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div></div>
+          <div class="relative z-10 p-10 md:p-24"><h2 class="text-5xl font-black text-gold mb-6">احتراف التداول</h2><p class="text-stone-300 text-xl mb-10">تدريب احترافي يأخذك من الصفر حتى السيادة في الأسواق.</p><button class="gold-btn px-12 py-5 rounded-2xl text-black font-black">دخول الأكاديمية</button></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- الفوتر الموحد -->
+  <footer class="mt-32 border-t border-gold/10 py-24 px-6 bg-[#0d0e12]">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <div class="text-6xl font-black gold-gradient mb-16">VIP MARKET</div>
+      <div class="flex flex-wrap justify-center gap-12 mb-20 text-stone-400 font-bold text-xl">
+        <a class="hover:text-gold transition-colors" href="about.html">من نحن</a>
+        <a class="hover:text-gold transition-colors" href="contact.html">تواصل معنا</a>
+        <a class="hover:text-gold transition-colors" href="privacy.html">سياسة الخصوصية</a>
+      </div>
+      <div class="flex gap-10 mb-20">
+        <a class="w-16 h-16 rounded-full flex items-center justify-center bg-[#25D366] text-white hover:scale-125 transition-all" href="https://wa.me/967782138587" target="_blank"><svg class="w-8 h-8 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+        <a class="w-16 h-16 rounded-full flex items-center justify-center bg-[#0088cc] text-white hover:scale-125 transition-all" href="https://t.me/tariq77087" target="_blank"><svg class="w-8 h-8 fill-current" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg></a>
+        <a class="w-16 h-16 rounded-full flex items-center justify-center bg-[#1877F2] text-white hover:scale-125 transition-all" href="https://facebook.com/share/18SmUWm6nw/" target="_blank"><svg class="w-8 h-8 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+      <p class="text-stone-500 text-base font-medium">Copyright © 2025 VIP Market. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script>
+    // المؤشر الموحد
+    const cursor = document.getElementById('custom-cursor');
+    const ring = document.getElementById('cursor-ring');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%, -50%) scale(1.5)'; ring.style.borderColor = '#f2ca50'; });
+      el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%, -50%) scale(1)'; ring.style.borderColor = 'rgba(242, 202, 80, 0.5)'; });
+    });
+
+    // Particles
+    const canvas = document.getElementById('particles-js');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    const mouse = { x: null, y: null, radius: 180 };
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+    class Particle {
+      constructor() { this.reset(); this.density = (Math.random() * 40) + 5; }
+      reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2.5 + 0.5; this.speedX = Math.random() * 0.4 - 0.2; this.speedY = Math.random() * 0.4 - 0.2; this.baseX = this.x; this.baseY = this.y; this.opacity = Math.random() * 0.5 + 0.2; }
+      update() {
+        let dx = mouse.x - this.x; let dy = mouse.y - this.y; let distance = Math.sqrt(dx*dx + dy*dy);
+        if (distance < mouse.radius) { let force = (mouse.radius - distance) / mouse.radius; this.x -= (dx / distance) * force * this.density; this.y -= (dy / distance) * force * this.density; }
+        else { if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 20; if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 20; }
+        this.x += this.speedX; this.y += this.speedY;
+        if (this.x > canvas.width || this.x < 0) this.speedX *= -1; if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+      }
+      draw() { ctx.fillStyle = `rgba(242, 202, 80, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+    function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; particlesArray = []; for (let i = 0; i < 80; i++) particlesArray.push(new Particle()); }
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particlesArray.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('active'); }); }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Typewriter
+    function typeWriter(el, text, speed = 80) { let i = 0; el.innerHTML = ''; function type() { if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, speed); } else el.classList.remove('typewriter-ready'); } type(); }
+
+    // Sidebar
+    function toggleSidebar() { const s = document.getElementById('sidebar'); const o = document.getElementById('sidebar-overlay'); s.classList.toggle('translate-x-full'); o.classList.toggle('hidden'); }
+
+    window.addEventListener('load', () => {
+      init(); animate();
+      setTimeout(() => typeWriter(document.getElementById('hero-title'), 'ابدأ رحلة النجاح مع VIP MARKET 🚀'), 500);
+    });
+  </script>
 </body>
 </html>
