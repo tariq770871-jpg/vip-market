@@ -230,8 +230,7 @@
       .service-card .text-5xl {
         font-size: 2rem !important;
       }
-    }
-/* تعديلات الجوال فقط - أحجام الأزرار والعناصر */
+    }/* تعديلات الجوال فقط - أحجام الأزرار والعناصر */
 @media (max-width: 640px) {
   body {
     cursor: auto;
@@ -240,12 +239,55 @@
     display: none;
   }
   .gold-btn {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-    padding-top: 0.75rem !important;
-    padding-bottom: 0.75rem !important;
-    font-size: 1rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 0.625rem !important;
+    padding-bottom: 0.625rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 1rem !important;
   }
+  /* تعديل حجم الأزرار داخل الخدمات */
+  .service-card .gold-btn {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  /* تعديلات Sidebar على الجوال */
+  .sidebar-drawer {
+    width: 90% !important;
+    max-width: 320px !important;
+  }
+  .sidebar-drawer .p-8 {
+    padding: 1.25rem !important;
+  }
+  .sidebar-drawer .text-2xl {
+    font-size: 1.25rem !important;
+  }
+  .sidebar-drawer .p-5 {
+    padding: 0.75rem !important;
+  }
+  .sidebar-drawer .text-lg {
+    font-size: 0.875rem !important;
+  }
+  .sidebar-drawer .gap-5 {
+    gap: 0.75rem !important;
+  }
+  .sidebar-drawer .mb-12 {
+    margin-bottom: 1.5rem !important;
+  }
+  .sidebar-drawer .mb-10 {
+    margin-bottom: 1.25rem !important;
+  }
+  .sidebar-drawer .space-y-4 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  /* تصغير أيقونة الإغلاق */
+  .sidebar-drawer .material-symbols-outlined {
+    font-size: 1.5rem !important;
+  }
+}
 } 
   </style>
 </head>
