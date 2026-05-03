@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#eac249",
+                    "error-container": "#93000a",
+                    "surface": "#16130b",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-variant": "#38342b",
+                    "bg-01": "#121317",
+                    "outline": "#99907c",
+                    "on-background": "#eae1d4",
+                    "tertiary-fixed": "#bde9ff",
+                    "bg-02": "#0D0E12",
+                    "on-primary": "#3d2f00",
+                    "surface-01": "#1A1C22",
+                    "status-info": "#3498DB",
+                    "surface-container-highest": "#38342b",
+                    "on-secondary-container": "#342800",
+                    "on-secondary": "#3c2f00",
+                    "surface-tint": "#eac249",
+                    "tertiary-container": "#82d9ff",
+                    "on-tertiary-fixed": "#001f2a",
+                    "on-surface-variant": "#d0c5af",
+                    "surface-bright": "#3d392f",
+                    "border-base": "#2A2D36",
+                    "on-surface": "#eae1d4",
+                    "primary": "#ffe9b0",
+                    "on-tertiary": "#003546",
+                    "gold-glow": "rgba(242, 202, 80, 0.25)",
+                    "text-primary": "#FFFFFF",
+                    "text-muted": "#7A7D88",
+                    "on-primary-fixed-variant": "#574400",
+                    "text-secondary": "#B5B7C0",
+                    "background": "#16130b",
+                    "tertiary": "#d1efff",
+                    "on-primary-fixed": "#241a00",
+                    "inverse-primary": "#745b00",
+                    "surface-container-low": "#1f1b13",
+                    "status-warning": "#F1C40F",
+                    "inverse-on-surface": "#343027",
+                    "outline-variant": "#4d4635",
+                    "primary-fixed": "#ffe08a",
+                    "on-tertiary-fixed-variant": "#004d64",
+                    "surface-container-high": "#2d2a21",
+                    "surface-dim": "#16130b",
+                    "surface-container-lowest": "#110e07",
+                    "on-error": "#690005",
+                    "surface-02": "#20232B",
+                    "on-primary-container": "#6b5500",
+                    "on-tertiary-container": "#005f7a",
+                    "text-disabled": "#5A5D66",
+                    "secondary-fixed": "#ffe088",
+                    "primary-container": "#f2ca50",
+                    "tertiary-fixed-dim": "#7ad1f7",
+                    "on-secondary-fixed-variant": "#574500",
+                    "secondary-container": "#af8d11",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-container": "#231f17",
+                    "inverse-surface": "#eae1d4",
+                    "status-success": "#2ECC71",
+                    "secondary": "#e9c349",
+                    "gold-soft": "rgba(242, 202, 80, 0.08)",
+                    "status-error": "#E74C3C",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "3xl": "64px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "4xl": "80px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "body-m": ["Manrope"],
+                    "body-l": ["Manrope"],
+                    "label": ["Manrope"],
+                    "h3": ["Manrope"],
+                    "h1": ["Manrope"],
+                    "h2": ["Manrope"],
+                    "caption": ["Manrope"],
+                    "display": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-m": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-l": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "h2": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #121317; color: #eae1d4; }
+        .glass-panel {
+            background: rgba(26, 28, 34, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(242, 202, 80, 0.2);
+        }
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 20px rgba(242, 202, 80, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-[#1A1C22]/60 backdrop-blur-lg flex justify-between items-center px-8 py-4 w-full sticky top-0 z-50 border-b border-[#F2CA50]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-6">
+<div class="text-2xl font-black tracking-tighter text-[#F2CA50]">VIP MARKET</div>
+<div class="hidden md:flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-gray-400">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-64 text-on-surface" placeholder="بحث عن تطبيقات..." type="text"/>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-['Manrope'] text-right">
+<a class="text-gray-400 hover:text-[#F2CA50] transition-colors" href="#">الرئيسية</a>
+<a class="text-[#F2CA50] border-b-2 border-[#F2CA50] pb-1" href="#">متجر التطبيقات</a>
+<a class="text-gray-400 hover:text-[#F2CA50] transition-colors" href="#">الأكاديمية</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#F2CA50] hover:bg-[#F2CA50]/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#F2CA50] hover:bg-[#F2CA50]/10 rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="md:hidden text-[#F2CA50]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex bg-[#1A1C22]/80 backdrop-blur-2xl h-screen w-64 border-l border-[#F2CA50]/20 fixed right-0 top-0 flex-col z-40 overflow-y-auto pt-24 font-['Manrope'] text-right">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img class="w-10 h-10 rounded-full border border-[#F2CA50]" data-alt="A professional circular profile avatar for a male user in a sleek, dark tech environment. The avatar features high-contrast lighting with golden highlights on the facial features and hair, reflecting the premium black and gold aesthetic of the VIP MARKET platform. The background is a soft, deep charcoal grey with subtle bokeh effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVwMgVTKsCD5uce02daQy8hepoY6qCiwCI2TvbuyxxgVcByIOZZcIn6U9gbas21Gc491fBckEXmyNV-27CyukksQJBfqn0ciDDAlB6RBRudwd5T1jHPv8g6NZsHIMVLqUWtws2zWIaMXLsyhYpMtzDDJu_ZBR40fGLzBku5GNCdCQ157bqKwc5S0bHIz-5I9qoRb50Nch_qHwXxPESvWxyEGsH9jCYgV5F-LynOW5Q3WrzOtiW4Nbx0yiHCUerj7SlBYWvhD8UV7Q"/>
+<div>
+<div class="text-[#F2CA50] font-bold text-sm">VIP MARKET</div>
+<div class="text-gray-500 text-xs">نظام النخبة</div>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1 px-4">
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm">الرئيسية</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+<span class="text-sm">المعرض</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-sm">الأكاديمية</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg bg-[#F2CA50]/10 text-[#F2CA50] border-r-4 border-[#F2CA50] shadow-[0_0_15px_rgba(242,202,80,0.3)]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">apps</span>
+<span class="text-sm">متجر التطبيقات</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm">أدوات الذكاء الاصطناعي</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">enhanced_encryption</span>
+<span class="text-sm">الخزنة</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="text-sm">المدونة</span>
+</a>
+<div class="my-4 border-t border-white/5"></div>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">الإعدادات</span>
+</a>
+<a class="flex items-center justify-start gap-4 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="text-sm">اتصل بنا</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="w-full md:pr-64 pt-8 pb-24 px-6">
+<!-- Hero Header -->
+<section class="mb-12 relative overflow-hidden rounded-3xl h-64 flex items-center px-12" data-alt="A futuristic digital data visualization with flowing streams of golden light particles and geometric patterns on a deep obsidian black background. The scene represents a sophisticated app ecosystem with layers of translucent glass-like interfaces floating in 3D space. The lighting is dramatic and cinematic, emphasizing a sense of high-end luxury technology and exclusive access." style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUVs_I_M1de-PMWk_YO2VL7_H1DIgxnwwtPAsWhykpyAsyxpGohgW6td8u0SH0JijfsaPqJ0RxKdZQXUz-LmH8JkGJWEnBMWiuymO3W2OXIyJEtRJuX1n8vpHrhAu8E5xbi81Ef1JX17w2WGXEbs0nw8l9uqNxgNk4IM5TJjpuSKXMlXBkDiHP_UOSDmMNmauevrrUvTMdALnsjUI2coaY8oKQ18KwVZ-9GNY4Urpst_eOyU4OIFYtoB8_bsP8WCHxT16uoIlw7Fc'); background-size: cover; background-position: center;">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-display text-display text-primary mb-4">متجر النخبة</h1>
+<p class="text-body-l text-text-secondary max-w-lg">اكتشف تطبيقات حصرية مصممة خصيصاً لمجتمع VIP MARKET لتعزيز إنتاجيتك وأمانك الرقمي.</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-l from-transparent to-black/60"></div>
+</section>
+<!-- App Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Featured App -->
+<div class="md:col-span-8 glass-panel rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center gold-glow-hover transition-all duration-500">
+<div class="w-full md:w-1/3">
+<img class="rounded-2xl w-full shadow-2xl" data-alt="A professional app icon for Market Master Pro, featuring a stylized golden bull head integrated with digital circuit lines on a deep black metallic surface. The design is sleek, minimalist, and luxury-oriented, utilizing high-gloss finishes and subtle 3D depth. The background glows with a soft amber radiance, symbolizing market intelligence and wealth growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcDwek4iaQTu9Mayv4gh0eTqhneJW1uWKQzK7PNph4z9L24xFEOYspLiwghL_6mhsF39D96A-XtUIqR4KRefiWLKeHRAKffHmCC-S1qtP_fZQ5eJiviXoISWebtmPq1097-neM_NxHR82RAhrEAG7iUNE6GjcpYbggqYpNwCBBOvAhnMMnufg8QSdvi6rS7UrK-HyrUEEUydQEfHQKMPrSTNAfbtLFGY5dm6yfZgxf1Y6oR5UFJdjn-QtM7fUb9JUlK7IbtZuAO_k"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold">الأكثر طلباً</span>
+<span class="text-status-success flex items-center gap-1 text-xs">
+<span class="material-symbols-outlined text-sm">verified</span>
+                                رسمي
+                            </span>
+</div>
+<h2 class="text-h1 text-white mb-4">Market Master Pro</h2>
+<p class="text-body-m text-text-secondary mb-8">النظام المتكامل لتحليل الأسواق المالية بالذكاء الاصطناعي. تتبع الصفقات، تحليل الاتجاهات، وتنبيهات النخبة لحظة بلحظة.</p>
+<div class="flex gap-4">
+<button class="bg-[#F2CA50] text-black px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                                تحميل
+                            </button>
+<button class="border border-[#F2CA50] text-[#F2CA50] px-8 py-3 rounded-xl font-bold hover:bg-[#F2CA50]/10 transition-colors">عرض التفاصيل</button>
+</div>
+</div>
+</div>
+<!-- Secondary Apps -->
+<div class="md:col-span-4 glass-panel rounded-3xl p-6 gold-glow-hover transition-all duration-500">
+<img class="rounded-2xl w-full h-48 object-cover mb-6" data-alt="A highly secure digital vault interface shown on a premium tablet device. The screen displays a complex biometric authentication ring glowing in electric gold against a pitch-black background. Around the device, there are subtle hints of luxury office materials like dark wood and brushed metal, creating an atmosphere of corporate high-security and elite privacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8AthVl-OcaprPY0zC0wG4i4p9OyZfYFAXlizVC2B2CV6g7rMcF_YE5u859AP3d-Dell0Qfz0jEArczEWzOTyZaHTWEl8F3Xf3aiaBMrGgHqBFD3Q5yWR_-WXul8wpmuMVjwedYBGITw_7KhhNb4lkLpWD2wJvsRQTHNlr5tnej2KVe7lk1_wTT8VjZkOpa2EnijHkbToImWeD5H72Lduv-jOjEIw5LZr_VilFV-wZ3EXWU4jqNWAcOpPvQNkkMsHGfpxBwFiTuX0"/>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-h2 text-white">Secure Vault</h3>
+<span class="text-[#F2CA50] text-sm font-bold">مجاني</span>
+</div>
+<p class="text-caption text-text-secondary mb-6">تشفير عسكري لبياناتك الحساسة وكلمات المرور مع ميزة التدمير الذاتي.</p>
+<button class="w-full bg-white/5 border border-white/10 text-white py-3 rounded-xl font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">start</span>
+                        ابدأ الآن
+                    </button>
+</div>
+<div class="md:col-span-4 glass-panel rounded-3xl p-6 gold-glow-hover transition-all duration-500">
+<img class="rounded-2xl w-full h-48 object-cover mb-6" data-alt="An abstract representation of artificial intelligence as a complex web of golden neural connections pulsing with energy inside a dark crystalline structure. The aesthetic is clean, corporate, and extremely modern, featuring sharp geometric edges and soft depth-of-field effects. The lighting focuses on the core of the intelligence, radiating a prestigious gold glow throughout the dark void." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW3ByhNb8fhE8o4qk6AjBoM-YQpkeImtmxYLNYlxiSv6LfFc0tDNrCCswGoj_b27FfgWAuAn1-FinXLxlgTOFOaA1fb2RaBs16Kid6VpjgW13341Z3chyPVdi8SlX6Af6bJJDYEQAlauECDRLTpPPFRk939PqGI6Qnl3TfRjIjWBex574y_zTNxoDhmKuDuXKY9HqTFUxwA-5ou6xjT-Rr4Q-8lEQOAtuXi6JrgBYszFAca4rnmxXq-wfGWphKQmF0KI82Aery7dE"/>
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-h2 text-white">Elite AI Analyzer</h3>
+<span class="text-status-warning text-sm font-bold">PRO</span>
+</div>
+<p class="text-caption text-text-secondary mb-6">محرك تحليل البيانات الضخمة لاتخاذ قرارات تجارية ذكية ومبنية على أرقام دقيقة.</p>
+<button class="w-full bg-[#F2CA50] text-black py-3 rounded-xl font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">lock</span>
+                        ترقية للتحميل
+                    </button>
+</div>
+<div class="md:col-span-8 glass-panel rounded-3xl p-8 flex items-center justify-between gold-glow-hover transition-all duration-500 bg-gradient-to-r from-surface-01 to-[#F2CA50]/5">
+<div class="max-w-md">
+<h3 class="text-h2 text-white mb-2">هل تبحث عن تطبيق مخصص؟</h3>
+<p class="text-body-m text-text-secondary mb-6">فريق تطوير VIP MARKET جاهز لبناء أدواتك البرمجية الخاصة وفق أعلى معايير النخبة.</p>
+<a class="inline-flex items-center gap-3 text-[#F2CA50] font-bold group" href="https://wa.me/967782138587">
+                            تواصل معنا الآن
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_back</span>
+</a>
+</div>
+<div class="hidden lg:block">
+<span class="material-symbols-outlined text-8xl text-[#F2CA50]/20">terminal</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-[#1A1C22] w-full py-12 px-8 flex flex-col items-center gap-6 border-t border-white/5 font-['Manrope'] text-sm">
+<div class="text-[#F2CA50] font-bold text-xl tracking-widest">VIP MARKET</div>
+<div class="flex flex-wrap justify-center gap-8 text-gray-500">
+<a class="hover:text-[#F2CA50] transition-opacity duration-200" href="https://wa.me/967782138587">واتساب</a>
+<a class="hover:text-[#F2CA50] transition-opacity duration-200" href="https://t.me/tariq77087">تيلجرام</a>
+<a class="hover:text-[#F2CA50] transition-opacity duration-200" href="https://www.facebook.com/share/1L8qV7LPEC/">فيسبوك</a>
+<a class="hover:text-[#F2CA50] transition-opacity duration-200" href="mailto:tariq770871@gmail.com">اتصل بنا</a>
+</div>
+<div class="text-gray-500 mt-4">جميع الحقوق محفوظة لـ VIP MARKET © ٢٠٢٤</div>
+<div class="flex gap-4 mt-2">
+<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#F2CA50] hover:bg-[#F2CA50]/20 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-lg">language</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#F2CA50] hover:bg-[#F2CA50]/20 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-lg">shield</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[#F2CA50] hover:bg-[#F2CA50]/20 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-lg">help</span>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation (Visible on small screens) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#1A1C22]/90 backdrop-blur-xl border-t border-white/5 flex justify-around items-center py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">الرئيسية</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#F2CA50]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">apps</span>
+<span class="text-[10px]">المتجر</span>
+</button>
+<div class="bg-[#F2CA50] w-12 h-12 rounded-full -mt-8 flex items-center justify-center text-black shadow-lg shadow-[#F2CA50]/30">
+<span class="material-symbols-outlined">add</span>
+</div>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px]">الأكاديمية</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">حسابي</span>
+</button>
+</nav>
+</body></html>
