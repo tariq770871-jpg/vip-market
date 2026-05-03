@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIP MARKET | الخزنة الآمنة</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#eac249",
+                        "error-container": "#93000a",
+                        "surface": "#16130b",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#38342b",
+                        "bg-01": "#121317",
+                        "outline": "#99907c",
+                        "on-background": "#eae1d4",
+                        "tertiary-fixed": "#bde9ff",
+                        "bg-02": "#0D0E12",
+                        "on-primary": "#3d2f00",
+                        "surface-01": "#1A1C22",
+                        "status-info": "#3498DB",
+                        "surface-container-highest": "#38342b",
+                        "on-secondary-container": "#342800",
+                        "on-secondary": "#3c2f00",
+                        "surface-tint": "#eac249",
+                        "tertiary-container": "#82d9ff",
+                        "on-tertiary-fixed": "#001f2a",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#3d392f",
+                        "border-base": "#2A2D36",
+                        "on-surface": "#eae1d4",
+                        "primary": "#ffe9b0",
+                        "on-tertiary": "#003546",
+                        "gold-glow": "rgba(242, 202, 80, 0.25)",
+                        "text-primary": "#FFFFFF",
+                        "text-muted": "#7A7D88",
+                        "on-primary-fixed-variant": "#574400",
+                        "text-secondary": "#B5B7C0",
+                        "background": "#16130b",
+                        "tertiary": "#d1efff",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#745b00",
+                        "surface-container-low": "#1f1b13",
+                        "status-warning": "#F1C40F",
+                        "inverse-on-surface": "#343027",
+                        "outline-variant": "#4d4635",
+                        "primary-fixed": "#ffe08a",
+                        "on-tertiary-fixed-variant": "#004d64",
+                        "surface-container-high": "#2d2a21",
+                        "surface-dim": "#16130b",
+                        "surface-container-lowest": "#110e07",
+                        "on-error": "#690005",
+                        "surface-02": "#20232B",
+                        "on-primary-container": "#6b5500",
+                        "on-tertiary-container": "#005f7a",
+                        "text-disabled": "#5A5D66",
+                        "secondary-fixed": "#ffe088",
+                        "primary-container": "#f2ca50",
+                        "tertiary-fixed-dim": "#7ad1f7",
+                        "on-secondary-fixed-variant": "#574500",
+                        "secondary-container": "#af8d11",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container": "#231f17",
+                        "inverse-surface": "#eae1d4",
+                        "status-success": "#2ECC71",
+                        "secondary": "#e9c349",
+                        "gold-soft": "rgba(242, 202, 80, 0.08)",
+                        "status-error": "#E74C3C",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "4xl": "80px",
+                        "2xl": "48px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #121317;
+            color: #eae1d4;
+        }
+        .glass-panel {
+            background: rgba(26, 28, 34, 0.6);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(242, 202, 80, 0.15);
+        }
+        .gold-glow-effect {
+            box-shadow: 0 0 20px rgba(242, 202, 80, 0.15);
+        }
+        .vault-card:hover {
+            border-color: #F2CA50;
+            box-shadow: 0 0 30px rgba(242, 202, 80, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-[#1A1C22]/60 backdrop-blur-lg text-[#F2CA50] font-['Manrope'] text-right border-b border-[#F2CA50]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-8 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-2xl hover:bg-[#F2CA50]/10 transition-colors p-2 rounded-full">notifications</button>
+<button class="material-symbols-outlined text-2xl hover:bg-[#F2CA50]/10 transition-colors p-2 rounded-full">person</button>
+</div>
+<div class="flex-1 max-w-md mx-lg hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-400">search</span>
+<input class="w-full bg-surface-01 border border-outline-variant rounded-full py-2 pr-10 pl-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-right" placeholder="البحث في الخزنة..." type="text"/>
+</div>
+</div>
+<div class="text-2xl font-black tracking-tighter text-[#F2CA50]">VIP MARKET</div>
+</header>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full flex flex-col z-40 overflow-y-auto bg-[#1A1C22]/80 backdrop-blur-2xl text-[#F2CA50] font-['Manrope'] text-right h-screen w-64 border-l border-[#F2CA50]/20 shadow-2xl shadow-black hidden lg:flex">
+<div class="p-lg flex flex-col items-center gap-sm mt-20">
+<div class="w-16 h-16 rounded-full border-2 border-primary overflow-hidden shadow-lg shadow-gold-glow">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a highly secure system administrator avatar, sleek corporate apparel, monochromatic dark background with subtle gold lighting, 8k resolution, hyper-realistic texture of skin and fabric. The mood is serious and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAK_ccsmq_lKMKe4MzmQQgjd4iR3DlR5qxsh5OQRXeiOg1KxQcon-h3ihE3UYqPPi3dCBGhl-6TtRl1ZaJ-8j3taWBNEIy4Y-qJPUr8LmX6YTTCT8L0Lo1BuPqNw-3lJVclafyEUfUG5btUmLJMrzKOQ8W2R_Ac6B4F8gXQW0RZDAOJBzgdblzhlDHwLQohgyFyeuy1Amuw33uGjfMXf_XDaHP05-VADrz06M9L3Q_OIalaKyGTdDSL0kVLH_wtlewW5OocTM6lGU"/>
+</div>
+<h3 class="font-bold text-xl mt-2">VIP MARKET</h3>
+<p class="text-gray-400 text-sm">نظام النخبة</p>
+</div>
+<nav class="flex-1 px-4 py-8 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+<span>المعرض</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span>الأكاديمية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">apps</span>
+<span>متجر التطبيقات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span>أدوات الذكاء الاصطناعي</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#F2CA50]/10 text-[#F2CA50] border-r-4 border-[#F2CA50] shadow-[0_0_15px_rgba(242,202,80,0.3)]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span>الخزنة</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">article</span>
+<span>المدونة</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>الإعدادات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>اتصل بنا</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:mr-64 p-8 min-h-screen">
+<div class="max-w-7xl mx-auto space-y-xl">
+<!-- Security Banner -->
+<section class="glass-panel rounded-3xl p-xl flex flex-col md:flex-row items-center justify-between gap-xl overflow-hidden relative border border-[#F2CA50]/30">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-status-success">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-h3 text-h3">حالة الأمان: نشطة وعالية</span>
+</div>
+<h1 class="font-h1 text-h1 text-white">الخزنة المشفرة AES-256</h1>
+<p class="text-text-secondary font-body-l max-w-xl">يتم حماية أصولك الرقمية وعقودك الذكية بأعلى مستويات التشفير العسكري. الخصوصية هي الأولوية القصوى في VIP MARKET.</p>
+<div class="flex gap-md mt-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-sm hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">lock</span>
+<span>تأمين إضافي</span>
+</button>
+<button class="border border-primary text-primary px-lg py-sm rounded-xl font-bold flex items-center gap-sm hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">history</span>
+<span>سجل الدخول</span>
+</button>
+</div>
+</div>
+<div class="w-48 h-48 md:w-64 md:h-64 relative">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+<img class="relative z-10 w-full h-full object-contain" data-alt="A futuristic digital vault safe composed of translucent golden glass and intricate circuitry. The vault is surrounded by holographic AES-256 encryption labels. Atmospheric dark corporate setting with cinematic golden rim lighting. Cyberpunk luxury aesthetic, 8k octane render." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC99xG_m2Y0hvAhVQQEQEoM6X4MX2BdQZlqnEHhi9hOh_8ypWQMOQqJuFIsx4FniViPo3DiZqGKpg3k8D_3UWPMzc5jPeKdEP-m0mfcLpw589qjeYvi2mp9U3DP3SPvgrlBJef-S_x_q8gje5xOQVNI3rL9OMoHq52c_Ccypan2OabZnHtD5aJ4r8PdmDmqMD6NhuNq9lfSFhhJTxhj04eKxVgO3-IOaRCw8_7-RXPnKymBEvEf3iaFpldfSCVJ0jbGUmPGo1t7BU8"/>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Assets Panel -->
+<div class="md:col-span-2 glass-panel rounded-3xl p-lg flex flex-col gap-lg">
+<div class="flex justify-between items-center">
+<h2 class="font-h2 text-h2 text-primary">الأصول الرقمية</h2>
+<span class="bg-status-success/20 text-status-success px-sm py-xs rounded-lg text-caption font-bold">محدث: الآن</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="vault-card p-lg bg-surface-02 rounded-2xl border border-border-base transition-all">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">currency_bitcoin</span>
+</div>
+<span class="text-status-success font-bold">+2.4%</span>
+</div>
+<div class="text-text-secondary text-sm">بيتكوين (BTC)</div>
+<div class="text-h2 font-h2 text-white">1.4502 BTC</div>
+<div class="text-primary text-caption">≈ $92,400.00</div>
+</div>
+<!-- Card 2 -->
+<div class="vault-card p-lg bg-surface-02 rounded-2xl border border-border-base transition-all">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-status-info/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-status-info">token</span>
+</div>
+<span class="text-status-error font-bold">-0.8%</span>
+</div>
+<div class="text-text-secondary text-sm">إيثيريوم (ETH)</div>
+<div class="text-h2 font-h2 text-white">24.881 ETH</div>
+<div class="text-primary text-caption">≈ $58,200.00</div>
+</div>
+</div>
+<div class="mt-auto pt-lg border-t border-white/5">
+<div class="flex justify-between text-text-secondary mb-sm">
+<span>إجمالي القيمة المقدرة</span>
+<span>النمو الشهري</span>
+</div>
+<div class="flex justify-between items-end">
+<div class="text-display font-display text-white">$150,600.00</div>
+<div class="text-status-success font-bold text-h3">+12.5%</div>
+</div>
+</div>
+</div>
+<!-- Security Status Widget -->
+<div class="glass-panel rounded-3xl p-lg flex flex-col gap-lg border-primary/20 bg-gradient-to-b from-[#1A1C22] to-[#121317]">
+<h2 class="font-h2 text-h2 text-white text-center">الأمن الذكي</h2>
+<div class="relative flex justify-center py-xl">
+<div class="w-40 h-40 rounded-full border-4 border-primary border-t-transparent animate-spin-slow"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+</div>
+</div>
+<ul class="space-y-md">
+<li class="flex items-center gap-sm bg-surface-01 p-sm rounded-xl">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+<div class="flex flex-col">
+<span class="font-bold text-sm">التحقق البيومتري</span>
+<span class="text-caption text-text-muted">مفعل ونشط</span>
+</div>
+</li>
+<li class="flex items-center gap-sm bg-surface-01 p-sm rounded-xl">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+<div class="flex flex-col">
+<span class="font-bold text-sm">المصادقة الثنائية (2FA)</span>
+<span class="text-caption text-text-muted">عبر تطبيق VIP</span>
+</div>
+</li>
+<li class="flex items-center gap-sm bg-surface-01 p-sm rounded-xl opacity-60">
+<span class="material-symbols-outlined text-status-warning">pending</span>
+<div class="flex flex-col">
+<span class="font-bold text-sm">مفتاح الأمان الفعلي</span>
+<span class="text-caption text-text-muted">غير متصل</span>
+</div>
+</li>
+</ul>
+<button class="w-full bg-[#F2CA50]/10 border border-[#F2CA50] text-[#F2CA50] py-sm rounded-xl font-bold hover:bg-[#F2CA50] hover:text-black transition-all">تحديث الإعدادات</button>
+</div>
+</div>
+<!-- Smart Contracts Section -->
+<section class="glass-panel rounded-3xl p-lg space-y-lg">
+<div class="flex justify-between items-center">
+<h2 class="font-h2 text-h2 text-primary">العقود الذكية القائمة</h2>
+<button class="text-primary flex items-center gap-xs hover:underline">
+<span>عرض الكل</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-right">
+<thead>
+<tr class="text-text-muted border-b border-white/5">
+<th class="pb-md font-label">العقد</th>
+<th class="pb-md font-label">النوع</th>
+<th class="pb-md font-label">تاريخ البدء</th>
+<th class="pb-md font-label">الحالة</th>
+<th class="pb-md font-label">الإجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-bold">استثمار عقاري دبي-04</span>
+</div>
+</td>
+<td class="py-lg text-text-secondary">عقار رقمي</td>
+<td class="py-lg text-text-secondary">12/05/2024</td>
+<td class="py-lg">
+<span class="bg-status-success/20 text-status-success px-sm py-1 rounded-full text-caption">مؤكد</span>
+</td>
+<td class="py-lg">
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-bold">تأمين محفظة النخبة-X</span>
+</div>
+</td>
+<td class="py-lg text-text-secondary">عقد تأمين</td>
+<td class="py-lg text-text-secondary">01/01/2024</td>
+<td class="py-lg">
+<span class="bg-status-success/20 text-status-success px-sm py-1 rounded-full text-caption">مؤكد</span>
+</td>
+<td class="py-lg">
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-bold">شراكة تجارية ELITE</span>
+</div>
+</td>
+<td class="py-lg text-text-secondary">عقد ذكي</td>
+<td class="py-lg text-text-secondary">22/10/2023</td>
+<td class="py-lg">
+<span class="bg-status-warning/20 text-status-warning px-sm py-1 rounded-full text-caption">قيد المراجعة</span>
+</td>
+<td class="py-lg">
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">edit_note</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-[#1A1C22] text-[#F2CA50] font-['Manrope'] text-sm w-full border-t border-white/5 w-full py-12 px-8 flex flex-col items-center gap-6 z-50">
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="hover:text-[#F2CA50] transition-opacity flex items-center gap-xs" href="https://wa.me/967782138587">
+<span class="material-symbols-outlined text-sm">chat</span> واتساب
+            </a>
+<a class="hover:text-[#F2CA50] transition-opacity flex items-center gap-xs" href="https://t.me/tariq77087">
+<span class="material-symbols-outlined text-sm">send</span> تيلجرام
+            </a>
+<a class="hover:text-[#F2CA50] transition-opacity flex items-center gap-xs" href="https://www.facebook.com/share/1L8qV7LPEC/">
+<span class="material-symbols-outlined text-sm">public</span> فيسبوك
+            </a>
+<a class="hover:text-[#F2CA50] transition-opacity flex items-center gap-xs" href="mailto:tariq770871@gmail.com">
+<span class="material-symbols-outlined text-sm">mail</span> اتصل بنا
+            </a>
+</div>
+<p class="text-gray-500 text-center">جميع الحقوق محفوظة لـ VIP MARKET © ٢٠٢٤</p>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-[#F2CA50]/10 flex justify-around py-4 z-50">
+<a class="flex flex-col items-center gap-xs text-gray-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span class="text-[10px]">الخزنة</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-gray-400" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px]">الأكاديمية</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-gray-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">الإعدادات</span>
+</a>
+</nav>
+</body></html>
