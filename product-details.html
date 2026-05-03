@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#eac249",
+                        "error-container": "#93000a",
+                        "surface": "#16130b",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#38342b",
+                        "bg-01": "#121317",
+                        "outline": "#99907c",
+                        "on-background": "#eae1d4",
+                        "tertiary-fixed": "#bde9ff",
+                        "bg-02": "#0D0E12",
+                        "on-primary": "#3d2f00",
+                        "surface-01": "#1A1C22",
+                        "status-info": "#3498DB",
+                        "surface-container-highest": "#38342b",
+                        "on-secondary-container": "#342800",
+                        "on-secondary": "#3c2f00",
+                        "surface-tint": "#eac249",
+                        "tertiary-container": "#82d9ff",
+                        "on-tertiary-fixed": "#001f2a",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#3d392f",
+                        "border-base": "#2A2D36",
+                        "on-surface": "#eae1d4",
+                        "primary": "#ffe9b0",
+                        "on-tertiary": "#003546",
+                        "gold-glow": "rgba(242, 202, 80, 0.25)",
+                        "text-primary": "#FFFFFF",
+                        "text-muted": "#7A7D88",
+                        "on-primary-fixed-variant": "#574400",
+                        "text-secondary": "#B5B7C0",
+                        "background": "#16130b",
+                        "tertiary": "#d1efff",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#745b00",
+                        "surface-container-low": "#1f1b13",
+                        "status-warning": "#F1C40F",
+                        "inverse-on-surface": "#343027",
+                        "outline-variant": "#4d4635",
+                        "primary-fixed": "#ffe08a",
+                        "on-tertiary-fixed-variant": "#004d64",
+                        "surface-container-high": "#2d2a21",
+                        "surface-dim": "#16130b",
+                        "surface-container-lowest": "#110e07",
+                        "on-error": "#690005",
+                        "surface-02": "#20232B",
+                        "on-primary-container": "#6b5500",
+                        "on-tertiary-container": "#005f7a",
+                        "text-disabled": "#5A5D66",
+                        "secondary-fixed": "#ffe088",
+                        "primary-container": "#f2ca50",
+                        "tertiary-fixed-dim": "#7ad1f7",
+                        "on-secondary-fixed-variant": "#574500",
+                        "secondary-container": "#af8d11",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container": "#231f17",
+                        "inverse-surface": "#eae1d4",
+                        "status-success": "#2ECC71",
+                        "secondary": "#e9c349",
+                        "gold-soft": "rgba(242, 202, 80, 0.08)",
+                        "status-error": "#E74C3C",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "4xl": "80px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-m": ["Manrope"],
+                        "body-l": ["Manrope"],
+                        "label": ["Manrope"],
+                        "h3": ["Manrope"],
+                        "h1": ["Manrope"],
+                        "h2": ["Manrope"],
+                        "caption": ["Manrope"],
+                        "display": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-m": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-l": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "h1": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "h2": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(26, 28, 34, 0.6);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(242, 202, 80, 0.15);
+        }
+        .gold-shadow {
+            box-shadow: 0 0 20px rgba(242, 202, 80, 0.1);
+        }
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(242, 202, 80, 0.25);
+        }
+        body {
+            background-color: #0D0E12;
+            color: #eae1d4;
+        }
+    </style>
+</head>
+<body class="font-body-m">
+<!-- TopAppBar -->
+<header class="bg-[#1A1C22]/60 backdrop-blur-lg text-[#F2CA50] font-['Manrope'] text-right docked full-width top-0 border-b border-[#F2CA50]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-8 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+</div>
+<div class="relative hidden md:block">
+<input class="bg-surface-01 border border-[#F2CA50]/20 rounded-full py-1 px-4 pr-10 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="بحث..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="search">search</span>
+</div>
+</div>
+<div class="text-2xl font-black tracking-tighter text-[#F2CA50]">VIP MARKET</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-[#1A1C22]/80 backdrop-blur-2xl text-[#F2CA50] font-['Manrope'] text-right h-screen w-64 border-l border-[#F2CA50]/20 shadow-2xl shadow-black fixed right-0 top-0 h-full flex flex-col z-40 overflow-y-auto hidden md:flex pt-24">
+<div class="px-6 mb-8 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-[#F2CA50]">
+<img alt="Profile" data-alt="A professional portrait of an elite businessman in a high-end tailored dark suit. The setting is a luxury office with soft gold ambient lighting and a blurred urban cityscape in the background through glass windows. The mood is authoritative and prestigious, with a deep contrast and warm metallic color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPKdCJ8ma1rH9Rp3tlYNU7fjpAEpjvG9elnl44L_Ha2dBgyfBlC58HLU9e6p7g0GLSRAJzxXiJ4NdRq2X0njClud1J2CsLXqk1FdFRlm0T-sR0F_msza8VdqIm-VVEmeMutJS776THucZjY6seyEuX9ZFwZg-AxYJsaiwmqSn7M2pVzXCv-5DzYstMadeSZcP91QeGNQQJ2D7SxZIzgWRadvYUwk4O6dmlw20usNNsR9bf8DydMzvE9gPunbkccn8Bycg3U2P9fio"/>
+</div>
+<div class="text-[#F2CA50] font-bold text-xl">VIP MARKET</div>
+<div class="text-gray-400 text-xs">نظام النخبة</div>
+</div>
+<nav class="flex flex-col gap-1 px-4">
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">الرئيسية</span>
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 bg-[#F2CA50]/10 text-[#F2CA50] border-r-4 border-[#F2CA50] shadow-[0_0_15px_rgba(242,202,80,0.3)] transition-all rounded-xl" href="#">
+<span class="text-sm">المعرض</span>
+<span class="material-symbols-outlined" data-icon="gallery_thumbnail">gallery_thumbnail</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">الأكاديمية</span>
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">متجر التطبيقات</span>
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">أدوات الذكاء</span>
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">الخزنة</span>
+<span class="material-symbols-outlined" data-icon="enhanced_encryption">enhanced_encryption</span>
+</a>
+<a class="flex items-center justify-end gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-white/5 transition-all rounded-xl scale-95 active:scale-90" href="#">
+<span class="text-sm">الإعدادات</span>
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content (Canvas) -->
+<main class="w-full md:pr-64">
+<div class="max-w-7xl mx-auto px-4 py-12 md:px-lg md:py-2xl">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-lg text-gray-400 font-label text-sm">
+<a class="hover:text-primary-container" href="#">المعرض</a>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_left">chevron_left</span>
+<a class="hover:text-primary-container" href="#">الأجهزة الذكية</a>
+<span class="material-symbols-outlined text-xs" data-icon="chevron_left">chevron_left</span>
+<span class="text-primary-container">إليت برو إكس</span>
+</nav>
+<!-- Product Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Product Image Section (Large Glass Card) -->
+<div class="lg:col-span-7 glass-effect rounded-[20px] overflow-hidden p-6 gold-shadow relative group">
+<div class="absolute top-6 left-6 z-10 flex flex-col gap-3">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-caption font-bold">جديد</span>
+<span class="bg-black/50 backdrop-blur-md text-white p-2 rounded-full cursor-pointer hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="favorite">favorite</span>
+</span>
+</div>
+<div class="aspect-square w-full rounded-xl overflow-hidden mb-6">
+<img alt="Premium Smart Device" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, futuristic matte black smartphone with glowing gold accents along the edges and camera module. The device is levitating slightly above a polished obsidian surface. Soft golden rim lighting highlights its metallic texture against a dark, moody background with subtle bokeh light particles. The visual style is highly cinematic, corporate modern, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_qbFKnap_-23su8OYF0UibpFI6pHVef-RlM2wiMROvS_y5xX5L2OitvwPs7VZ5DCEYOfZJzPga62D5YZazEwzYPTFoSM-1BT3e4565oxRWAcctkSLSlX6HnfLZSPELN2K5OrSFCnXtEmaxHhFqs9JASz1WvByrOfjUhwfuEyKBrX-2whMMcaTUv4mXcn7ExQvrSctcbWRIN4HdnSYas7DxXLp_Brb5ivC920D7CxC9M_kBXM6xNv0XvTBnfWPZCROc8IW6EsgSP4"/>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class="aspect-square rounded-lg overflow-hidden border-2 border-primary-container">
+<img alt="Detail 1" data-alt="Close up shot of the camera module of a luxury smartphone, showcasing multiple high-tech lenses with gold-tinted optical coatings. The background is dark and blurred, reflecting soft gold light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp-3J4FiJOOGqbFzK5nHGkBifJaHRREkqgMJOTTQ72-c8fcfDuSr-bl1Pvj0qAxAM3VS1cQSKQyzc15jZSE-Ms3ErH2ChwZrSmW1tPN1iRqepjTia0iVmlxmR5LjtenrueWL5GobH_kObTvnxYYBhrbJPXmBzPFhuysJPiCybw1mgJGqVDTKICAtKVMIN5-Yu2AKstyoEQW_eDcXvl-7QeK4qlOy75CBOqSYpVUr9RU9NotUXT4Cd49ML07UQ2pPgfdsw_zaFk1hc"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden border border-white/10 hover:border-primary-container transition-colors opacity-60 hover:opacity-100">
+<img alt="Detail 2" data-alt="The profile of a high-end electronic device made of brushed titanium and gold plating. Professional studio lighting with deep shadows and metallic highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT9VZwAPa5Z3SZ4vyhXzVEipGbrUBn175S-MCY2QlNOrUPUq26fwhvVqv-UduCSUbV4xKj_a-c13_wqJFLCrLUk76aBfuvjhbYJdt3vRQsS8lOXmmGaOENVLOUhN7S9nZM258jHKUshcZ45jdTz6jzLYNkE_bxQUaSrPXN04oJsMrkh7GqHKAgEbRCsqsYtLNZTLsusU_InOlHOdMbapVuEYS4dpMoaQt2dWhtxgbl2uuRhAMCxT0tz6NdcD7jOT0ekn-X1hMXbG0"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden border border-white/10 hover:border-primary-container transition-colors opacity-60 hover:opacity-100">
+<img alt="Detail 3" data-alt="The glowing OLED display of a premium device showing an abstract gold and black fluid dynamic wallpaper. Crisp pixels and vibrant contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz3rEVhy51Qf2qPq87Oj_W-B10irKEi3mI3sD_lUaUOX9BAYhpplf0bCNpLxF9xRtrd-4OfLxpUWauk403NkIKWP8qyJg-4_mpbQ_1PG0vmVrp74N-sFMAEko4N7SNY2KQZHOnJdaviCbLc1WpEpE3-DhRuSYGWUAhuOatL26kEduPspw7aB0RRzUCPQOg6HDTR3uXdippdkbKchsoAV80Pc0pvh4sXTkZM-fDIIAhkETFX7U31YIjv08j7eSsEh3WrS9Khl1qvCQ"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden border border-white/10 hover:border-primary-container transition-colors opacity-60 hover:opacity-100">
+<img alt="Detail 4" data-alt="A macro shot of a gold-engraved logo on a matte black high-tech material surface. Luxurious texture and precise industrial design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7_Hzk1o6GXHHlxBvokxp5EaeGhih7q9Z5-U7S-qsvQkkwKRmia0crkNuk3ZlVXdEetbVexP608na9aREH2unv2iGkaIbUQpo9OhJZ-A64yHvRSHPMn6Aw5BnEqIKtT4E9OnZQMb-mkdjISqRQrlzTcIphQ4Elf8hKRpEMhPScDJtQdSEIZPtSksu5tV7mfypCcIr2v-5cSQME9S44yZaKAGWr1wqB14S3L7XvLjc9i06_ZutpbILSC0VLIaHOivrxHvrGPSVO3XU"/>
+</div>
+</div>
+</div>
+<!-- Product Info Section -->
+<div class="lg:col-span-5 flex flex-col gap-lg">
+<!-- Title & Price -->
+<div class="glass-effect rounded-[20px] p-8 gold-shadow">
+<h1 class="font-h1 text-white mb-2">إليت برو إكس - الإصدار الذهبي</h1>
+<div class="flex items-center gap-2 mb-6">
+<div class="flex text-status-warning">
+<span class="material-symbols-outlined fill text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg">star_half</span>
+</div>
+<span class="text-text-secondary text-caption">(4.9/5 - 120 تقييم)</span>
+</div>
+<div class="flex items-baseline gap-2 mb-8">
+<span class="font-display text-primary-container">4,999</span>
+<span class="text-body-l text-primary-container">ر.س</span>
+<span class="text-text-disabled line-through text-body-m mr-4">6,200 ر.س</span>
+</div>
+<p class="text-body-m text-text-secondary mb-8">
+                                صُمم خصيصاً للنخبة. يجمع بين الأداء الخارق والفخامة المتناهية مع لمسات من الذهب الخالص عيار 24 قيراط وتكنولوجيا الذكاء الاصطناعي المتطورة.
+                            </p>
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-h3 flex items-center justify-center gap-3 gold-glow-hover transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                                    إضافة إلى السلة
+                                </button>
+<button class="w-full border-2 border-status-success text-status-success py-4 rounded-xl font-h3 flex items-center justify-center gap-3 hover:bg-status-success/10 transition-all">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                                    طلب الآن عبر واتساب
+                                </button>
+</div>
+</div>
+<!-- Technical Specs Bento -->
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-effect p-4 rounded-xl flex items-center gap-4">
+<div class="bg-primary-container/10 p-3 rounded-lg text-primary-container">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<div>
+<div class="text-xs text-text-muted">المعالج</div>
+<div class="text-sm font-bold text-white">A18 Elite</div>
+</div>
+</div>
+<div class="glass-effect p-4 rounded-xl flex items-center gap-4">
+<div class="bg-primary-container/10 p-3 rounded-lg text-primary-container">
+<span class="material-symbols-outlined" data-icon="battery_full">battery_full</span>
+</div>
+<div>
+<div class="text-xs text-text-muted">البطارية</div>
+<div class="text-sm font-bold text-white">5000 mAh</div>
+</div>
+</div>
+<div class="glass-effect p-4 rounded-xl flex items-center gap-4">
+<div class="bg-primary-container/10 p-3 rounded-lg text-primary-container">
+<span class="material-symbols-outlined" data-icon="camera">camera</span>
+</div>
+<div>
+<div class="text-xs text-text-muted">الكاميرا</div>
+<div class="text-sm font-bold text-white">200 MP</div>
+</div>
+</div>
+<div class="glass-effect p-4 rounded-xl flex items-center gap-4">
+<div class="bg-primary-container/10 p-3 rounded-lg text-primary-container">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+<div>
+<div class="text-xs text-text-muted">الذاكرة</div>
+<div class="text-sm font-bold text-white">16GB RAM</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Description & Reviews -->
+<div class="mt-2xl grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<div class="lg:col-span-2 flex flex-col gap-lg">
+<!-- Description -->
+<div class="glass-effect rounded-[20px] p-8">
+<h2 class="font-h2 text-white mb-6 border-r-4 border-primary-container pr-4">الوصف الفني التفصيلي</h2>
+<div class="space-y-6 text-text-secondary leading-relaxed">
+<p>
+                                    نقدم لكم قمة التكنولوجيا في "إليت برو إكس". هذا الجهاز ليس مجرد أداة تواصل، بل هو بيان شخصي عن التميز والنجاح. تم نحت الهيكل الخارجي من مادة التيتانيوم المستخدمة في صناعة الطائرات، مع طلاء PVD ذهبي يضمن لمعاناً لا ينطفئ.
+                                </p>
+<ul class="list-disc list-inside space-y-2 text-on-surface">
+<li>شاشة Super Retina XDR بقياس 6.7 بوصة وتردد 120 هرتز.</li>
+<li>نظام حماية بيومتري متطور مشفر بتقنيات عسكرية.</li>
+<li>دعم كامل لشبكات الجيل الخامس المتقدمة 5.5G.</li>
+<li>مقاومة للماء والغبار بمعيار IP68 الفائق.</li>
+</ul>
+</div>
+</div>
+<!-- Reviews -->
+<div class="glass-effect rounded-[20px] p-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-h2 text-white">آراء النخبة</h2>
+<button class="text-primary-container font-label border border-primary-container/30 px-4 py-2 rounded-lg hover:bg-primary-container/10 transition-all">إضافة تقييم</button>
+</div>
+<div class="space-y-6">
+<div class="border-b border-white/5 pb-6">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-02 border border-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<div class="text-white font-bold text-sm">عبدالرحمن القحطاني</div>
+<div class="text-text-disabled text-xs">منذ يومين</div>
+</div>
+</div>
+<div class="flex text-status-warning scale-75">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-text-secondary text-sm">الجهاز فاق توقعاتي من حيث الأداء والخامات المستخدمة. التغليف وحده يشعرك بالفخامة.</p>
+</div>
+<div class="border-b border-white/5 pb-6">
+<div class="flex justify-between items-center mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-02 border border-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<div class="text-white font-bold text-sm">سارة المنصوري</div>
+<div class="text-text-disabled text-xs">منذ أسبوع</div>
+</div>
+</div>
+<div class="flex text-status-warning scale-75">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-text-secondary text-sm">تجربة شراء ممتازة وخدمة عملاء راقية جداً. المنتج قطعة فنية حقيقية.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Widgets -->
+<div class="flex flex-col gap-lg">
+<!-- Seller Info -->
+<div class="glass-effect rounded-[20px] p-6 text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="verified">verified</span>
+<h3 class="text-white font-h3 mb-1">VIP MARKET Official</h3>
+<p class="text-text-muted text-caption mb-6">متجر موثق من النخبة</p>
+<div class="flex justify-center gap-8 mb-8">
+<div>
+<div class="text-white font-bold">1.2K</div>
+<div class="text-text-disabled text-[10px]">مبيعات</div>
+</div>
+<div class="border-x border-white/10 px-8">
+<div class="text-white font-bold">4.9</div>
+<div class="text-text-disabled text-[10px]">تقييم</div>
+</div>
+<div>
+<div class="text-white font-bold">100%</div>
+<div class="text-text-disabled text-[10px]">موثوقية</div>
+</div>
+</div>
+<button class="w-full border border-white/10 py-3 rounded-lg text-white hover:bg-white/5 transition-all">مشاهدة المتجر</button>
+</div>
+<!-- Delivery Info -->
+<div class="glass-effect rounded-[20px] p-6 space-y-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="local_shipping">local_shipping</span>
+<div>
+<div class="text-white text-sm font-bold">شحن مجاني دولي</div>
+<div class="text-text-muted text-xs">خلال 3-5 أيام عمل</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="security">security</span>
+<div>
+<div class="text-white text-sm font-bold">ضمان ذهبي سنتين</div>
+<div class="text-text-muted text-xs">استبدال فوري للجهاز</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="assignment_return">assignment_return</span>
+<div>
+<div class="text-white text-sm font-bold">إرجاع خلال 14 يوم</div>
+<div class="text-text-muted text-xs">شروط ميسرة للنخبة</div>
+</div>
+</div>
+</div>
+<!-- Share -->
+<div class="glass-effect rounded-[20px] p-6 text-center">
+<div class="text-white text-sm font-bold mb-4">شارك هذا المنتج الاستثنائي</div>
+<div class="flex justify-center gap-4">
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#1877F2] hover:border-none transition-all" href="https://www.facebook.com/share/1L8qV7LPEC/" target="_blank">
+<span class="material-symbols-outlined text-lg" data-icon="share">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#0088cc] hover:border-none transition-all" href="https://t.me/tariq77087" target="_blank">
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-[#25D366] hover:border-none transition-all" href="https://wa.me/+967782138587" target="_blank">
+<span class="material-symbols-outlined text-lg" data-icon="call">call</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-[#1A1C22] w-full border-t border-white/5 py-12 px-8 flex flex-col items-center gap-6 mt-3xl">
+<div class="text-[#F2CA50] font-bold text-xl">VIP MARKET</div>
+<div class="flex gap-8">
+<a class="text-gray-500 hover:text-[#F2CA50] transition-opacity duration-200 font-['Manrope'] text-sm" href="https://wa.me/+967782138587">واتساب</a>
+<a class="text-gray-500 hover:text-[#F2CA50] transition-opacity duration-200 font-['Manrope'] text-sm" href="https://t.me/tariq77087">تيليجرام</a>
+<a class="text-gray-500 hover:text-[#F2CA50] transition-opacity duration-200 font-['Manrope'] text-sm" href="https://www.facebook.com/share/1L8qV7LPEC/">فيسبوك</a>
+<a class="text-gray-500 hover:text-[#F2CA50] transition-opacity duration-200 font-['Manrope'] text-sm" href="mailto:tariq770871@gmail.com">اتصل بنا</a>
+</div>
+<p class="text-gray-500 font-['Manrope'] text-sm">جميع الحقوق محفوظة لـ VIP MARKET © ٢٠٢٤</p>
+</footer>
+</main>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-effect border-t border-[#F2CA50]/20 z-50 px-6 py-4 flex justify-between items-center rounded-t-3xl">
+<a class="text-[#F2CA50] flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px]">الرئيسية</span>
+</a>
+<a class="text-gray-400 flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px]">بحث</span>
+</a>
+<div class="bg-primary-container text-on-primary-container p-3 rounded-full -mt-10 shadow-lg border-4 border-[#0D0E12]">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<a class="text-gray-400 flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[10px]">المفضلة</span>
+</a>
+<a class="text-gray-400 flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px]">حسابي</span>
+</a>
+</nav>
+</body></html>
