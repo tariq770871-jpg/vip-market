@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#eac249",
+                        "error-container": "#93000a",
+                        "surface": "#16130b",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#38342b",
+                        "bg-01": "#121317",
+                        "outline": "#99907c",
+                        "on-background": "#eae1d4",
+                        "tertiary-fixed": "#bde9ff",
+                        "bg-02": "#0D0E12",
+                        "on-primary": "#3d2f00",
+                        "surface-01": "#1A1C22",
+                        "status-info": "#3498DB",
+                        "surface-container-highest": "#38342b",
+                        "on-secondary-container": "#342800",
+                        "on-secondary": "#3c2f00",
+                        "surface-tint": "#eac249",
+                        "tertiary-container": "#82d9ff",
+                        "on-tertiary-fixed": "#001f2a",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#3d392f",
+                        "border-base": "#2A2D36",
+                        "on-surface": "#eae1d4",
+                        "primary": "#ffe9b0",
+                        "on-tertiary": "#003546",
+                        "gold-glow": "rgba(242, 202, 80, 0.25)",
+                        "text-primary": "#FFFFFF",
+                        "text-muted": "#7A7D88",
+                        "on-primary-fixed-variant": "#574400",
+                        "text-secondary": "#B5B7C0",
+                        "background": "#16130b",
+                        "tertiary": "#d1efff",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#745b00",
+                        "surface-container-low": "#1f1b13",
+                        "status-warning": "#F1C40F",
+                        "inverse-on-surface": "#343027",
+                        "outline-variant": "#4d4635",
+                        "primary-fixed": "#ffe08a",
+                        "on-tertiary-fixed-variant": "#004d64",
+                        "surface-container-high": "#2d2a21",
+                        "surface-dim": "#16130b",
+                        "surface-container-lowest": "#110e07",
+                        "on-error": "#690005",
+                        "surface-02": "#20232B",
+                        "on-primary-container": "#6b5500",
+                        "on-tertiary-container": "#005f7a",
+                        "text-disabled": "#5A5D66",
+                        "secondary-fixed": "#ffe088",
+                        "primary-container": "#f2ca50",
+                        "tertiary-fixed-dim": "#7ad1f7",
+                        "on-secondary-fixed-variant": "#574500",
+                        "secondary-container": "#af8d11",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container": "#231f17",
+                        "inverse-surface": "#eae1d4",
+                        "status-success": "#2ECC71",
+                        "secondary": "#e9c349",
+                        "gold-soft": "rgba(242, 202, 80, 0.08)",
+                        "status-error": "#E74C3C",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "4xl": "80px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-m": ["manrope"],
+                        "body-l": ["manrope"],
+                        "label": ["manrope"],
+                        "h3": ["manrope"],
+                        "h1": ["manrope"],
+                        "h2": ["manrope"],
+                        "caption": ["manrope"],
+                        "display": ["manrope"]
+                    },
+                    "fontSize": {
+                        "body-m": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-l": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "h1": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "h2": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(26, 28, 34, 0.6);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(242, 202, 80, 0.2);
+        }
+        .gold-glow-focus:focus-within {
+            box-shadow: 0 0 15px rgba(242, 202, 80, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-bg-02 font-body-m text-on-surface selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- Global Background Elements -->
+<div class="fixed inset-0 z-[-1] overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[150px]"></div>
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20 pointer-events-none"></div>
+</div>
+<!-- Main Container -->
+<div class="flex min-h-screen">
+<!-- Login Canvas (Main Content) -->
+<main class="flex-1 flex flex-col items-center justify-center p-lg relative">
+<!-- Branding Header (TopAppBar Influence) -->
+<header class="absolute top-0 left-0 right-0 flex justify-between items-center px-8 py-4 z-50">
+<div class="text-2xl font-black tracking-tighter text-[#F2CA50] font-['Manrope']">VIP MARKET</div>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer hover:bg-white/5 p-2 rounded-full transition-all">notifications</span>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer hover:bg-white/5 p-2 rounded-full transition-all">person</span>
+</div>
+</header>
+<!-- Login Bento Box -->
+<div class="w-full max-w-md z-10">
+<div class="glass-panel p-xl rounded-[20px] shadow-2xl flex flex-col gap-lg">
+<div class="text-center space-y-xs">
+<h1 class="font-h1 text-h1 text-primary-fixed">تسجيل الدخول</h1>
+<p class="font-body-m text-text-secondary">مرحباً بك في نظام النخبة VIP MARKET</p>
+</div>
+<form action="#" class="flex flex-col gap-md">
+<!-- Input Group -->
+<div class="space-y-sm">
+<label class="font-label text-label text-on-surface-variant block">البريد الإلكتروني</label>
+<div class="relative gold-glow-focus rounded-lg transition-all">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full bg-surface-01 border border-border-base rounded-lg pr-12 py-3 focus:border-primary-fixed-dim focus:ring-0 text-on-surface transition-colors" placeholder="example@domain.com" type="email"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label text-label text-on-surface-variant block">كلمة المرور</label>
+<div class="relative gold-glow-focus rounded-lg transition-all">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full bg-surface-01 border border-border-base rounded-lg pr-12 py-3 focus:border-primary-fixed-dim focus:ring-0 text-on-surface transition-colors" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex justify-between items-center px-1">
+<label class="flex items-center gap-xs cursor-pointer group">
+<input class="w-4 h-4 rounded border-border-base bg-surface-01 text-primary-container focus:ring-primary-fixed-dim" type="checkbox"/>
+<span class="font-caption text-caption text-text-secondary group-hover:text-on-surface">تذكرني</span>
+</label>
+<a class="font-caption text-caption text-primary-fixed-dim hover:underline transition-all" href="#">نسيت كلمة المرور؟</a>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-sm mt-md">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-lg font-h2 text-h3 font-bold hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(242,202,80,0.3)]" type="submit">دخول النظام</button>
+<button class="w-full bg-transparent border border-primary-fixed-dim text-primary-fixed-dim py-3 rounded-lg font-h3 text-h3 hover:bg-primary-fixed-dim/10 active:scale-[0.98] transition-all" type="button">الدخول كزائر</button>
+</div>
+</form>
+<div class="text-center mt-md">
+<p class="font-body-m text-text-secondary">
+                            ليس لديك حساب؟ 
+                            <a class="text-primary-fixed font-bold hover:underline" href="#">إنشاء حساب جديد</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Decorative Image Element -->
+<div class="mt-2xl w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-lg px-lg hidden md:grid">
+<div class="glass-panel p-md rounded-xl flex items-center gap-md hover:bg-white/5 transition-all cursor-pointer">
+<div class="bg-primary/20 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<div class="font-h3 text-h3 text-on-surface">الأكاديمية</div>
+<div class="font-caption text-caption text-text-muted">دروس احترافية حصرية</div>
+</div>
+</div>
+<div class="glass-panel p-md rounded-xl flex items-center gap-md hover:bg-white/5 transition-all cursor-pointer border-primary/40 shadow-gold-glow">
+<div class="bg-primary/20 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<div class="font-h3 text-h3 text-on-surface">ذكاء اصطناعي</div>
+<div class="font-caption text-caption text-text-muted">أدوات تحليل متقدمة</div>
+</div>
+</div>
+<div class="glass-panel p-md rounded-xl flex items-center gap-md hover:bg-white/5 transition-all cursor-pointer">
+<div class="bg-primary/20 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+</div>
+<div>
+<div class="font-h3 text-h3 text-on-surface">الخزنة</div>
+<div class="font-caption text-caption text-text-muted">تشفير وحماية عالية</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Section (Unified Branding) -->
+<footer class="absolute bottom-0 w-full py-8 px-8 flex flex-col items-center gap-4 bg-transparent">
+<div class="flex gap-lg">
+<a class="text-text-secondary hover:text-primary-fixed-dim transition-colors flex items-center gap-1" href="https://wa.me/967782138587" target="_blank">
+<span class="material-symbols-outlined text-sm">chat</span> واتساب
+                </a>
+<a class="text-text-secondary hover:text-primary-fixed-dim transition-colors flex items-center gap-1" href="https://t.me/tariq77087" target="_blank">
+<span class="material-symbols-outlined text-sm">send</span> تيلجرام
+                </a>
+<a class="text-text-secondary hover:text-primary-fixed-dim transition-colors flex items-center gap-1" href="https://www.facebook.com/share/1L8qV7LPEC/" target="_blank">
+<span class="material-symbols-outlined text-sm">public</span> فيسبوك
+                </a>
+<a class="text-text-secondary hover:text-primary-fixed-dim transition-colors flex items-center gap-1" href="mailto:tariq770871@gmail.com">
+<span class="material-symbols-outlined text-sm">mail</span> اتصل بنا
+                </a>
+</div>
+<div class="font-caption text-caption text-text-disabled">جميع الحقوق محفوظة لـ VIP MARKET © ٢٠٢٤</div>
+</footer>
+</div>
+<!-- SideNavBar (Suppressed for Login screen but available for structural integrity) -->
+<!-- Note: Hidden on login screen as per Shell Visibility Rules, but defined for reference -->
+<nav class="hidden fixed right-0 top-0 h-full flex flex-col z-40 bg-[#1A1C22]/80 backdrop-blur-2xl w-64 border-l border-[#F2CA50]/20 shadow-2xl transition-transform translate-x-full">
+<div class="p-lg flex flex-col items-center gap-sm">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-fixed-dim">
+<img alt="Profile" data-alt="A professional high-resolution headshot of an elite corporate executive in a sharp black suit. The background is a sophisticated dark office with golden ambient lighting and soft bokeh effects. The lighting is dramatic and luxurious, emphasizing professional authority and success within a premium enterprise ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB4cQePxeri85Yyg6Un37Mj5LugTHsry4Cg1DmFLt_aaHtEb8k4grDF6olf76xtVsYb1vqCrCnMblfEQ4q1u2ejhw3TQf5jrKmX7EPqx3owCRZN1u7Mtvngw_ISWMgc72ivtWcQXBM0KJsg9fHIySD5Pg2QByuYCiwqmHC0An--0xV6Wio6C5qLEwOfmuCXs6yp278_vjLlQcOjbeqChWA_2ukR2E5BtjCCBDjt75Q4FvR5ErUOcSyenk5om8B-dW6ywPiZtmttJ0"/>
+</div>
+<div class="text-center">
+<div class="font-bold text-primary-fixed-dim">VIP MARKET</div>
+<div class="text-xs text-text-muted">نظام النخبة</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-4 space-y-1">
+<a class="flex items-center gap-3 p-3 rounded-lg text-primary-fixed-dim bg-primary/10 border-r-4 border-primary shadow-gold-glow" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+<span>المعرض</span>
+</a>
+<!-- Additional items... -->
+</div>
+</nav>
+<!-- Background Decoration Image -->
+<div class="fixed top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 w-1/2 h-full opacity-10 pointer-events-none mix-blend-screen hidden lg:block">
+<img class="w-full h-full object-cover" data-alt="A sprawling, futuristic cybernetic city landscape at night with towering skyscrapers bathed in golden and deep amber neon lights. Volumetric fog and lens flares create a cinematic, high-budget atmosphere. The architectural style is neo-corporate with glass and steel structures reflecting the golden glow of the city's energy. The scene is majestic and implies a high-tier technological empire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdtHiI5412bL086Cng1mXc8YZxcmrjSnhtJIrKBG_fCIRQvOv5rwS9O68CbByVhsxQ2-Of50SLS4Dy5v-VnQgegQI9sUO9MegPLhyQ_HJ2_3J4ZQrKrddN7d6bTi2ASyLlxFHQLIOavhpB59TV1VdP9vsASdHU6YSP4o4yGp-14ELr0psPCjsYYwTPiZaWlzMQQLDRmxP2nInoDcw1eGjyFHkLwP49e9e0rYmve1y8XJLGlirYSXBeZ04DCxAn-LhFelqswGkUV30"/>
+</div>
+</body></html>
