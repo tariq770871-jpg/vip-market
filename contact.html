@@ -1,149 +1,311 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar">
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>تواصل معنا - VIP MARKET</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "inverse-surface": "#e3e2e7", "secondary-fixed-dim": "#c8c6c5", "on-error": "#690005",
-            "surface-tint": "#e9c349", "tertiary-container": "#b4b2b2", "on-primary-fixed": "#241a00",
-            "on-error-container": "#ffdad6", "on-secondary-container": "#bab8b7", "on-primary-container": "#554300",
-            "on-secondary": "#313030", "secondary-fixed": "#e5e2e1", "surface-container-high": "#292a2e",
-            "secondary-container": "#4a4949", "surface-container-lowest": "#0d0e12", "on-secondary-fixed": "#1c1b1b",
-            "inverse-primary": "#735c00", "on-tertiary-fixed-variant": "#474746", "surface-bright": "#38393d",
-            "primary-fixed": "#ffe088", "on-tertiary-container": "#454544", "primary-container": "#d4af37",
-            "on-tertiary": "#313030", "background": "#121317", "on-primary-fixed-variant": "#574500",
-            "secondary": "#c8c6c5", "on-tertiary-fixed": "#1c1b1b", "surface": "#121317",
-            "on-surface-variant": "#d0c5af", "surface-container-low": "#1a1b1f", "primary-fixed-dim": "#e9c349",
-            "on-background": "#e3e2e7", "on-secondary-fixed-variant": "#474646", "outline-variant": "#4d4635",
-            "surface-dim": "#121317", "error": "#ffb4ab", "surface-container": "#1e1f23",
-            "tertiary-fixed-dim": "#c8c6c5", "tertiary": "#d0cdcd", "surface-container-highest": "#343539",
-            "inverse-on-surface": "#2f3034", "error-container": "#93000a", "surface-variant": "#343539",
-            "tertiary-fixed": "#e5e2e1", "on-surface": "#e3e2e7", "on-primary": "#3c2f00",
-            "outline": "#99907c", "primary": "#f2ca50"
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "status-success": "#2ECC71",
+                "inverse-on-surface": "#343027",
+                "border-base": "#2A2D36",
+                "secondary-fixed": "#ffe088",
+                "on-background": "#eae1d4",
+                "primary-container": "#f2ca50",
+                "surface-variant": "#38342b",
+                "on-error-container": "#ffdad6",
+                "error-container": "#93000a",
+                "secondary-fixed-dim": "#e9c349",
+                "on-surface-variant": "#d0c5af",
+                "on-primary-fixed-variant": "#574400",
+                "error": "#ffb4ab",
+                "on-tertiary-fixed": "#001f2a",
+                "on-tertiary-container": "#005f7a",
+                "inverse-primary": "#745b00",
+                "surface-tint": "#eac249",
+                "on-secondary-fixed": "#241a00",
+                "status-info": "#3498DB",
+                "tertiary-container": "#82d9ff",
+                "surface": "#16130b",
+                "on-secondary-container": "#342800",
+                "on-tertiary": "#003546",
+                "bg-02": "#0D0E12",
+                "on-primary": "#3d2f00",
+                "background": "#16130b",
+                "on-tertiary-fixed-variant": "#004d64",
+                "primary-fixed": "#ffe08a",
+                "text-primary": "#FFFFFF",
+                "on-error": "#690005",
+                "text-disabled": "#5A5D66",
+                "outline-variant": "#4d4635",
+                "on-secondary": "#3c2f00",
+                "status-error": "#E74C3C",
+                "on-primary-container": "#6b5500",
+                "bg-01": "#121317",
+                "surface-container": "#231f17",
+                "surface-bright": "#3d392f",
+                "text-muted": "#7A7D88",
+                "inverse-surface": "#eae1d4",
+                "surface-container-lowest": "#110e07",
+                "secondary-container": "#af8d11",
+                "tertiary-fixed": "#bde9ff",
+                "surface-dim": "#16130b",
+                "tertiary-fixed-dim": "#7ad1f7",
+                "surface-02": "#20232B",
+                "tertiary": "#d1efff",
+                "outline": "#99907c",
+                "surface-container-low": "#1f1b13",
+                "on-secondary-fixed-variant": "#574500",
+                "surface-container-high": "#2d2a21",
+                "surface-01": "#1A1C22",
+                "primary": "#ffe9b0",
+                "on-surface": "#eae1d4",
+                "primary-fixed-dim": "#eac249",
+                "gold-soft": "rgba(242, 202, 80, 0.08)",
+                "text-secondary": "#B5B7C0",
+                "secondary": "#e9c349",
+                "on-primary-fixed": "#241a00",
+                "status-warning": "#F1C40F",
+                "surface-container-highest": "#38342b",
+                "gold-glow": "rgba(242, 202, 80, 0.25)"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "3xl": "64px",
+                "2xl": "48px",
+                "xl": "32px",
+                "4xl": "80px",
+                "xs": "4px",
+                "md": "16px",
+                "lg": "24px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "label": ["manrope"],
+                "h1": ["manrope"],
+                "caption": ["manrope"],
+                "body-m": ["manrope"],
+                "h3": ["manrope"],
+                "h2": ["manrope"],
+                "display": ["manrope"],
+                "body-l": ["manrope"]
+            }
           }
         }
       }
-    }
-  </script>
-  <style>
-    body { font-family: 'Tajawal', sans-serif; cursor: none; overflow-x: hidden; }
-    /* المؤشر الموحد */
-    #custom-cursor { width: 8px; height: 8px; background: #f2ca50; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: transform 0.1s ease; }
-    #cursor-ring { width: 40px; height: 40px; border: 2px solid rgba(242, 202, 80, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1); animation: rotateRing 4s linear infinite; transform: translate(-50%, -50%); }
-    @keyframes rotateRing { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-    .glass-panel { background: rgba(30, 31, 35, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-    .gold-gradient-text { background: linear-gradient(135deg, #f2ca50 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
-    .card-3d-wrap { perspective: 1000px; }
-    .card-3d-inner { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); transform-style: preserve-3d; }
-    .card-3d-wrap:hover .card-3d-inner { transform: rotateY(10deg) rotateX(5deg); }
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  </style>
-</head>
-<body class="min-h-screen selection:bg-primary/30 bg-background text-on-background">
-  <div id="custom-cursor"></div>
-  <div id="cursor-ring"></div>
-  <div id="particles-js"></div>
-
-  <!-- الهيدر الموحد -->
-  <nav class="fixed top-0 w-full z-50 border-b border-white/5 dark:bg-background/60 bg-white/80 backdrop-blur-xl h-20 px-6 md:px-12 flex flex-row-reverse justify-between items-center transition-all duration-500">
-    <div class="flex items-center">
-      <a class="text-2xl font-black text-primary uppercase tracking-tighter hover:scale-105 transition-transform" href="mastery.html">VIP MARKET</a>
-    </div>
-    <div class="flex items-center gap-4">
-      <button class="p-2 rounded-full hover:bg-primary/10 text-primary transition-all" onclick="document.documentElement.classList.toggle('dark')">
-        <span class="material-symbols-outlined dark:hidden">dark_mode</span>
-        <span class="material-symbols-outlined hidden dark:block">light_mode</span>
-      </button>
-      <a class="flex items-center gap-2 text-primary px-4 py-2 rounded-lg border border-primary/20 hover:bg-primary/10 transition-all font-medium text-sm group" href="mastery.html">
-        <span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_forward</span>
-        العودة للرئيسية
-      </a>
-    </div>
-  </nav>
-
-  <main class="relative z-10 pt-40 pb-24 px-6 max-w-5xl mx-auto">
-    <header class="text-center mb-20 animate-reveal">
-      <h1 class="text-5xl md:text-6xl font-black gold-gradient-text mb-8">تواصل معنا</h1>
-      <p class="text-xl text-secondary dark:text-secondary/80 max-w-2xl mx-auto leading-relaxed">نحن هنا للإجابة على استفساراتك وتقديم الدعم الفني اللازم.</p>
-    </header>
-    <section class="mb-12">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- WhatsApp -->
-        <div class="card-3d-wrap reveal-on-scroll">
-          <a class="card-3d-inner block glass-panel rounded-2xl p-10 flex flex-col items-center group text-center border-white/5 hover:border-primary/20" href="https://wa.me/967782138587" target="_blank">
-            <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8 text-green-500" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
-            <span class="text-xl font-bold dark:text-white mb-2">واتساب</span>
-            <span class="text-secondary/70 text-sm" dir="ltr">+967 782138587</span>
-          </a>
-        </div>
-        <!-- Telegram -->
-        <div class="card-3d-wrap reveal-on-scroll">
-          <a class="card-3d-inner block glass-panel rounded-2xl p-10 flex flex-col items-center group text-center border-white/5 hover:border-primary/20" href="https://t.me/tariq77087" target="_blank">
-            <div class="w-16 h-16 bg-sky-500/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8 text-sky-500" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg></div>
-            <span class="text-xl font-bold dark:text-white mb-2">تيليجرام</span>
-            <span class="text-secondary/70 text-sm">tariq77087</span>
-          </a>
-        </div>
-        <!-- Facebook -->
-        <div class="card-3d-wrap reveal-on-scroll">
-          <a class="card-3d-inner block glass-panel rounded-2xl p-10 flex flex-col items-center group text-center border-white/5 hover:border-primary/20" href="https://facebook.com/share/18SmUWm6nw/" target="_blank">
-            <div class="w-16 h-16 bg-blue-600/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8 text-blue-600" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
-            <span class="text-xl font-bold dark:text-white mb-2">فيسبوك</span>
-            <span class="text-secondary/70 text-sm">مجتمع VIP MARKET</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- الفوتر الموحد -->
-  <footer class="w-full border-t border-white/5 py-16 dark:bg-background/80 bg-white backdrop-blur-md flex flex-col items-center gap-10 px-8 relative z-10 transition-colors">
-    <div class="text-3xl font-black text-primary tracking-tighter uppercase">VIP MARKET</div>
-    <div class="flex gap-10 flex-wrap justify-center">
-      <a class="text-secondary hover:text-primary transition-all text-sm font-medium" href="about.html">من نحن</a>
-      <a class="text-secondary hover:text-primary transition-all text-sm font-medium" href="privacy.html">سياسة الخصوصية</a>
-      <a class="text-secondary hover:text-primary transition-all text-sm font-medium text-primary font-bold" href="contact.html">تواصل معنا</a>
-    </div>
-    <div class="flex gap-6">
-      <a class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:bg-primary/10 text-secondary hover:text-primary" href="https://wa.me/967782138587" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-      <a class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:bg-primary/10 text-secondary hover:text-primary" href="https://t.me/tariq77087" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg></a>
-      <a class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:bg-primary/10 text-secondary hover:text-primary" href="https://facebook.com/share/18SmUWm6nw/" target="_blank"><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-    </div>
-    <p class="text-secondary/60 text-sm">حقوق النشر © 2025 VIP Market. جميع الحقوق محفوظة.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    // المؤشر الموحد
-    const cursor = document.getElementById('custom-cursor');
-    const ring = document.getElementById('cursor-ring');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-    });
-    document.addEventListener('mousedown', () => { ring.style.transform = 'translate(-50%, -50%) scale(0.8)'; });
-    document.addEventListener('mouseup', () => { ring.style.transform = 'translate(-50%, -50%) scale(1)'; });
-    // Particles
-    particlesJS("particles-js", {
-      "particles": { "number": { "value": 60 }, "color": { "value": "#f2ca50" }, "opacity": { "value": 0.3 }, "size": { "value": 2 }, "line_linked": { "enable": true, "color": "#f2ca50", "opacity": 0.15 }, "move": { "speed": 1.5 } },
-      "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
-    });
-    // Scroll
-    const observer = new IntersectionObserver((e) => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }); }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(26, 28, 34, 0.6);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(242, 202, 80, 0.15);
+      }
+      .gold-glow-hover:hover {
+        box-shadow: 0 0 20px rgba(242, 202, 80, 0.2);
+      }
+    </style>
+<style>
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-premium-in {
+    animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  
+  .focus-gold-glow:focus {
+    box-shadow: 0 0 0 1px rgba(242, 202, 80, 0.4), 0 0 15px rgba(242, 202, 80, 0.2);
+    border-color: #F2CA50 !important;
+  }
+</style></head>
+<body class="bg-bg-01 text-on-surface font-body-m antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-[#121317]/80 backdrop-blur-xl border-b border-[#F2CA50]/20 fixed top-0 left-0 w-full flex flex-row-reverse justify-between items-center px-8 h-20 z-50 shadow-2xl">
+<div class="flex items-center gap-6">
+<div class="text-2xl font-black tracking-tighter text-[#F2CA50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] font-['Manrope']">ELITE</div>
+</div>
+<nav class="hidden md:flex items-center gap-8 flex-row-reverse">
+<a class="text-gray-400 hover:text-[#F2CA50] transition-all duration-300 font-label text-label" href="#">الرئيسية</a>
+<a class="text-gray-400 hover:text-[#F2CA50] transition-all duration-300 font-label text-label" href="#">المعرض</a>
+<a class="text-gray-400 hover:text-[#F2CA50] transition-all duration-300 font-label text-label" href="#">الأكاديمية</a>
+<a class="text-[#F2CA50] font-bold font-label text-label" href="#">اتصل بنا</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#F2CA50] p-2 rounded-full hover:bg-[#F2CA50]/10 transition-all">notifications</button>
+<button class="material-symbols-outlined text-[#F2CA50] p-2 rounded-full hover:bg-[#F2CA50]/10 transition-all">account_circle</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<aside class="fixed right-0 top-0 h-full z-40 flex flex-col pt-24 pb-8 bg-[#121317]/90 backdrop-blur-2xl w-72 border-l border-[#F2CA50]/20 shadow-[10px_0_30px_rgba(0,0,0,0.5)] hidden lg:flex">
+<div class="px-6 mb-8 text-right">
+<div class="w-16 h-16 rounded-full border-2 border-primary-container mb-4 overflow-hidden mx-auto lg:mr-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-eastern businessman in a luxury office setting, with soft warm lighting highlighting a sharp suit. The background is a blurred high-end corporate environment with gold and dark charcoal accents, matching the elite brand aesthetic. The overall mood is authoritative, successful, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGNNIEWnjJs7alJISTMWAjIvZVMbLGUnItkBhWTZ56Xy7frMLr7mZSh2i1-VWd7GIJnQiDuVh7_JY-BZ995zqy6tDjjiwOHYPUvqfIfKa4-dTUU3BsFBbR_vSTwWlmwmFwdmSBGqwVi7UglAxCgAa9ZlsuMGZWkAeVKWgHoun7qo6kPio6ktJGGMX_Isz0rG4OjngISbCgRCdglODhNsV1qJ32hOrOKGTq9iMeI8_0uPaRLFOaszxiO4Z1mggFYMag8Eg5bWYqJzE"/>
+</div>
+<h3 class="font-h3 text-h3 text-primary-container">مرحباً بك</h3>
+<p class="font-caption text-caption text-text-muted">عضو النخبة</p>
+</div>
+<nav class="flex-1 divide-y divide-[#F2CA50]/10">
+<a class="flex flex-row-reverse items-center gap-4 text-gray-500 py-4 px-6 hover:text-[#F2CA50] hover:bg-[#F2CA50]/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label text-label">الرئيسية</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-gray-500 py-4 px-6 hover:text-[#F2CA50] hover:bg-[#F2CA50]/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label text-label">المعرض</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-gray-500 py-4 px-6 hover:text-[#F2CA50] hover:bg-[#F2CA50]/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label text-label">الأكاديمية</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 bg-gradient-to-l from-[#F2CA50]/20 to-transparent text-[#F2CA50] border-r-4 border-[#F2CA50] py-4 px-6" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label text-label">اتصل بنا</span>
+</a>
+</nav>
+<div class="px-6 mt-auto flex flex-col gap-2">
+<a class="flex flex-row-reverse items-center gap-3 text-gray-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="font-caption text-caption">الإعدادات</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:mr-72 pt-32 px-6 lg:px-12 pb-24">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<section class="mb-16 text-center lg:text-right animate-premium-in">
+<h1 class="font-display text-display text-primary-container mb-4">تواصل مع النخبة</h1>
+<p class="font-body-l text-body-l text-text-secondary max-w-2xl lg:ml-0 lg:mr-0">نحن هنا لخدمتك. فريقنا المختص جاهز للإجابة على جميع استفساراتك وتقديم الدعم اللازم لرحلتك في عالم ELITE.</p>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Contact Form Card -->
+<div class="lg:col-span-2 glass-card rounded-xl p-8 shadow-2xl animate-premium-in delay-100 opacity-0">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-premium-in delay-200 opacity-0">
+<div class="space-y-2">
+<label class="font-label text-label text-on-surface-variant block">الاسم الكامل</label>
+<input class="w-full bg-surface-01 border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all text-on-surface focus-gold-glow" placeholder="أدخل اسمك هنا" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-label text-on-surface-variant block">البريد الإلكتروني</label>
+<input class="w-full bg-surface-01 border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all text-on-surface focus-gold-glow" placeholder="example@elite.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2 animate-premium-in delay-300 opacity-0">
+<label class="font-label text-label text-on-surface-variant block">الموضوع</label>
+<select class="w-full bg-surface-01 border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all text-on-surface appearance-none focus-gold-glow">
+<option>استفسار عام</option>
+<option>الدعم التقني</option>
+<option>انضمام للأكاديمية</option>
+<option>خدمات النخبة</option>
+</select>
+</div>
+<div class="space-y-2 animate-premium-in delay-400 opacity-0">
+<label class="font-label text-label text-on-surface-variant block">رسالتك</label>
+<textarea class="w-full bg-surface-01 border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all text-on-surface resize-none focus-gold-glow" placeholder="كيف يمكننا مساعدتك اليوم؟" rows="5"></textarea>
+</div>
+<button class="w-full md:w-auto px-12 py-4 bg-primary-container text-on-primary-container font-h3 text-h3 rounded-lg hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary-container/20 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(242,202,80,0.4)] transition-all duration-300" type="submit">إرسال الرسالة</button>
+</form>
+</div>
+<!-- Info Sidebar -->
+<div class="space-y-8 animate-premium-in delay-500 opacity-0">
+<!-- Office Location -->
+<div class="glass-card rounded-xl overflow-hidden shadow-2xl gold-glow-hover transition-all">
+<div class="h-48 relative overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover opacity-60" data-alt="A stylized, high-contrast digital map of Riyadh city center at night. The map features glowing gold arterial roads against a deep charcoal and navy blue background, mirroring a premium tech dashboard aesthetic. Subtle holographic data points hover over key business districts, conveying a sense of strategic location and advanced infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAufmnRVsihmXtUTlP8tu2_MYWuax_0akMSaPLcKqzuvxjw4E-PXXfuB2l4hxyvpjaEMasCzDTFhDy4nwFwQTs82JmBVc1wY0MKh-JYXqI1IZUccGksh66qXZIE_I-QV33teQ4oHUydvDIRQHfzvAhHWwbvdTPMM1NfKQIKhx71AZAyfKbMGo6tp651LXZKBORIdhrx6vXXFAbMO36oA6Jnhe_rhUSQ8HBICTZBiliyU3bmwyfL9EOib0UyvK6dpWsfFXycIeuKIdE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-01 to-transparent"></div>
+<div class="absolute bottom-4 right-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">location_on</span>
+<span class="font-label text-label text-primary-container">الرياض، المملكة العربية السعودية</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">المقر الرئيسي</h3>
+<p class="font-body-m text-text-secondary">برج النخبة، الطابق 42، حي الملك عبد الله المالي، الرياض.</p>
+</div>
+</div>
+<!-- Contact Methods -->
+<div class="glass-card rounded-xl p-6 space-y-6">
+<div class="flex flex-row-reverse items-start gap-4">
+<div class="bg-primary-container/10 p-3 rounded-xl">
+<span class="material-symbols-outlined text-primary-container">support_agent</span>
+</div>
+<div class="text-right">
+<h4 class="font-label text-label text-on-surface">الدعم المباشر</h4>
+<p class="font-caption text-caption text-text-muted mb-1">متاح 24/7 للأعضاء</p>
+<a class="font-body-m text-primary-container" href="tel:+96612345678">800-ELITE-99</a>
+</div>
+</div>
+<div class="flex flex-row-reverse items-start gap-4">
+<div class="bg-primary-container/10 p-3 rounded-xl">
+<span class="material-symbols-outlined text-primary-container">alternate_email</span>
+</div>
+<div class="text-right">
+<h4 class="font-label text-label text-on-surface">البريد الإلكتروني</h4>
+<p class="font-caption text-caption text-text-muted mb-1">نرد خلال 24 ساعة</p>
+<a class="font-body-m text-primary-container" href="mailto:support@elite.sa">support@elite.sa</a>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-center gap-6">
+<a class="text-gray-400 hover:text-primary-container transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-gray-400 hover:text-primary-container transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-gray-400 hover:text-primary-container transition-colors" href="#"><span class="material-symbols-outlined">send</span></a>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Teaser -->
+<section class="mt-24">
+<div class="glass-card rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<h2 class="font-h2 text-h2 text-on-surface mb-6 relative z-10">هل تبحث عن إجابات سريعة؟</h2>
+<p class="font-body-l text-text-secondary mb-8 max-w-xl mx-auto relative z-10">قم بزيارة مركز المساعدة الشامل للحصول على إرشادات فورية حول خدماتنا المتقدمة.</p>
+<a class="inline-flex items-center gap-2 border border-primary-container text-primary-container px-8 py-3 rounded-lg font-h3 hover:bg-primary-container hover:text-on-primary-container transition-all relative z-10" href="#">
+<span>انتقل إلى مركز المساعدة</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-[#121317]/90 backdrop-blur-xl border-t border-[#F2CA50]/10 flex justify-around items-center px-4 z-50">
+<a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px]">المعرض</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#F2CA50]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+<span class="text-[10px]">اتصل بنا</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px]">الملف</span>
+</a>
+</nav>
+</body></html>
