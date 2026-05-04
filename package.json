@@ -1,0 +1,47 @@
+{
+  "name": "vip-market-global",
+  "version": "1.0.0",
+  "description": "VIP MARKET GLOBAL - Premium Trading Platform",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.html",
+    "format": "prettier --write \"**/*.{js,html,css,json,md}\"",
+    "test": "vitest",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "trading",
+    "vip",
+    "market",
+    "platform",
+    "elite"
+  ],
+  "author": "VIP MARKET Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "vite": "^5.0.7",
+    "vitest": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tariq770871-jpg/vip-market"
+  },
+  "bugs": {
+    "url": "https://github.com/tariq770871-jpg/vip-market/issues"
+  },
+  "homepage": "https://vipmarket.com"
+}
