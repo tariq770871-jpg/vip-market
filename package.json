@@ -1,7 +1,7 @@
 {
-  "name": "vip-market-global",
+  "name": "vip-market",
   "version": "1.0.0",
-  "description": "VIP MARKET GLOBAL - Premium Trading Platform",
+  "description": "VIP MARKET - Premium Trading Platform",
   "type": "module",
   "main": "main.js",
   "scripts": {

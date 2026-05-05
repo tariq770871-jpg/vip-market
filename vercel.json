@@ -1,9 +1,9 @@
 {
-  "name": "VIP MARKET GLOBAL",
+  "name": "VIP MARKET",
   "version": 2,
   "public": false,
-  "buildCommand": "npm run build || true",
-  "outputDirectory": ".",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "framework": "static",
   "env": {
     "VITE_SUPABASE_URL": "@vite_supabase_url",
